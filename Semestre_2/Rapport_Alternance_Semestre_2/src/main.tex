@@ -34,10 +34,14 @@
 }
 % document date
 \date{
-    Master ILSEN\\
+    Master 1 --- Parcours ILSEN --- Année universitaire 2025--2026\\
+    CBA Informatique Libérale --- Montfavet (Avignon)\\
     Contrat du 18 Août 2025 au 25 Août 2027\\
     Tuteur entreprise : Tom ANDRIEU\\
     Tuteur CERI : Vincent LABATUT
+    % TODO S2 (page de garde) : VÉRIFIER "Master 1 / 2025-2026".
+    % Consigne CERI (3) : doivent figurer nom+prénom, diplôme+année+parcours,
+    % entreprise (nom + ville), tuteurs entreprise & CERI, dates début/fin de contrat.
 }
 
 
@@ -62,6 +66,9 @@ C'est ainsi que, grâce au Forum de l'Alternance réalisé par le CERI, j'ai pu 
 Suite à cela, j'ai réalisé un test d'aptitude d'Angular sur site avec le Lead Tech et le Lead Dev.
 
 Je vais aborder dans ce rapport mes débuts dans l'entreprise en tant que développeur Front-End dans l'équipe du logiciel Agathe You, de mi-août jusqu'à fin décembre, en passant par la présentation de l'entreprise, l'environnement de travail et les différentes missions que j'ai réalisées.
+
+% TODO S2 — INTRODUCTION : actualiser ce paragraphe. Le rapport couvre désormais les DEUX semestres (S1 + S2).
+%   -> mentionner la période élargie et l'angle "intégration de l'IA dans les pratiques de l'entreprise".
 
 \section{CBA Informatique Libérale}
 
@@ -207,6 +214,8 @@ L'équipe Infrastructure est composée de 9 personnes. Son rôle est de fournir 
 
 \subsection{Mon équipe}
 
+% TODO S2 — MON ÉQUIPE : actualiser avec les changements survenus ce semestre (arrivées/départs,
+%   nouveaux rôles, évolution de la collaboration PO/QA...). Garder le présent.
 Comme expliqué précédemment je fais partie de l'équipe Agathe (Agathe You et Agathe Emotion)
 qui s'occupe la partie \textbf{Front-End} de ces deux logiciels. Elle est composée des membres suivants :
 
@@ -252,6 +261,9 @@ La plupart des équipes de développement à CBA utilisent la méthodologie agil
 \newpage
 
 Suite aux nombreuses années d'expérience avec cette méthodologie, CBA a su l'adapter à ses besoins propres. Par exemple, l'ajout d'un « SAS » à la fin d'un sprint permet à l'équipe de Contrôle Qualité (QA) de terminer tous les tests. Cela offre également aux développeurs l'opportunité de finaliser des tâches retardées ou de se former à de nouvelles compétences. Il est à noter que cette organisation est susceptible d'évoluer prochainement.
+
+% TODO S2 — MASTER PLANNING : ajouter UNE phrase ici. Le « Master Planning » annoncé au S1 a été
+%   reporté ; l'organisation SCRUM décrite ci-dessus reste donc en vigueur ce semestre.
 
 \subsubsection{User Story}
 
@@ -382,6 +394,19 @@ Son objectif principal est de fournir des composants d'interface prêts à être
 Développé en Angular, il est utilisé notamment par Agathe You (Web et Mobile) et Milo.
 
 Concrètement, il met à disposition des composants réutilisables (boutons, alertes, icônes, etc.) configurables via des propriétés, ce qui simplifie le développement et garantit une cohérence visuelle et ergonomique entre les différents produits de CBA.
+
+\subsubsection{Le développement iOS}
+% TODO S2 — iOS : nouvelle technologie découverte ce semestre.
+%   -> contexte (build mobile via Capacitor, Xcode/Jenkins, spécificités iOS...), ce que tu as appris.
+
+\subsection{L'intelligence artificielle au quotidien}
+% TODO S2 — IA (ta section différenciante) : NE PAS définir l'IA.
+%   Parler de :
+%     - TON utilisation concrète (LibreChat déjà cité en 3.3.2, génération/explication de code,
+%       écriture de tests, recherche technique, revue...) ;
+%     - l'usage à l'échelle de l'entreprise (projets internes, outils mis à disposition) ;
+%     - les formations / sensibilisations reçues ;
+%     - les bonnes pratiques et limites (données de santé HDS, vérification du code généré, confidentialité).
 
 \newpage
 
@@ -600,9 +625,28 @@ Ce ticket a été très intéressant car j'ai dû intervenir sur deux architectu
 
 Travailler sur cette US m'a montré la différence entre l'ancien code et la gestion moderne avec NgRx. Ce que ça m'apporte vraiment, c'est que je comprends mieux comment les données circulent dans l'appli. Au lieu d'avoir des infos un peu éparpillées partout, tout est centralisé au même endroit. Je vois donc exactement comment une donnée passe d'un écran à l'autre sans se perdre ou changer sans raison.
 
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   FONCTIONNALITÉS DÉVELOPPÉES — SEMESTRE 2   (ajouter les nouveaux tickets ici)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% TODO S2 — INTRODUCTION DE LA NOUVELLE PARTIE (exigée par la consigne CERI n°2) :
+%   - décrire tout changement SIGNIFICATIF d'environnement humain (équipe) ou de mission ;
+%   - montrer comment ton travail a ÉVOLUÉ depuis le S1 (tickets plus complexes, autonomie,
+%     nouveaux éléments techniques) ;
+%   - présence accrue en entreprise ce semestre.
+
+% Gabarit à recopier pour CHAQUE nouveau ticket (puis supprimer ces commentaires) :
+%
+% \subsection{Titre du ticket}
+% Contexte / besoin :
+% Travail réalisé :
+% Compétences acquises :
+
 \section{Analyse et bilan de l'alternance}
 
-\subsection{Analyse critique}
+\subsection{Analyse critique --- Semestre 1}
 
 Durant ce semestre, j'ai dû alterner entre deux manières de travailler vraiment différentes, car le Web « V1 » et le Web « V2 » divergent énormément. Lorsque je code sur la version Web « V1 » en \textbf{Struts}, je ressens que j'apprends beaucoup de choses sur la capacité à comprendre le code d'autrui. Cela me permet de développer une logique que j'apprécie, même si j'ai parfois la sensation d'apprendre quelque chose qui est voué à disparaître puisque le projet de CBA est de tout transférer en Web « V2 ». Malgré cela, il est vraiment plaisant de travailler sur cette version.
 
@@ -614,7 +658,14 @@ Au niveau de l'organisation, mon \textbf{rythme d'alternance} de deux semaines e
 
 J'apprécie vraiment l'organisation au sein de l'équipe Agathe You. Comme chaque développeur a ses propres points forts, je me sens entouré de personnes vraiment compétentes. C'est super agréable au quotidien de savoir exactement à qui je peux parler selon la situation ou le blocage technique que je rencontre. Cela me permet d'apprendre plus vite et de travailler dans une bonne ambiance.
 
+\subsection{Analyse critique --- Semestre 2}
+% TODO S2 — c'est ICI que vit la "montée en autonomie" :
+%   - évolution de ton rôle (tickets plus complexes, moins de supervision, décisions techniques) ;
+%   - ton rapport à l'IA dans le travail quotidien ;
+%   - regard critique sur ce semestre (rythme d'alternance, organisation, difficultés rencontrées).
+
 \subsection{Lien Théorie - Pratique}
+% TODO S2 : compléter avec les apports théoriques mobilisés ce semestre (nouveaux cours, nouvelles techno).
 
 L'apprentissage de la méthodologie SCRUM en cours m'a vraiment aidé. Grâce à cela, J'ai tout de suite trouvé mes marques en arrivant chez CBA et j'ai pu me concentrer sur l'apprentissage technologique. De plus, le fait d'avoir travaillé sur beaucoup de langages de programmation différents m'a permis de ne pas me perdre avec les nouveautés. J'arrive à saisir la logique des fonctions et à naviguer facilement à travers elles. Mes cours de Web m'ont beaucoup servi et, pour le Web « V1 », mes cours de Java ont été très appréciables.
 
@@ -640,11 +691,20 @@ Ce premier semestre d'alternance chez CBA a été une expérience riche et déte
 
 Ces missions m'ont permis de monter en compétence sur une \textit{stack} technique diversifiée, incluant \textbf{Angular}, \textbf{Struts}, \textbf{Java} et \textbf{NgRx}. Au-delà du code, j'ai découvert l'importance de la rigueur organisationnelle dans un projet d'ingénierie logicielle et l'impact direct de mon travail sur le quotidien des professionnels de santé.
 
+\subsection{Conclusion du Semestre 2}
+% TODO S2 — CONCLUSION PROPRE AU S2 (exigée par la consigne CERI n°2, distincte du bilan 6.2) :
+%   bilan de clôture de cette période d'alternance : ce que ce semestre t'a apporté,
+%   ton ressenti, ta progression globale, la prise de recul sur le travail réalisé.
+
 \subsection{Ouverture}
 
 Pour la suite de mon alternance, j'aimerais m'attaquer à des sujets encore plus complexes. J'ai hâte de réaliser davantage de missions sur Angular, un framework qui me passionne, et j'espère gagner assez en autonomie pour réaliser des \textit{User Stories} de plus grande envergure.
 
 Je suis également curieux de découvrir le nouveau « Master Planning » (que je détaillerai dans mon prochain rapport), la nouvelle méthodologie de travail qui sera mis en place prochainement chez CBA. Je suis plus motivé que jamais à m'investir pleinement, d'autant plus qu'au prochain semestre, ma présence en entreprise sera plus importante, ce qui me permettra de suivre les projets plus activement.
+
+% TODO S2 — OUVERTURE : le Master Planning a été reporté, donc cette phrase n'est plus exacte.
+%   -> reformuler l'ouverture pour la fin du S2 : perspectives à court/moyen terme
+%      + place grandissante de l'IA dans le développement logiciel (ton fil rouge).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                            Document ends here                                %
