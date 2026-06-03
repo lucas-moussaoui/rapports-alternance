@@ -1,0 +1,120 @@
+% Utilities for CBA Document Template
+%
+% Project group:
+% - CBA Lab
+%
+% Authors:
+% - Lahcène Belhadi <lahcene.belhadi@cbainfo.fr>
+% - Gabriel DESBOUIS <gabriel.desbouis@cbainfo.fr>
+
+%%
+% Adds an image
+%
+% Arguments:
+%	[1] - the image scale, default: 0.5
+%	{2} - the image positionning
+%	{3} - the image path
+%	{4} - the image caption
+\newcommand{\imageCenter}[4][0.5]{
+	\begin{figure}[#2]
+		\centering
+		\includegraphics[scale=#1]{#3}
+		\caption{#4}
+	\end{figure}
+	\
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Gantt diagrams
+% the below part is taken from StackExchange:
+	% http://tex.stackexchange.com/questions/175830/how-to-draw-a-vertical-line-at-a-specified-date-in-a-gantt-chart
+	\RequirePackage{pgfgantt}		% load the package we are modifying
+    \makeatletter
+	\@gtt@keydef{anyday}{none}		% some new keys for the style of our "anyday" marker lines
+	\@gtt@keydef{anyday offset}{1}
+	\@gtt@stylekeydef{anyday rule}{dashed, line width=1pt}
+	\@gtt@keydef{anyday label font}{\normalfont}
+	\@gtt@stylekeydef{anyday label node}{%
+  		anchor=north, font=\ganttvalueof{anyday label font}%
+	}
+	\newcount\gtt@anyday@slot
+	\newcommand\drawverticalline[2]{%
+  		\gtt@tsstojulian{#1}{\gtt@anyday@slot}%
+  		\gtt@juliantotimeslot{\gtt@anyday@slot}{\gtt@anyday@slot}%
+  		\pgfmathsetmacro\y@upper{%
+    		\gtt@lasttitleline * \ganttvalueof{y unit title}%
+  		}%
+  		\pgfmathsetmacro\y@lower{%
+    		\gtt@lasttitleline * \ganttvalueof{y unit title}%
+      		+ (\gtt@currentline - \gtt@lasttitleline - 1)%
+      		* \ganttvalueof{y unit chart}%
+  		}%
+  		\pgfmathsetmacro\x@mid{%
+    		(\gtt@anyday@slot - 1 + \ganttvalueof{anyday offset})%
+      		* \ganttvalueof{x unit}%
+  		}%
+  		\draw [/pgfgantt/anyday rule]
+    		(\x@mid pt, \y@upper pt) -- (\x@mid pt, \y@lower pt)
+    		node [/pgfgantt/anyday label node] {#2};%
+	}
+    \makeatother
+% custom bars
+\newcommand\ganttbarbis[5]{\ganttbar{#1}{#3}{#4}\ganttbar[inline, bar/.append style={fill=#5}, bar label font=\footnotesize]{#2}{#3}{#4}}
+% custom week nimbers
+\newcounter{myWeekNum}
+\stepcounter{myWeekNum}
+\newcommand{\myWeek}{\themyWeekNum
+	\stepcounter{myWeekNum}
+	\ifnum\themyWeekNum=53
+		\setcounter{myWeekNum}{1}
+	\else\fi
+}
+\ganttset{%
+calendar week text={s\myWeek{}}%
+}
+
+%%
+% Initializes the document
+\newcommand{\initDocument}{
+	\pagestyle{plain}
+
+	% displays \title, \author and \date
+	\maketitle
+        \thispagestyle{empty}  % Pas de numérotation sur cette page
+
+	\themePage{pages/guard.pdf}	
+
+	\newpage
+	\themePage{pages/page.pdf}
+	\tableofcontents
+        \newpage
+}
+
+%%
+% Applies the background to the current page and the next ones
+%
+% Arguments:
+%	{1} - the background path
+\newcommand{\themePage}[1]{
+	\backgroundsetup{
+		pages=some,
+		scale=1,
+		color=White,
+		opacity=1,
+		angle=0,
+		contents={
+			\includegraphics[width=\pagewidth, height=\pageheight]{#1}
+		}
+	}
+	% applies the background to this page and the next ones
+	\BgThispage
+}
+
+%%
+% Sets the images path
+%
+% Arguments:
+% 	{1} - the list of images paths
+\newcommand{\setImagesPath}[1]{
+	\graphicspath{#1}
+}

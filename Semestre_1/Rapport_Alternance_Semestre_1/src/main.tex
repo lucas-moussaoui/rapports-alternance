@@ -1,0 +1,652 @@
+% CBA Document Template
+% Use LuaLatex to compile this template
+% 
+% Project group:
+% - CBA Lab
+%
+% Authors:
+% - Lahcène Belhadi <lahcene.belhadi@cbainfo.fr>
+
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+% import
+% preamble
+\input{src/preamble/preamble.tex}
+% utilities
+\input{src/utils/utils.tex}
+
+% sets the images path to res/images
+% feel free to change or add paths if needed
+\setImagesPath{{res/images}}
+
+% document
+% document title
+\title{
+	Rapport d'alternance \\
+        Semestre 1
+}
+
+% document authors
+% authors must be separated with the \\ character
+\author{
+	Lucas MOUSSAOUI
+}
+% document date
+\date{
+    Master ILSEN\\
+    Contrat du 18 Août 2025 au 25 Août 2027\\
+    Tuteur entreprise : Tom ANDRIEU\\
+    Tuteur CERI : Vincent LABATUT
+}
+
+
+\begin{document}
+% init the document
+% DO NOT REMOVE
+\initDocument
+\sloppy
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                           Document begins here                               %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Introduction}
+
+Je tiens à exprimer mes plus sincères remerciements à mon équipe de développement à CBA, plus particulièrement à Tom Andrieu, mon tuteur d'alternance, et Hicham, un ancien alternant du CERI.
+
+Étant passionné par le développement et la conception logicielle sous toutes ses formes, il m'a semblé évident, après trois années d'études en Licence informatique à l'Université d'Avignon, de poursuivre en Master d'ingénierie du logiciel de la société numérique (ILSEN).
+
+Afin de mettre en pratique la théorie apprise depuis plus de 5 ans, mon but premier en rejoignant ce Master était de travailler en alternance pour commencer à me forger des compétences professionnelles dans ce domaine que j'aime tant.
+
+C'est ainsi que, grâce au Forum de l'Alternance réalisé par le CERI, j'ai pu rencontrer Chahida Zidani, Responsable du développement RH de CBA, et Tom Andrieu, lead développeur à CBA. 
+Suite à cela, j'ai réalisé un test d'aptitude d'Angular sur site avec le Lead Tech et le Lead Dev.
+
+Je vais aborder dans ce rapport mes débuts dans l'entreprise en tant que développeur Front-End dans l'équipe du logiciel Agathe You, de mi-août jusqu'à fin décembre, en passant par la présentation de l'entreprise, l'environnement de travail et les différentes missions que j'ai réalisées.
+
+\section{CBA Informatique Libérale}
+
+\subsection{Fiche d'Identité de l'entreprise}
+
+En 1986, Marc Birling et sa femme Cécile Birling fondèrent une entreprise à partir d'une idée novatrice : faciliter le quotidien des professionnels de santé en informatisant les tâches administratives contraignantes, notamment pour les infirmières libérales. C'est ainsi que CBA Informatique Libérale est née.
+
+Depuis presque 40 ans, l'entreprise n'a cessé de fournir des solutions logicielles aux IDEL, s'exportant même dans d'autres spécialités.
+
+L'entreprise est solidement implantée à Montfavet, au sein du pôle technologique d'Agroparc. Son siège principal occupe le bâtiment Camille Claudel, tandis qu'un second site, le bâtiment Rosa Bonheur, accueille les services de la hotline. En effet, l'ensemble des activités est centralisé à Montfavet.
+
+\subsection{Produits}
+
+Les services de CBA ont évolué et se sont diversifiés avec le temps. Initialement axée sur les infirmières libérales, l'entreprise propose aujourd'hui plusieurs logiciels spécialisés ou outils d'organisation adaptés à différents besoins du secteur de la santé.
+
+\subsubsection{Agathe You}
+
+Agathe You est le produit phare de CBA. Il s'agit d'une solution complète (Web, Mobile et TLA) conçue pour accompagner les Infirmiers Diplômés d'État Libéraux (IDEL) dans leur quotidien.
+Agathe You est une version améliorée d'Emotion, grâce à l'ajout du TLA et d'une refonte visuelle complète.
+Aujourd'hui, un nouvel IDEL sur trois choisit cette solution.\\
+
+Le métier d'IDEL est marqué par une forte charge administrative et des contraintes de mobilité importantes (tournées quotidiennes, soins variés, facturation complexe via la CPAM et les mutuelles). Traditionnellement, ces tâches étaient réalisées le soir, après les soins, sur un ordinateur fixe.
+
+L'objectif d'Agathe You est de supprimer cette « double journée » en permettant une gestion administrative (facturation, télétransmission, suivi patient) directement en tournée, grâce à :
+
+\begin{itemize}
+    \item Une application mobile et web synchronisée.
+    \item Un mode hors ligne.
+    \item Ted, un lecteur de carte Vitale bi-fente (TLA), provenant de partenaires externes, permettant de facturer chez le patient sans repasser par un ordinateur.
+    \item Bloomy, le tout nouveau lecteur de carte Vitale bi-fente entièrement conçu et développé par CBA. Ce terminal a pour but de fluidifier davantage la facturation grâce à une ergonomie optimisée et une autonomie accrue.
+\end{itemize}
+
+En tant qu'alternant au sein de l'équipe Front-End d'Agathe You, celle qui travaille sur la partie visuelle et interactive de l'application, mon rôle est de faire évoluer le logiciel pour qu'il puisse correspondre aux besoins des utilisateurs. Je travaille sur l'ajout de nouvelles fonctionnalités sur les versions Web et Mobile.
+
+\subsubsection{Milo Kiné}
+
+Lancé en 2023, Milo Kiné est la solution logicielle dédiée aux masseurs-kinésithérapeutes. Ce logiciel a été conçu pour simplifier la gestion administrative des cabinets médicaux.
+
+Ses fonctionnalités principales incluent :
+
+\begin{itemize}
+    \item \textbf{La gestion du cabinet} : Planification des rendez-vous et suivi des dossiers patients.
+    \item \textbf{Le suivi thérapeutique} : Traçabilité des traitements et des séances.
+    \item \textbf{La facturation} : Automatisation des télétransmissions et gestion des paiements.
+\end{itemize}
+
+Bien que récent sur le marché, Milo Kiné compte déjà plus de 500 clients, confirmant la volonté de CBA de se diversifier vers d'autres spécialités médicales.
+
+\subsubsection{Opaline}
+
+Opaline est une plateforme de mise en relation entre patients et professionnels de santé. Ce service repose sur un modèle économique hybride : il est gratuit pour les patients et accessible sous forme d'abonnement pour les infirmiers libéraux.
+
+Les deux objectifs principaux de ce logiciel sont :
+
+\begin{itemize}
+    \item \textbf{Pour le patient} : Faciliter la recherche de professionnels de santé disponibles à proximité.
+    \item \textbf{Pour l'infirmier} : Développer sa patientèle, ce qui peut être un atout majeur pour les nouveaux IDEL.
+\end{itemize}
+
+Elle est directement intégrée à Agathe You et permet d'ajouter automatiquement de nouveaux patients aux tournées. C'est un vrai point fort pour CBA, car cela aide les infirmiers à développer leur activité plus facilement, ce qui rend le logiciel plus attractif par rapport à la concurrence.
+
+\subsubsection{Maestro Compta}
+
+Maestro Compta est une application Web et Mobile dédiée à la gestion comptable des professionnels de santé. Son objectif est de simplifier la partie financière qui peut souvent être complexe pour ces professionnels.
+
+Le logiciel propose plusieurs services, notamment :
+
+\begin{itemize}
+    \item \textbf{La gestion fiscale} : Un expert-comptable s'occupe de la partie administrative.
+    \item \textbf{Un accompagnement} : Un professionnel apporte son aide pour optimiser les revenus.
+    \item \textbf{Une vue globale} : Un tableau de bord permet de suivre son activité en temps réel.
+\end{itemize}
+
+Tout comme Opaline, Maestro Compta est directement intégrée aux logiciels Agathe You et Emotion ; cela crée une solution tout-en-un pour gérer à la fois les soins et la comptabilité.
+
+\newpage
+
+\subsection{Organisation et Structure}
+
+Comme la plupart des entreprises connues à ce jour, CBA est divisée en plusieurs départements composés de différentes équipes.
+
+Voici la \textbf{Figure 1} qui représente les 7 départements présents à CBA.
+
+\imageCenter[0.5]{h}{Organisation.png}{Organigramme des différents services de CBA Informatique Libérale}
+
+Le département de la Direction des Systèmes d'Information (DSI) constitue le cœur même de CBA. C'est au sein de son service de développement que j'évolue depuis maintenant 5 mois.
+
+La DSI est composée de 81 personnes, réparties en plusieurs équipes ayant chacune un rôle bien précis. L'ensemble est dirigé par un responsable du département et épaulé par plusieurs coordinateurs qui assurent la progression des différents projets.
+
+\newpage
+
+\subsubsection{Équipe Architecture}
+
+L'équipe Architecture est une équipe de 3 personnes qui gère la structure des applications :
+
+\begin{itemize}
+    \item Un architecte Front-End (anciennement Lead Tech sur Agathe You).
+    \item Un architecte Back-End.
+    \item Un directeur technique qui supervise l'ensemble des projets.
+\end{itemize}
+
+Dès qu'un développeur a des questions techniques complexes, c'est vers eux qu'il se tourne. Ils gèrent aussi les changements de technologies et apportent leur aide pour la gestion de l'architecture du code. Ils ont également pour mission de nous faire monter en compétence.
+
+J'échange d'ailleurs régulièrement avec l'architecte Front-End pour avoir des retours sur mon travail ou pour mieux comprendre certaines technologies.
+
+\subsubsection{Équipe Agathe You et Agathe Emotion - Front-End}
+
+L'équipe Agathe regroupe 8 personnes en Front-End pour gérer le Web et le Mobile d'Agathe You et d'Agathe Emotion. Agathe Emotion est toujours en maintenance, mais aujourd'hui, le plus gros du travail de développement se fait sur Agathe You.
+
+C'est l'équipe dont je fais partie. Je reviendrai plus en détail sur son organisation et ses missions dans la suite de ce rapport.
+
+\subsubsection{Équipe Milo - Front-End}
+
+L'équipe Milo est une équipe Front-End de plusieurs personnes qui s'occupe du développement Web et Mobile du logiciel.
+
+Le projet Milo est très proche d'Agathe You, car ils utilisent presque les mêmes technologies. C'est pour cette raison que les deux équipes travaillent de la même manière et s'entraident sur les fonctionnalités. Cela permet de gagner du temps et de garder une cohérence entre les différents produits de CBA.
+
+\subsubsection{Équipe Back-End}
+
+L'équipe Back-End compte 9 personnes. Contrairement aux équipes Front-End qui sont séparées par projet, l'équipe Back-End est commune à l'ensemble des logiciels.
+
+Leur rôle est de travailler sur la partie "cachée" de l'application qui gère la logique métier, les serveurs et le stockage des données en base de données.
+
+Ils utilisent les technologies Java (J2EE) et Hibernate pour gérer la logique et les données. Même si l'équipe est unique, son travail est divisé en quatre pour correspondre à chaque application : Agathe You (Web et Mobile), Emotion et Milo.
+
+\subsubsection{Équipe Compta}
+
+L'équipe Compta est composée de 4 personnes. Contrairement aux autres, c'est une équipe \textbf{Full-Stack}, ce qui signifie qu'elle gère à la fois la partie \textbf{Front-End} et \textbf{Back-End}
+
+Ils s'occupent principalement des services de comptabilité Maestro Compta, garantissant ainsi le bon fonctionnement des outils pour la gestion financière des clients de CBA.
+
+\subsubsection{Équipe Opaline}
+
+L'équipe Opaline s'occupe de la plateforme de mise en relation (anciennement MyInfi). C'est une équipe \textbf{Full-Stack} de 4 personnes.
+
+Opaline est maintenant intégrée dans Agathe You et permet de voir directement les rendez-vous dans l'application ; nous travaillons donc souvent avec cette équipe pour développer des fonctionnalités communes.
+
+\subsubsection{Équipe Infrastructure}
+
+L'équipe Infrastructure est composée de 9 personnes. Son rôle est de fournir et de maintenir tous les outils nécessaires au travail des salariés. Ils s'occupent notamment du matériel des collaborateurs, de la mise à jour des bases de données, de la gestion de GitLab ainsi que la sécurité informatique de l'entreprise.
+
+\section{Environnements de travail}
+
+\subsection{Mon équipe}
+
+Comme expliqué précédemment je fais partie de l'équipe Agathe (Agathe You et Agathe Emotion)
+qui s'occupe la partie \textbf{Front-End} de ces deux logiciels. Elle est composée des membres suivants :
+
+\begin{itemize}
+    \item \textbf{Un Lead Développeur} (également mon tuteur d'alternance) ;
+
+         Son rôle est de coordonner l'équipe et de garantir la qualité du code par des revues de code et la validation des \textit{Merge Requests}. Il agit également comme un référent qui lève les blocages techniques et accompagne la montée en compétence de son équipe.
+         
+    \item \textbf{6 Développeurs} ;
+    \item \textbf{Un apprenti développeur} (moi-même).
+\end{itemize}
+
+Notre équipe travaille également en étroite collaboration avec :
+
+\begin{itemize}
+    \item \textbf{Un Product Owner (PO)} ;
+    \item \textbf{2 Contrôleurs qualité (QA)}.
+\end{itemize}
+
+\subsection{La méthodologie}
+
+\subsubsection{SCRUM}
+
+La plupart des équipes de développement à CBA utilisent la méthodologie agile \textbf{SCRUM}. Le cycle de développement diffère légèrement entre chaque équipe afin que les fonctionnalités interdépendantes soient développées en prévision les unes des autres. 
+
+\begin{itemize}
+    \item \textbf{Le Sprint} \\
+    Le principe même de cette méthodologie est de produire une nouvelle version de façon cyclique. Cette période de plusieurs semaines est appelée un \textit{Sprint}. À CBA, nous établissons des sprints de 4 semaines. Chaque développeur possède une \textbf{capacité de Sprint}, qui correspond au travail qu'il peut fournir à chaque cycle ; celle-ci peut varier selon les congés, les jours fériés, etc. Actuellement, l'équipe compte près de 170 Sprints effectués chez CBA.
+
+    \item \textbf{Poker Planning} -- Réunion de début de Sprint (2 heures 30) \\
+    Cette réunion marque le lancement d'un nouveau Sprint. Tous les développeurs, le Lead Développeur et le Product Owner y participent. Ils assignent les différentes tâches du \textit{Product Backlog} (liste de tâches) à chaque développeur, qui devra les réaliser au cours du cycle.
+
+    \item \textbf{Daily} -- Réunion quotidienne (15 min) \\
+    Cette réunion matinale permet à l'équipe de rester synchronisée. Chaque membre explique le travail réalisé le jour précédent et celui prévu pour la journée. Cela permet d'identifier rapidement les potentiels points de blocage et d'apporter des solutions ou informations importantes.
+
+    \item \textbf{Grooming} -- Réunion hebdomadaire (2 heures) \\
+    Le Lead Développeur, le Product Owner et les développeurs concernés se réunissent pour définir les modalités techniques de chaque \textit{User Story} présentée par le Product Owner. Cette phase de préparation permet de centraliser les informations, d'estimer le temps de développement et de recueillir l'avis technique de l'équipe. Une fois validées, ces tâches intègrent le catalogue des éléments prêts pour le prochain Sprint.
+
+    \item \textbf{Retro-Review} -- Réunion de fin de Sprint (2 heures) \\
+    Cette réunion clôture le sprint. Tous les acteurs (développeurs, QA, Lead Dev, PO) sont conviés par le Responsable de production développement pour un récapitulatif. On y présente les statistiques ainsi que les points forts et les points faibles du cycle. La réunion se termine généralement par un sondage de satisfaction professionnelle.
+\end{itemize}
+
+\newpage
+
+Suite aux nombreuses années d'expérience avec cette méthodologie, CBA a su l'adapter à ses besoins propres. Par exemple, l'ajout d'un « SAS » à la fin d'un sprint permet à l'équipe de Contrôle Qualité (QA) de terminer tous les tests. Cela offre également aux développeurs l'opportunité de finaliser des tâches retardées ou de se former à de nouvelles compétences. Il est à noter que cette organisation est susceptible d'évoluer prochainement.
+
+\subsubsection{User Story}
+
+Une \textit{User Story} (US) est littéralement une « histoire racontée par l'utilisateur ». Elle permet de décrire ses besoins et ses attentes de manière simple. C'est ainsi que le \textit{Product Owner} (PO) définit les nouvelles fonctionnalités à chaque Sprint.
+
+Chaque \textit{User Story} suit un cycle de vie précis, de sa conception jusqu'à sa mise en production :
+
+\begin{itemize}
+    \item \textbf{Conception} \\
+    Une US est conçue à partir d'un besoin client clair et a pour but l'ajout d'une fonctionnalité (\textit{Feature}). Elle est représentée sous forme de ticket. Il existe d'autres types de tickets, comme les corrections de problèmes (Bugs) ou les évolutions techniques. Chaque US contient une description précise du travail à réaliser, une éventuelle maquette visuelle et des tests d'acceptation définis par l'équipe Qualité (QA). Elle est ensuite ajoutée au \textit{backlog} et triée par priorité.
+
+    \item \textbf{Estimation} \\
+    Cette tâche est évaluée lors du \textit{Grooming} selon son importance et sa complexité. Un système de points propre à CBA est utilisé : un point correspond environ à une demi-journée de travail pour un développeur.
+
+    \item \textbf{Développement} \\
+    Lorsqu'une US est assignée à un développeur, celui-ci est responsable de sa réalisation. Il peut solliciter de l'aide ou travailler en binôme si nécessaire. Si une évolution potentielle est identifiée durant le développement, elle est signalée au \textit{Product Owner}.
+
+    \item \textbf{Tests de développement} \\
+    Une fois le code écrit, le ticket passe en phase de test. Le développeur réalise une courte démonstration au PO, au Lead Dev et aux testeurs pour valider le bon fonctionnement de la fonctionnalité.
+
+    \item \textbf{Relecture du Code (Code Review)} \\
+    Cette étape est cruciale : le code est relu par le Lead Dev ou un autre développeur expérimenté. Si des corrections sont demandées, elles doivent être traitées immédiatement pour garantir la qualité de la base de code.
+
+    \newpage
+
+    \item \textbf{Tests finaux (Qualification)} \\
+    À cette étape, l'équipe Qualité effectue des tests de qualification complets. Si un problème est détecté, une « anomalie » est créée. Il s'agit d'un ticket spécial décrivant le bug, directement assigné au développeur. Une fois validé, le travail est fusionné dans la branche de travail en cours du Sprint actif.
+\end{itemize}
+
+\subsection{Outils utilisés}
+
+\subsubsection{Environnement de développement et gestion de code}
+
+Pour mener à bien nos missions, nous nous appuyons sur un ensemble d'outils
+
+\begin{itemize}
+    \item \textbf{IntelliJ IDEA Ultimate} : Cet environnement de développement (IDE) complet est notre outil principal.
+    
+    \item \textbf{Git et GitLab} : Pour la gestion de version et le travail collaboratif, nous utilisons Git via l'interface GitLab. Notre stratégie de branchement est structurée par Sprint :
+    \begin{itemize}
+        \item Une branche principale est créée à chaque début de Sprint.
+        \item Chaque développeur crée une branche spécifique (issue de la branche Sprint) pour réaliser ses tâches.
+        \item Une fois le développement validé, les modifications sont fusionnées pour aboutir à une version stable.
+    \end{itemize}
+
+    \item \textbf{Grafana} : Cet outil est utilisé pour la surveillance des performances et la consultation des journaux d'erreurs (\textit{logs}) en production. Il nous permet d'être réactifs en cas d'anomalie sur le logiciel.
+\end{itemize}
+
+\newpage
+
+\subsubsection{Gestion de projet et organisation}
+
+Pour l'organisation interne et le suivi rigoureux des tâches, nous utilisons plusieurs outils collaboratifs :
+
+\begin{itemize}
+    \item \textbf{Jira} : C'est l'outil central de gestion de projet où sont répertoriés tous nos tickets (User Stories, Bugs, évolutions). Il nous permet de suivre l'état d'avancement de chaque tâche en temps réel.
+    
+    \item \textbf{Confluence et ClickUp} : Ces plateformes sont dédiées à la documentation technique et au partage des connaissances. Elles centralisent les spécifications fonctionnelles, les guides d'installation et les procédures internes.
+
+    \item \textbf{LibreChat} : Nous disposons d'un accès à un serveur local permettant d'utiliser des intelligences artificielles. Cet outil nous accompagne quotidiennement dans nos recherches techniques et l'optimisation de certaines portions de code.
+
+    \item \textbf{Lucca} : Toute la gestion administrative, notamment la pose des congés et le suivi des temps de travail, est centralisée sur cette plateforme.
+\end{itemize}
+
+\subsubsection{Communication et Design}
+
+Pour assurer une collaboration fluide et une fidélité visuelle optimale, nous utilisons les outils suivants :
+
+\begin{itemize}
+    \item \textbf{Microsoft Teams et Outlook} : Teams est notre outil principal pour les échanges instantanés et les réunions en visioconférence. Outlook est réservé aux communications plus formelles, tant en interne qu'avec les partenaires externes.
+    
+    \item \textbf{Figma} : Cet outil de design est indispensable à mon travail de développeur Front-End. Il me permet de consulter les maquettes interactives réalisées par les designers, d'extraire les ressources graphiques (icônes, couleurs, espacements) et de les traduire fidèlement en code.
+\end{itemize}
+
+\subsubsection{Sécurité et gestion des accès}
+
+CBA étant certifié Hébergeur de Données de Santé (HDS), la sécurité est un enjeu majeur. Nous manipulons des données médicales sensibles, ce qui impose une vigilance constante et des règles de confidentialité très strictes.
+
+\begin{itemize}
+    \item \textbf{Vault et Syspass} : Ces outils servent à stocker et partager les mots de passe ainsi que les configurations. Cela permet d'éviter que des informations sensibles circulent en clair ou soient présentes directement dans le code.
+    
+    \item \textbf{Contrôle des accès} : La norme HDS nous oblige à gérer précisément qui peut accéder aux différentes ressources. L'objectif est de garantir que les données des patients restent protégées et confidentielles en toutes circonstances.
+\end{itemize}
+
+\subsection{Technologies utilisées}
+
+\subsubsection{Struts}
+
+Les applications web Agathe You (pour certaines parties) et Emotion utilisent encore Struts, un framework Java EE basé sur l'architecture MVC pour les applications web.
+
+Ces applications constituent aujourd'hui un socle existant que nous maintenons, mais que nous faisons progressivement évoluer vers Angular. Cette migration s'appuie notamment sur Docker, qui nous permet d'isoler les environnements et de déployer plus facilement les nouvelles versions.
+
+\subsubsection{Angular, Ionic et Capacitor}
+
+L'application mobile Agathe You est développée avec Angular et Ionic. Actuellement, nous migrons vers une architecture « full standalone » afin de supprimer les \textit{NgModules} et moderniser la structure du code.
+
+Angular est le framework principal utilisé pour la logique métier et la structure par composants. Il est associé à deux outils complémentaires :
+
+\begin{itemize}
+    \item \textbf{Ionic} : fournit une bibliothèque de composants et d'outils d'interface utilisateur (UI) optimisés pour le mobile.
+    \item \textbf{Capacitor} : agit comme une passerelle permettant d'exécuter le projet Web dans une \textit{WebView} tout en offrant un accès aux fonctionnalités natives du téléphone (caméra, Bluetooth, stockage local).
+\end{itemize}
+
+Cette architecture permet de mutualiser une grande partie du code source entre les plateformes Web et Mobile. Pour un projet aussi complexe qu'Agathe You, ce choix facilite la maintenance technique.
+
+\subsubsection{NgRx}
+
+NgRx est une bibliothèque de gestion d'état utilisée pour synchroniser les données à travers les différents écrans de l'application. Elle est particulièrement cruciale pour le mode hors-ligne d'Agathe You, car elle permet de maintenir une version locale des données cohérente.
+
+Étant une technologie complexe basée sur la programmation réactive, je continue d'approfondir mes connaissances sur ses concepts clés :
+
+\begin{itemize}
+    \item \textbf{Store et Actions} : Le Store contient l'état global de l'application, tandis que les Actions décrivent les événements qui s'y produisent (comme le chargement d'un dossier).
+    
+    \item \textbf{Reducers et Selectors} : Les Reducers mettent à jour l'état de manière sécurisée, et les Selectors permettent d'extraire précisément l'information dont un composant a besoin.
+    
+    \item \textbf{Effects} : Ils gèrent les opérations asynchrones, comme les appels aux services Web, en réponse aux actions.
+\end{itemize}
+
+L'utilisation de NgRx demande une grande rigueur. Bien que j'en maîtrise aujourd'hui les bases pour mes missions quotidiennes, l'architecture complète reste un sujet sur lequel je progresse chaque jour auprès de mon équipe.
+
+\subsubsection{Ui-Kit}
+
+L'UI-Kit est une bibliothèque commune à plusieurs équipes, développée par CBA.
+
+Son objectif principal est de fournir des composants d'interface prêts à être intégrés dans les différentes applications.
+
+Développé en Angular, il est utilisé notamment par Agathe You (Web et Mobile) et Milo.
+
+Concrètement, il met à disposition des composants réutilisables (boutons, alertes, icônes, etc.) configurables via des propriétés, ce qui simplifie le développement et garantit une cohérence visuelle et ergonomique entre les différents produits de CBA.
+
+\newpage
+
+\section{Mon début dans l'entreprise}
+
+Nous allons aborder dans cette section la vague de nouveautés à laquelle j'ai dû faire face à mon arrivée ; cela changeait drastiquement par rapport à mes anciennes expériences, énormément de nouvelles choses s'exposaient à moi.
+
+\subsection{Insertion dans l'entreprise}
+
+Avant mon arrivée, j'ai reçu un planning des deux prochains mois m'informant qu'on allait me présenter le fonctionnement de CBA.
+
+Premièrement, j'ai eu plusieurs exposés sur la vie de salarié à CBA. C'était une première pour moi car j'avais eu pour seule expérience professionnelle la restauration, où il n'est pas forcément nécessaire de connaître tout cela :
+
+\begin{itemize}
+    \item Présentation des outils RH et explication de mon statut de salarié.
+    \item Explication des différents pôles existants, en allant dans chacun d'entre eux.
+    \item Exposé sur les processus internes de l'entreprise et le flux de travail.
+    \item Présentation de la sécurité physique et de la RSE.
+    \item Exposé sur l'intelligence artificielle et les différents projets développés avec cette dernière.
+\end{itemize}
+
+J'ai aussi réalisé trois ateliers :
+
+\begin{itemize}
+    \item Fresque du climat : sensibilisation à l'environnement et au réchauffement climatique.
+    \item Formation cybersécurité : explication des différentes attaques possibles et de la manière de se protéger.
+    \item Sensibilisation RGPD : protection des données et sécurité au sein de l'entreprise.
+\end{itemize}
+
+J'ai vraiment apprécié assister à ces trois ateliers lors de mon insertion ; j'ai appris beaucoup de choses et cela m'a beaucoup aidé à mieux m'intégrer.
+
+\newpage
+
+\subsection{Apprentissage de nouveaux frameworks}
+
+Bien que j'apprenne quotidiennement à maîtriser de nombreux outils, mon apprentissage s'est principalement articulé autour de deux frameworks majeurs plutôt opposés.
+
+Lorsque j'ai intégré l'équipe de CBA, je n'avais aucune connaissance préalable des technologies utilisées. C'est grâce à l'accompagnement du Lead Tech à mes débuts que j'ai pu apprendre et comprendre le framework Angular de manière rapide et efficace. J'ai trouvé cette phase très enrichissante, car elle a mis à l'épreuve ma capacité d'adaptation dans un environnement technique totalement nouveau.
+
+Par la suite, j'ai dû intervenir sur l'ancienne version Web de l'application (en Struts). J'ai retrouvé cette sensation d'évoluer dans un domaine inconnu, mais grâce à l'aide de deux développeurs expérimentés sur cette technologie, j'ai pu en saisir les mécanismes malgré sa complexité et son architecture plus ancienne.
+
+Maîtriser ces deux frameworks si différents en peu de temps m'a permis de développer ce que je considère comme la compétence la plus importante dans l'informatique : l'adaptabilité.
+
+\subsection{Domaine médical}
+
+Agathe You, le produit phare de CBA, nécessite une large connaissance dans le domaine médical et de la profession d'infirmière libérale pour pouvoir retranscrire au mieux leurs besoins.
+
+On y retrouve beaucoup de termes techniques et pratiques, tous différents les uns des autres.
+Ayant pour mère une infirmière libérale, j'ai pu m'y adapter assez rapidement car je connaissais au moins la base du métier.
+
+\subsection{Première mission}
+
+Ma première mission consistait à maîtriser le framework Angular à travers un projet éducatif, sans impact direct sur le logiciel Agathe You. Sous la direction du Lead Tech, j'ai développé un gestionnaire d'étudiants en suivant une fiche de Spécifications Fonctionnelles Détaillées (SFD).
+
+Ce document est essentiel en ingénierie logicielle pour traduire les besoins des utilisateurs en règles techniques précises. Une SFD décompose le logiciel en une multitude de Règles de Gestion (RG) identifiées par des codes uniques (par exemple : \textbf{RG\_MENU\_AFFICHAGE\_01}). Chaque code définit un comportement spécifique ou une fonctionnalité élémentaire. L'ensemble de ces règles forme le cahier des charges complet de l'application, garantissant que le développement correspond exactement aux attentes métier.
+
+Bien que cette méthodologie stricte ne soit pas utilisée chez CBA, son application pour mon projet m'a permis de comprendre l'intérêt d'une documentation structurée pour faciliter la conception et l'implémentation.
+
+Durant ce projet, j'ai pu aborder les piliers d'Angular :
+
+\begin{itemize}
+    \item \textbf{La gestion des routes} pour la navigation entre les pages.
+    \item \textbf{L'intégration de données dynamiques} au sein de tableaux via la librairie \textit{PrimeNg}.
+    \item \textbf{La création de formulaires} avec validation (gestion d'erreurs, badges visuels).
+    \item \textbf{La persistance des données} via le \textit{localStorage} du navigateur.
+\end{itemize}
+
+Réaliser cette application à partir d'une SFD m'a permis d'apprendre à concevoir un mini-logiciel en respectant des consignes strictes. Ce premier mois d'immersion a été crucial pour mon intégration technique et humaine au sein de l'équipe.
+
+\section{Fonctionnalités Développées}
+
+Nous allons aborder ici les différentes missions qui m'ont été confiées depuis mes débuts jusqu'à aujourd'hui. J'ai principalement travaillé sur la mise en place de nouvelles fonctionnalités.
+
+Pour faciliter la compréhension de mon travail, je l'ai présenté dans l'ordre chronologique. Pour chaque ticket, je décris simplement la demande initiale, le travail réalisé ainsi que les connaissances que j'ai pu acquérir.
+
+\subsection{Refactoring et mise à jour de l'identité visuelle}
+
+Agathe You propose aux professionnels de santé un abonnement mensuel pour accéder à certaines fonctionnalités. Il est décliné en trois formules d'abonnements dont chacune répond à des besoins spécifiques des IDEL :
+
+\begin{itemize}
+    \item \textbf{Feelgood} \\
+    L'abonnement initial pour accéder à l'application (création d'ordonnance, gestion de tournée, etc.).
+
+    \item \textbf{Relax} \\
+    Cette formule d'abonnement permet à l'utilisateur d'avoir une garantie de paiement lors de la facturation et bien d'autres choses.
+
+    \item \textbf{Zen} \\
+    La formule Zen permet de piloter sa comptabilité, d'avoir un service client dédié et d'obtenir un accompagnement d'optimisation fiscale.
+\end{itemize}
+
+Suite au lancement du nouveau lecteur Bloomy en août dernier, une refonte de l'identité commerciale a été décidée. L'objectif était d'adopter une nouvelle orientation marketing et de créer une cohérence visuelle avec le produit en intégrant le préfixe « B. » (pour Bloomy). Voici les nouvelles dénominations qui en résultent :
+
+\begin{itemize}
+    \item Feelgood devient \textbf{B.Confort}
+    \item Relax devient \textbf{B.Tranquillité}
+    \item Zen devient \textbf{B.Sérénité}
+\end{itemize}
+
+Ma mission consistait à modifier les anciens libellés sur l'écran de chargement de l'application mobile et à créer les nouvelles pages de promotion afin d'assurer la cohérence avec la nouvelle stratégie marketing de CBA (\textbf{Figure 2}).
+
+Cette première immersion dans le code source d'Agathe You m'a permis d'appréhender l'architecture complexe du projet. J'ai aussi dû effectuer un travail de nettoyage (\textit{refactoring}) en supprimant les composants et les blocs de code qui étaient devenus obsolètes.
+
+\imageCenter[0.5]{h}{sérénité.png}{Rendu final de la page de l'offre B.Sérénité}
+
+\newpage
+
+\subsection{Ajout d'un filtre pour les rendez-vous}
+
+Ma mission sur l'application mobile consistait à ajouter un filtre dans la vue de la tournée principale des IDEL.
+
+Ce filtre sert à afficher uniquement les rendez-vous qui ont été acceptés par les infirmières. C'est important pour elles, car cela leur donne une meilleure visibilité sur les patients à prendre en charge, notamment ceux qui prennent rendez-vous via Opaline.
+
+Pour réaliser cette tâche, j'ai dû découvrir comment Agathe You et Opaline communiquent entre eux. J'ai créé des comptes de test sur les deux logiciels pour les synchroniser et réaliser des essais. C'était la partie la plus complexe de la mission, car les tests prenaient beaucoup de temps : il fallait créer un rendez-vous dans Opaline, l'accepter côté infirmière, puis vérifier si le filtrage fonctionnait bien dans Agathe You.
+
+\subsection{Branchement de la cinématique des nouveaux rendez-vous}
+
+Dans la méthodologie Scrum, on retrouve ce que l'on nomme une épopée (\textit{Epic}). Il s'agit d'un ensemble de fonctionnalités qui traitent d'un même sujet.
+
+J'ai été assigné à une US qui faisait partie d'une grosse \textit{Epic} qui consistait à améliorer la création de rendez-vous sur l'application mobile Agathe You, en la rendant plus simple et plus rapide.
+
+L'une des fonctionnalités majeures ajoutées a l'application mobile est la saisie vocale. Elle permet aux infirmières de renseigner les informations de leurs rendez-vous directement par la voix, facilitant ainsi leur quotidien sur le terrain.
+
+Ma mission était de m'occuper de l'US finale de cette \textit{Epic}, qui consistait à « brancher » la nouvelle cinématique de création de rendez-vous à l'application Agathe You et, en même temps, à supprimer l'ancien système qui n'allait plus être utilisé.
+
+Ce travail a nécessité une recherche approfondie dans le code pour identifier et supprimer les éléments obsolètes. L'enjeu principal était de bien analyser les dépendances et les appels de fonctions afin de nettoyer le projet sans créer d'erreurs sur les autres fonctionnalités.
+
+\newpage
+
+\subsection{Gestion des IFI}
+
+Pour cette mission, j'ai travaillé pour la première fois sur le site Web codé en Struts que l'on appelle « V1 ». J'ai d'abord dû relever le défi d'installer l'environnement de travail, car le processus de connexion à la base de données venait de changer.
+
+Ce ticket m'a permis de mieux comprendre les termes techniques qu'utilisent les infirmières libérales au quotidien.\\
+
+Avant de coder, j'ai dû apprendre le fonctionnement de la facturation :
+
+lorsqu'une IDEL facture un soin, elle associe des codes spécifiques aux actes réalisés ; c'est ce que l'on appelle une cotation. Par exemple, pour un pansement simple, la cotation est un \textbf{AMI2}. Si elle se déplace à l'extérieur de son cabinet, elle doit aussi facturer un forfait de déplacement nommé \textbf{IFI} (voir \textbf{Figure 3}).\\
+
+L'objectif de ce ticket était d'améliorer l'interface de gestion de ces cotations.
+
+Le problème était le suivant : lorsque l'utilisateur basculait entre le mode « Domicile » et le mode « Cabinet », les forfaits de déplacement (IFI) disparaissaient automatiquement. Il s'agit d'un comportement logiquement correct, puisqu'on ne peut pas facturer de déplacement quand on reçoit le patient au cabinet, mais c'était confusant pour l'utilisateur qui voyait sa saisie s'effacer sans explication.
+
+Ma mission était donc de faire en sorte que, si l'on valide des soins au cabinet alors qu'un forfait de déplacement est sélectionné, un message d'erreur clair s'affiche pour prévenir l'utilisateur, au lieu de simplement faire disparaître les données.
+
+Pour réaliser cela, j'ai dû apprendre le fonctionnement du framework Struts et de son langage. Avec l'aide de mon équipe, j'ai réussi à comprendre la logique et à terminer l'US sans trop de difficultés.
+
+\imageCenter[0.5]{h}{cotation.png}{Cotations d'une série de soins}
+
+\newpage
+
+\subsection{Motif d'annulation de rendez-vous}
+
+Lorsqu'une infirmière accepte un rendez-vous provenant d'un patient inscrit sur Opaline, celui-ci apparaît dans sa liste de tournées sur Agathe You. Si elle souhaite annuler ce rendez-vous, elle doit suivre un parcours précis : cliquer sur le rendez-vous, aller dans « Action », puis « Annuler » et enfin confirmer son choix.
+
+CBA utilise le partenaire Intercom, un service qui permet d'intégrer des sondages (\textit{Surveys}) pour créer des statistiques et des analyses essentielles pour que l'évolution du produit réponde aux attentes des utilisateurs. Mon rôle était d'ajouter un sondage Intercom juste après la confirmation de l'annulation, pour demander à l'infirmière la raison de son choix (manque de temps, soin déjà réalisé, trajet trop contraignant, imprévu, etc.).
+
+Cet exercice était technique car il mettait en lien trois services différents : Agathe You, Intercom et Opaline. Cela m'a permis de comprendre comment ces plateformes communiquent entre elles.
+
+\subsection{Amélioration du parcours de changement de profil remplaçant}
+
+Ce ticket a été le plus complexe que j'ai réalisé jusqu'à présent. Il concerne la gestion des remplaçants sur la version Web (V1) d'Agathe You.\\
+
+Une IDEL peut avoir besoin d'un remplaçant pour diverses raisons : congés annuels, congé maternité, arrêt maladie ou tout simplement pour réduire sa charge de travail. Sur le logiciel, il existe une page « Gestion des Remplaçants » où l'on retrouve tous les profils (actifs ou anciens). Il existe trois types de profils pour un remplaçant :
+
+\begin{itemize}
+    \item \textbf{Basique} : Accès minimal.
+    \item \textbf{Essentiel} : Accès à certaines fonctionnalités clés.
+    \item \textbf{Complet} : Accès à l'intégralité du logiciel.
+\end{itemize}
+
+Le passage aux profils Essentiel ou Complet implique des frais supplémentaires. Lorsqu'une IDEL change le profil d'un remplaçant, une demande est envoyée pour que ce dernier soit informé et valide le changement.
+
+
+J'ai dû intervenir pour corriger trois problèmes majeurs qui rendaient le parcours peu intuitif :
+
+\textbf{Optimisation de la sélection} :
+Initialement, le choix du profil se faisait via une liste déroulante avec un choix présélectionné par défaut. C'était trompeur : si l'utilisateur cliquait trop vite, il passait à la page suivante sans avoir vraiment choisi. J'ai remplacé cela par des \textit{radio buttons} (boutons à cocher). Aucun n'est sélectionné par défaut, et si l'utilisateur essaie de valider sans choisir, un bandeau rouge s'affiche pour lui indiquer l'erreur (voir \textbf{Figure 4}).
+
+\imageCenter[0.5]{h}{radiobutton.png}{Rendu final de la Popup de choix du profil}
+
+\textbf{Gestion des demandes en cours} :
+Initialement, l'utilisateur pouvait réaliser toute la manipulation pour n'apprendre qu'à la toute fin qu'une demande était déjà en cours. C'était frustrant et faisait perdre du temps. Désormais, le bouton « Changer de profil » est directement grisé (désactivé) si une demande est déjà en attente, avec une phrase explicative juste en dessous.
+
+\textbf{Persistance de la confirmation} :
+À la fin du parcours, le message de succès ne durait que 5 secondes. Ma mission était de rendre cette fenêtre de confirmation persistante, avec un bouton « OK », pour être certain que l'utilisateur a bien pris connaissance de la validation de sa demande.
+
+Enfin, j'avais pour mission de clarifier la plupart des textes de la cinématique afin de rendre les instructions plus simples à comprendre.
+
+Cette US était très technique car elle était développée en \textbf{Struts}. J'ai dû comprendre en profondeur comment fonctionnent les fenêtres surgissantes (\textit{popups}) et les fonctions de validation du framework pour que les changements soient bien pris en compte sans erreurs.
+
+\subsection{Acte isolé par défaut en création d'ordonnance}
+
+Lorsqu'une IDEL crée une ordonnance dans l'application Web, elle enregistre la prescription du médecin pour planifier les soins et préparer la facturation. Dans ce formulaire, elle peut cocher un bouton (\textit{toggle}) intitulé : « S'agit-il d'un acte isolé ? ».
+
+Un \textbf{acte isolé} est une intervention ponctuelle (comme un vaccin ou un test PCR), contrairement à un traitement de longue durée qui demande plusieurs passages.
+
+Pour comprendre ma mission, il faut faire la différence entre deux profils :
+
+\begin{itemize}
+    \item \textbf{L'infirmière classique (Spécialité 24)} : Elle assure la prise en charge globale et continue des patients à domicile. Son activité repose majoritairement sur des soins récurrents (pansements, injections, aide à la toilette) qui s'inscrivent dans un plan de soins sur le long terme.
+
+    \newpage
+    
+    \item \textbf{L'IPA (Infirmière en Pratique Avancée)} : Ce statut, accessible après deux années d'études supplémentaires (Master), confère à l'infirmière des compétences élargies, notamment en matière de prescription et de suivi de pathologies complexes. Dans notre logiciel, ses interventions sont répertoriées sous la Spécialité 86 et concernent majoritairement des actes isolés.
+\end{itemize}
+
+Ma mission consistait à faire en sorte que, sur le Web « V1 » en Struts et sur le Web « V2 » en Angular, le \textit{toggle} « Acte isolé » soit activé par défaut (\textit{true}) dès que l'utilisateur est une IPA (Spécialité 86).
+
+Ce ticket a été très intéressant car j'ai dû intervenir sur deux architectures différentes :
+
+\begin{itemize}
+    \item \textbf{Sur la V1 (Struts)} : J'ai pu apprendre plus précisément comment fonctionnent les \textit{Actions} en Struts et comment sont transférées les variables entre les fichiers Java et les pages.
+    
+    \item \textbf{Sur la V2 (Angular)} : J'ai dû apprendre à utiliser \textbf{NgRx} pour la gestion d'état. Cela m'a permis de comprendre comment récupérer des données dans le \textit{store} (notamment le code spécialité 86 de l'utilisateur) pour l'utiliser dans mon composant.
+\end{itemize}
+
+Travailler sur cette US m'a montré la différence entre l'ancien code et la gestion moderne avec NgRx. Ce que ça m'apporte vraiment, c'est que je comprends mieux comment les données circulent dans l'appli. Au lieu d'avoir des infos un peu éparpillées partout, tout est centralisé au même endroit. Je vois donc exactement comment une donnée passe d'un écran à l'autre sans se perdre ou changer sans raison.
+
+\section{Analyse et bilan de l'alternance}
+
+\subsection{Analyse critique}
+
+Durant ce semestre, j'ai dû alterner entre deux manières de travailler vraiment différentes, car le Web « V1 » et le Web « V2 » divergent énormément. Lorsque je code sur la version Web « V1 » en \textbf{Struts}, je ressens que j'apprends beaucoup de choses sur la capacité à comprendre le code d'autrui. Cela me permet de développer une logique que j'apprécie, même si j'ai parfois la sensation d'apprendre quelque chose qui est voué à disparaître puisque le projet de CBA est de tout transférer en Web « V2 ». Malgré cela, il est vraiment plaisant de travailler sur cette version.
+
+La \textbf{V2, sous Angular}, est quant à elle extrêmement agréable. Je découvre à quel point ce framework est complet et bien conçu. C'est très satisfaisant et j'ai l'impression d'apprendre énormément de nouvelles choses. Même si je n'ai pas encore eu l'occasion de réaliser des missions d'envergure dessus, je suis content d'en avoir déjà bien compris les bases.
+
+\newpage
+
+Au niveau de l'organisation, mon \textbf{rythme d'alternance} de deux semaines en entreprise et deux semaines en cours a été un vrai défi. Avec des Sprints de quatre semaines, il a été compliqué au début de gérer à la fois les cours et le travail. Le fait de reprendre des missions mises en pause au bout de deux semaines est parfois difficile, mais cela m'a forcé à mieux m'adapter et à essayer de terminer le maximum de choses avant chaque départ en formation.
+
+J'apprécie vraiment l'organisation au sein de l'équipe Agathe You. Comme chaque développeur a ses propres points forts, je me sens entouré de personnes vraiment compétentes. C'est super agréable au quotidien de savoir exactement à qui je peux parler selon la situation ou le blocage technique que je rencontre. Cela me permet d'apprendre plus vite et de travailler dans une bonne ambiance.
+
+\subsection{Lien Théorie - Pratique}
+
+L'apprentissage de la méthodologie SCRUM en cours m'a vraiment aidé. Grâce à cela, J'ai tout de suite trouvé mes marques en arrivant chez CBA et j'ai pu me concentrer sur l'apprentissage technologique. De plus, le fait d'avoir travaillé sur beaucoup de langages de programmation différents m'a permis de ne pas me perdre avec les nouveautés. J'arrive à saisir la logique des fonctions et à naviguer facilement à travers elles. Mes cours de Web m'ont beaucoup servi et, pour le Web « V1 », mes cours de Java ont été très appréciables.
+
+Pour être honnête, j'ai remarqué un vrai décalage entre la théorie à la faculté et la réalité en entreprise. Même si les cours m'ont donné des bases, c'est vraiment la pratique chez CBA qui m'a permis de comprendre concrètement comment cela se passe. La théorie est une chose, mais être confronté à de vrais problèmes sur le logiciel apporte une dimension que l'on ne peut pas apprendre autrement qu'en pratiquant.
+
+\subsection{Bilan personnel et professionnel}
+
+Professionnellement, ma méthode de travail a vraiment évolué. À chaque nouveau ticket, j'analyse la partie concernée, et je me renseigne sur le code métier, puis je décortique la \textit{User Story} pour savoir concrètement ce que je dois réaliser. C'est un exercice que j'apprécie beaucoup. Ma gestion du temps a aussi progressé grâce au système de points, qui m'aide à bien planifier mes journées.
+
+Chaque instant passé chez CBA est une occasion d'apprendre. Que ce soit en discutant avec mes collègues ou en parcourant le code source pour comprendre le travail réalisé par les anciens, j'apprends énormément. C'est la première fois que je sens que mon temps est vraiment utile et que ce que je réalise au quotidien me sert concrètement pour mon avenir professionnel.
+
+\newpage
+
+Cette expérience a aussi boosté ma communication. Je suis en échange constant avec le \textit{Product Owner}, le \textit{Lead Développeur} et mes collègues. Comme j'ai utilisé plusieurs services comme Opaline, j'ai pu m'améliorer sur la manière de communiquer entre les équipes. Les « \textit{Daily} », où l'on doit prendre la parole pour résumer sa journée, m'ont permis de gagner en assurance à l'oral et être plus synthétique. Quand je demande de l'aide, je dois expliquer mon contexte le plus clairement possible, ce qui est un excellent exercice.
+
+Enfin, je me sent vraiment à ma place chez Agathe You car l'équipe est très soudée. Mes collègues prennent le temps de m'accompagner sur les points techniques. J'espère que je serai rapidement assez expérimenté pour pouvoir les aider à mon tour. Cette alternance a confirmé ma passion pour le développement : créer des outils à partir de besoins concrets, au sein d'une équipe qui s'entraide avec des directives claires, est exactement ce que je veux faire de ma vie.
+
+\section{Conclusion}
+
+\subsection{Synthèse des points clés}
+
+Ce premier semestre d'alternance chez CBA a été une expérience riche et déterminante pour mon parcours. J'ai eu l'opportunité de travailler sur des projets variés, allant de la refonte visuelle pour les nouvelles formules d'abonnement à des problématiques plus techniques comme le changement du profil d'un remplaçant ou l'intégration de sondages Intercom pour les annulations de rendez-vous.
+
+Ces missions m'ont permis de monter en compétence sur une \textit{stack} technique diversifiée, incluant \textbf{Angular}, \textbf{Struts}, \textbf{Java} et \textbf{NgRx}. Au-delà du code, j'ai découvert l'importance de la rigueur organisationnelle dans un projet d'ingénierie logicielle et l'impact direct de mon travail sur le quotidien des professionnels de santé.
+
+\subsection{Ouverture}
+
+Pour la suite de mon alternance, j'aimerais m'attaquer à des sujets encore plus complexes. J'ai hâte de réaliser davantage de missions sur Angular, un framework qui me passionne, et j'espère gagner assez en autonomie pour réaliser des \textit{User Stories} de plus grande envergure.
+
+Je suis également curieux de découvrir le nouveau « Master Planning » (que je détaillerai dans mon prochain rapport), la nouvelle méthodologie de travail qui sera mis en place prochainement chez CBA. Je suis plus motivé que jamais à m'investir pleinement, d'autant plus qu'au prochain semestre, ma présence en entreprise sera plus importante, ce qui me permettra de suivre les projets plus activement.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                            Document ends here                                %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}

@@ -1,0 +1,54 @@
+{
+  // Dossier racine du projet LaTeX (le .tex principal est dans son sous-dossier src/)
+  // Les chemins dans main.tex (src/..., res/...) sont relatifs A CE DOSSIER,
+  // donc latexmk DOIT etre lance depuis ici (cwd) et non depuis src/.
+
+  "latex-workshop.latex.tools": [
+    {
+      "name": "lualatex-projet",
+      "command": "latexmk",
+      "args": [
+        "-lualatex",
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "%DOC%"
+      ],
+      // %DIR% = dossier du main.tex detecte (.../<projet>/src)
+      // %DIR%/.. = racine du projet, ou DOIVENT etre resolus les chemins src/... et res/...
+      "cwd": "%DIR%/.."
+    }
+  ],
+
+  "latex-workshop.latex.recipes": [
+    {
+      "name": "LuaLaTeX (racine projet)",
+      "tools": ["lualatex-projet"]
+    }
+  ],
+  "latex-workshop.latex.recipe.default": "first",
+
+  // Ou se trouve le PDF genere (racine du projet) -> ou l'extension doit le chercher pour le reload
+  "latex-workshop.latex.outDir": "%DIR%/..",
+
+  // Recompiler automatiquement a chaque sauvegarde
+  "latex-workshop.latex.autoBuild.run": "onSave",
+
+  // Visionneuse integree (onglet) -> se rafraichit toute seule apres le build
+  "latex-workshop.view.pdf.viewer": "tab",
+
+  // Ne pas demander quel est le fichier racine a chaque build
+  "latex-workshop.latex.build.forceRecipeUsage": true,
+
+  // === Confort visuel : tout moins "petant", MAIS on garde les couleurs du document ===
+  // (N'affecte QUE l'apercu dans VS Code, pas le PDF reel.)
+  // Filtre CSS applique a l'apercu, quel que soit le theme VS Code ("always").
+  // -> on baisse juste la luminosite ; PAS d'inversion, PAS de rotation de teinte,
+  //    PAS de desaturation, donc les couleurs restent intactes (juste plus douces).
+  "latex-workshop.view.pdf.invertMode.enabled": "always",
+  "latex-workshop.view.pdf.invert": 0,            // 0 = pas d'inversion (on ne passe PAS en mode sombre)
+  "latex-workshop.view.pdf.invertMode.brightness": 0.80, // < 1 = plus sombre (le blanc devient gris doux). Baisse vers 0.8 si encore trop clair
+  "latex-workshop.view.pdf.invertMode.grayscale": 0,     // 0 = couleurs pleinement conservees (defaut 0.6 = a eviter)
+  "latex-workshop.view.pdf.invertMode.hueRotate": 0,     // 0 = teintes non modifiees (defaut 180 = a eviter)
+  "latex-workshop.view.pdf.invertMode.sepia": 0          // 0 = pas de virage sepia (monte a ~0.1 pour un rendu plus chaud)
+}

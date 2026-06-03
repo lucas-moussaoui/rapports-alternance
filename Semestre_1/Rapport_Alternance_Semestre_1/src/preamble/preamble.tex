@@ -1,0 +1,214 @@
+% This file contains all the preamble data required for the template
+%
+% Project group:
+% - CBA Lab
+%
+% Authors:
+% - Lahcène Belhadi <lahcene.belhadi@cbainfo.fr>
+
+% required package to change text color
+\usepackage[dvipsnames, table, HTML]{xcolor}
+% required package to retrieve page dimensions
+\usepackage{geometry}
+% required packages to add background images
+\usepackage{background}
+% required package to change fonts
+\usepackage{fontspec}
+%required package to change sections colors
+\usepackage{titlesec}
+%required package to format table of contents
+\usepackage{tocloft}
+% required package to display images
+\usepackage{graphicx}
+% required package to customize caption
+\usepackage{caption}
+\usepackage{subcaption}
+% required package to add hyper reference through document
+\usepackage{hyperref}
+% required package to change page number format
+\usepackage{etoolbox}
+% required package to format title and authors
+\usepackage{titling}
+% required package to place floating objects
+\usepackage{float}
+
+\usepackage{framed}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                  Constants                    %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Colors from xcolor and dvipsnames
+\definecolor{colormain}{rgb}{0.10196078,0.24313725,0.43921569}
+\definecolor{colorscnd}{rgb}{0.17647059,0.3254902,0.53333333}
+\definecolor{colorthird}{rgb}{0.90980392,0.55294118,0.62745098}
+\definecolor{colorfourth}{rgb}{0.7372549,0.81176471,0}
+\definecolor{lightblue}{rgb}{0.46667,0.76078,0.83922}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                   Settings                    %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% hyperlinks
+\hypersetup{linktoc=all}
+
+% page settings
+\geometry{
+    paper=a4paper,
+    margin=82pt,
+    top=100pt,
+    headheight=17pt,      % Ajustez si nécessaire
+    footskip=63pt,        % Ajustez pour déplacer la numérotation vers le bas
+    bottom=3.5cm,           % Ajustez pour augmenter l'espace au fond de la page
+}
+\linespread{1.15}
+
+% fonts
+\setmainfont[
+	Path=res/fonts/,
+	BoldFont=CAMPTON-BOLD.otf,
+	ItalicFont=CAMPTON-BOOKITALIC.otf,
+	BoldItalicFont=CAMPTON-BOLDITALIC.otf,
+        SizeFeatures={Size=12},
+]{CAMPTON-BOOK.otf}
+
+% font color
+\color{Black}
+
+\newfontfamily\Hazelnuts{TTHazelnuts}[
+    Path=res/fonts/,
+    Extension=.otf,
+    UprightFont=*-Medium,
+    BoldFont=*-Bold,
+    ItalicFont=*-MediumItalic,
+    BoldItalicFont=*-BoldItalic,
+]
+
+% title
+\pretitle{
+	\vspace*{\fill}
+	\begin{center}
+		\color{colormain}
+		\Huge\bfseries
+}
+\posttitle{
+	\end{center}
+	\vspace*{\fill}
+}
+
+% sections
+% sections color and format
+\titleformat*{\section}{\Hazelnuts\color{colormain}\fontsize{18}{22}\bfseries}
+
+
+
+% subsections color and format
+\titleformat*{\subsection}{\Hazelnuts\color{colormain}\fontsize{16}{20}\bfseries}
+
+\titleformat*{\subsubsection}{\Hazelnuts\color{colormain}\fontsize{14}{18}\bfseries}
+
+\makeatletter
+\renewcommand{\maketitle}{
+  \begin{titlepage} % Utilisez l'environnement titlepage pour une page de titre personnalisée
+    \centering % Centrer tout le contenu de la page de titre
+    \vspace*{\fill} % Ajoute un espace vertical flexible avant le contenu pour le pousser vers le bas
+    \themePage{pages/guard.pdf}
+    % Titre
+    \vspace{2cm}
+    {\Hazelnuts\fontsize{24pt}{30pt}\selectfont\color{colormain}\bfseries \@title \par}
+    \vspace{1cm} % Espace après le titre pour le pousser un peu en dessous du milieu
+
+    % Auteurs
+    {\fontsize{12pt}{14pt}\selectfont\color{colorscnd} \@author \par}
+
+    % Date
+    {\Hazelnuts\fontsize{10pt}{11pt}\selectfont\color{colorscnd}\bfseries \@date \par}
+
+    \vspace*{\fill} % Ajoute un espace vertical flexible après le contenu pour le pousser vers le haut
+  \end{titlepage}
+}
+\makeatother
+
+
+% figure
+\captionsetup[figure]{labelfont={color=colormain, bf}}
+
+% format the table of contents
+% name
+\renewcommand{\contentsname}{Sommaire}
+
+\renewcommand{\cfttoctitlefont}{
+	\huge
+	\bfseries
+	\color{colormain}
+}
+
+% section
+\renewcommand{\cftsecfont}{
+	\bfseries
+	\color{colormain}
+}
+
+\renewcommand{\cftsecpagefont}{
+	\bfseries
+	\color{colormain}
+}
+
+
+% subsection
+\renewcommand{\cftsubsecfont}{
+	\color{colorscnd}
+}
+
+\renewcommand{\cftsubsecpagefont}{
+	\color{colormain}
+}
+
+% subsubsection
+\renewcommand{\cftsubsubsecfont}{
+	\color{colorscnd}
+}
+
+\renewcommand{\cftsubsubsecpagefont}{
+	\color{colormain}
+}
+
+% page numbering
+\makeatletter
+\patchcmd{\ps@plain}{\thepage}{\Hazelnuts\textcolor{colormain}{\textbf{\thepage}}}{}{}
+\makeatother
+
+
+\usepackage{mdframed}
+
+\newenvironment{beware}[1][]
+{
+    \ifx\\#1\\ % Vérifier si l'argument optionnel est fourni
+        \begin{mdframed}[backgroundcolor=lightblue!70, leftline=false, rightline=false, topline=false, bottomline=false, innertopmargin=2pt, innerbottommargin=2pt, innerrightmargin=4pt, innerleftmargin=4pt]
+    \else
+        \begin{mdframed}[frametitle={#1 :}, frametitlebackgroundcolor=lightblue!70, backgroundcolor=lightblue!70, leftline=false, rightline=false, topline=false, bottomline=false, innertopmargin=2pt, innerbottommargin=2pt, innerrightmargin=6pt, innerleftmargin=6pt]
+    \fi
+}
+{
+    \end{mdframed}
+}
+
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=colormain,    % Couleur pour les liens internes (sections, etc.)
+    citecolor=colorthird,    % Couleur pour les citations, si vous le souhaitez
+    urlcolor=colorthird      % Couleur pour les liens externes (URLs)
+}
+
+\renewcommand{\footnotesize}{\Hazelnuts\fontsize{8pt}{10pt}\selectfont}
+
+
+\makeatletter
+\renewcommand{\@makefnmark}{\hbox{\textsuperscript{\small\@thefnmark}}}
+\makeatother
+
+\makeatletter
+\newcommand\subsubsubsection{\@startsection{paragraph}{4}{\z@}%
+            {-3.25ex \@plus -1ex \@minus -.2ex}%
+            {1.5ex \@plus .2ex}%
+            {\normalfont\normalsize\bfseries\color{colormain}}}
+\makeatother

@@ -1,0 +1,1939 @@
+% CBA Document Template
+% Use LuaLatex to compile this template
+% 
+% Project group:
+% - CBA Lab
+%
+% Authors:
+% - Lahcène Belhadi <lahcene.belhadi@cbainfo.fr>
+
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+% import
+% preamble
+\input{src/preamble/preamble.tex}
+% utilities
+\input{src/utils/utils.tex}
+
+% sets the images path to res/images
+% feel free to change or add paths if needed
+\setImagesPath{{res/images}}
+
+% document
+% document title
+\title{
+	Rapport d'alternance \\
+        Semestre 4
+}
+
+% document authors
+% authors must be separated with the \\ character
+\author{
+	Hicham Guessab
+}
+% document date
+\date{
+	Juin 2025
+}
+
+\begin{document}
+% init the document
+% DO NOT REMOVE
+\initDocument
+\sloppy
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                           Document begins here                               %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Introduction}
+
+Précédemment en troisième année de licence informatique, j'ai décidé de réaliser mes deux années de Master en \textbf{Ingénierie du Logiciel de la Société Numérique} (ILSEN) en alternance.\\
+
+Plusieurs motivations m'ont poussé à faire ce choix.\\
+
+Tout d'abord, durant mes trois années de licence informatique au Centre d'Enseignement et de Recherche en Informatique, il était question de cours théoriques, dont certains qui, pour moi, manquaient d'applications concrètes. L'alternance était donc le meilleur moyen de combler ce manque de projets concrets.\\
+
+Ensuite, il s'agissait évidemment d'apprendre, de me spécialiser dans une technologie mais également d'acquérir une expérience venant du milieu professionnel.\\
+
+La vie en entreprise est également une chose que j'appréhendais énormément avant l'alternance. Je me posais plusieurs questions, notamment sur le fonctionnement d'une entreprise: comment se structuraient les différents blocs, quelles étaient leurs liaisons, les choses à faire, à ne pas faire, comment communiquer et tout un tas d'autres questions auxquelles je trouve désormais réponse en alternance.\\
+
+Enfin, il était temps pour moi de passer à un état pro-actif et d'acquérir le plus d'expérience et le plus rapidement possible.\\
+
+C'est ainsi grâce au Forum Alternance réalisé par le CERI que j'ai pu passer mon premier entretien avec Christophe Huntzinger, \textbf{DSI} chez CBA ainsi que d'une ancienne alternante dans le service \textbf{Ressources Humaines}.\\
+
+J'ai par la suite passé un entretien plus technique sur site avec \textbf{David MERLE}, mon ancien tuteur entreprise.
+
+\newpage
+
+\section{CBA Informatique Libérale}
+\subsection{Présentation}
+
+CBA Informatique Libérale, située à Montfavet sur Pôle Technologique d'Agroparc, est une entreprise éditrice de logiciels et de solutions pour les professionnels de santé en libéral, et plus particulièrement pour les auxiliaires médicaux, depuis plus de 30 ans.
+
+Les tâches administratives prenant beaucoup de temps dans le travail des auxiliaires médicaux, le but premier de l'entreprise est ainsi de soulager et simplifier la vie des auxiliaires médicaux grâce à des services et des applications leur permettant une gestion de leur tournée et une automatisation des tâches administratives au profit du soin.
+
+\subsection{Histoire de l'entreprise}
+
+L'histoire de CBA commence en 1986 lorsque Marc Birling et sa femme Cécile Birling se rendent compte que l'informatique pourrait faciliter le travail administratif des IDEL (\ref{term:idel}).
+
+C'est ainsi que naît le premier logiciel de facturation, permettant une meilleure gestion du cabinet des clients.
+
+L'entreprise se développe grâce à l'introduction de plusieurs systèmes et services informatiques tels que la Carte Vitale, la \textbf{télétransmission}, \textbf{SCOR} (\ref{term:scor}), l'\textbf{ADRi} (\ref{term:adri}). Depuis, CBA a connu plusieurs étapes clés:
+
+\begin{itemize}
+    \item 2000: Agathe Millénium, premier logiciel pour les IDELs.
+    \item 2006: INDI, lecteur avec télétransmission sans ordinateur.
+    \item 2010: Agathe Connect, client lourd automatisant les démarches administratives.
+    \item 2016: Agathe Emotion, solution mobile nécessitant des sauvegardes sur ordinateur.
+    \item 2021: Agathe You, solution 100\% mobile avec le TLA Ted.
+    \item 2023: Milo, un logiciel destiné aux kinésithérapeutes.
+\end{itemize}
+
+Ces logiciels sont aujourd'hui commercialisés sous forme d'abonnement mensuel et permettent aux auxiliaires médicaux d'y centraliser toutes leurs données, de posséder un suivi médical pour chaque patien, de facturer les actes administrés et télétransmettre les feuilles de soins auprès de la CPAM (\ref{term:cpam}) et des mutuelles.\\
+
+Ces logiciels, vendus sous forme d'abonnement mensuel, centralisent les données des auxiliaires médicaux, assurent un suivi médical, facturent les actes et télétransmettent les feuilles de soins à la CPAM et aux mutuelles.
+
+Les enjeux de développement sont très importants pour CBA.
+
+En premier lieu, il s'agit d'abord d'une certification \textbf{HDS} (\ref{term:hds}) basé sur des normes ISO rigoureuses permettant de démontrer l'engagement de l'entreprise en ce qui concerne la protection des données de santé à caractère personnel. Le certificat est délivré pour une durée de trois ans, par l'organisme certificateur et chaque année, un audit de surveillance est effectué. \\
+
+Ensuite, le domaine de la santé étant très strict en France, l'entreprise se doit de respecter plusieurs normes de santé, dont les normes \textbf{SESAM Vitale} (\ref{term:sesam}), permettant aux entreprises créant des logiciels certifiés SESAM Vitale et aux IDEL (\ref{term:idel}) utilisant ces derniers d'obtenir des primes. \\
+
+En tant que développeur, ces exigences influencent directement notre travail étant donné que l'on doit intégrer des pratiques de codage, garantir que les fonctionnalités développées répondent à ces exigences, garantir la confidentialité des données et respecter les protocoles de sécurité établis par les normes ISO. \\
+
+CBA Informatique Libérale possède aujourd'hui plus de \textbf{200 salariés}, \textbf{35 000} clients professionnels de santé, ce qui en fait le \textbf{leader du marché} des logiciels et services pour les professionnels de santé en France.
+
+Ce contexte est à la fois motivant et responsabilisant. Savoir que le code produit sera utilisé par des milliers de professionnels de santé et que  me pousse à être vigilant, à veiller à la qualité de mon travail mais également à adopter de meilleures pratiques de développement tout en me donnant un sentiment d'accomplissement et d'appartenance à un projet d'envergure nationale.
+
+\newpage
+
+\subsection{Services et Produits}
+
+Les services de CBA sont spécialement conçus pour les auxiliaires médicaux, historiquement pour les infirmiers avec Agathe et depuis peu pour les kinésithérapeutes avec Milo Kiné.
+
+\subsubsection{Agathe You}
+
+Le produit phare de CBA Informatique Libérale est Agathe You.
+Historiquement, Agathe You est une \textbf{version améliorée} d'Agathe Emotion qui est elle-même une application Web et Mobile permettant de répondre aux besoins des IDEL. \\
+
+En effet, les IDEL se lèvent très tôt le matin, se déplacent chez leurs patients en effectuant une tournée le matin, une l'après-midi mais également une le soir pour certains patients.
+
+De plus, les IDEL travaillent souvent \textbf{en équipe} et organisent leurs tournées en prenant en compte \textbf{plusieurs facteurs} tels que les soins apportés, les différents patients, la position géographique de leurs patients, leurs disponibilités…
+
+Après chaque tournée, elles devaient traditionnellement réaliser des démarches administratives pour chaque patient telles que la facturation, la transmission électronique des soins réalisés à la CPAM (\ref{term:cpam}) ainsi qu'aux mutuelles, ce qui leur faisait perdre énormément de temps.
+
+Le paiement d'une IDEL est également très complexe étant donné que chaque soin est différent, qu'en fonction de la distance et du type de trajet qu'elle réalise et de tout un tas d'autres règles issues de la réglementation des soins infirmiers, elle n'est pas payée de la même manière.
+
+Le besoin se traduit également par la garantie d'être payé par la ou les différentes parties, étant donné qu'elles soignent plusieurs patients et que ces derniers peuvent dépendre de caisses différentes ainsi que de plusieurs mutuelles. \\
+
+Agathe You est ainsi une solution 100\% mobile répondant aux besoins de facturation, télétransmission, gestion administrative, garantie de paiement, un partage de leurs tournées, un suivi entre professionnels, un suivi de leurs patients et tout un tas d'autres fonctionnalités... \\
+
+La différence entre Agathe Emotion et Agathe You réside dans le nouveau TLA (\ref{term:tla} nommé "Ted" permettant à l'IDEL de réaliser tout le cycle de facturation et administratif tout le long de sa tournée, chez ses patients. L'IDEL n'a donc plus besoin de charger les données de ses patients dans le lecteur TLA avant la tournée pour les décharger sur ordinateur après sa tournée, une mobilité qui permet à l'IDEL de gagner du temps.
+
+Étant donné les différentes avancées technologiques ainsi que les différentes demandes et normes émises par le gouvernement, l'application a connu plusieurs évolutions majeures.
+
+\begin{itemize}
+    \item \textbf{2001}: Certification Sesam Vitale (\ref{term:sesam})
+    \item \textbf{2007}: Première version mobile Agathe Connect
+    \item \textbf{2013}: Introduction du service «Garantie Paiement» (\ref{term:gp})
+    \item \textbf{2016}: Lancement de la numérisation d'ordonnance (SCOR) (\ref{term:scor})
+    \item \textbf{2017}: Sortie d'Agathe Emotion
+    \item \textbf{2018}: Sortie d'Agathe Emotion V2, intégrant de nouvelles fonctionnalités mais également une nouvelle identité
+    \item \textbf{2020}: L'apparition de \textbf{Ted}, un TLA (\ref{term:tla}) plus performant remplaçant d'\textbf{ES-KA-PAD} (\ref{term:es-ka-pad}) (ancien TLA) et permettant de facturer et télétransmettre de manière 100 \% mobile
+    \item \textbf{2021}: Sortie d'Agathe You
+\end{itemize}
+
+Agathe You continue ainsi à faire face aux évolutions des normes de santé gouvernementales ainsi qu'à ces nombreuses évolutions technologiques et aujourd'hui, \textbf{un nouvel IDEL sur trois choisit Agathe You comme logiciel de gestion}. \\
+
+Les logiciels (Web et Mobile) Agathe You et Agathe Emotion sont également les produits sur lesquels je travaille côté Front-End. Je suis donc amené à comprendre les besoins cités précédemment afin de les traduire en fonctionnalités côté logiciel.
+
+\subsubsection{Milo Kiné}
+\textbf{Milo Kiné} est le logiciel destiné aux Kinésithérapeutes.
+
+Mis sur le marché en 2023, à l'instar d'AgatheYou pour les IDEL, Milo Kiné permet de faciliter les tâches administratives des Kinésithérapeutes, comme la planification des rendez-vous, la gestion des dossiers patients, le suivi des traitements, la facturation et tout un tas d'autres fonctionnalités.
+
+Milo Kiné possède aujourd'hui plus de 300 clients.
+
+\subsubsection{Maestro compta}
+\textbf{Maestro Compta} est une application Web et Mobile répondant au besoin de gestion de la comptabilité des professionnels de santé.
+
+Elle propose plusieurs services tels qu'une gestion complète de la Liasse Fiscale par un \textbf{expert comptable}, un \textbf{interlocuteur dédié} optimisant les revenus ainsi qu'un \textbf{tableau de bord} de suivi afin de gagner en visibilité sur ses revenus. \\
+
+Cette solution se veut donc être une solution pour \textbf{tous les professionnels de santé libéraux}, elle est également intégrée à AgatheYou et Emotion.
+
+\subsubsection{Opaline}
+
+\textbf{Opaline} est destiné à la mise en relation entre patients et professionnels de santé.
+Elle est gratuite pour les patients mais payante pour les IDELs.
+
+Il s'agit d'une fonctionnalité très intéressante pour les patients de trouver un professionnel de santé qui puisse les soigner et à l'inverse pour les IDELs de se former une patientèle.
+
+Elle a été récemment intégrée à AgatheYou et permettra ainsi de proposer à des IDELs de nouveaux patients et de les ajouter à leur tournée automatiquement.
+
+Cette intégration se veut être très importante pour CBA afin d'attirer de nouveaux clients étant donné qu'elle permettrait aux IDEL nouvellement installés de se construire une patientèle assez rapidement.
+
+\subsubsection{La Ruche \& Kiné par Nature}
+
+Pendant toutes ces années, tout en développant ces applications, CBA a également opté pour une stratégie d'accaparement du marché des IDEL et Kinésithérapeutes par la création des blogs "\textit{La Ruche}" et "\textit{Kiné par Nature}" destinés aux nouveaux IDEL (\ref{term:idel}), ainsi qu'aux Kinésithérapeutes.
+
+Ces blogs sont enrichis par CBA mais également par des Professionnels de Santé (\ref{term:ps}) partageant leurs conseils et expériences.
+
+Grâce à ces blogs, CBA est ainsi plus proche des IDEL et des Kinésithérapeutes, facilitant le contact direct avec eux. Cela permet non seulement de mieux comprendre leurs besoins et attentes, mais aussi de les impliquer en tant que testeurs bêta. Ce retour direct des utilisateurs est essentiel pour une amélioration continue des produits et afin de s'assurer qu'ils répondent parfaitement aux exigences du terrain.
+
+\newpage
+
+\subsection{Structure interne}
+
+Comme toute entreprise, CBA est divisé en plusieurs départements et chaque département est divisé en plusieurs services qui sont eux-mêmes divisés en plusieurs équipes. \\
+
+L'organigramme représentant tous les départements étant beaucoup trop grand, voici, sur la figure ci-dessous, les différents services composant la structure interne de CBA.
+
+\imageCenter[0.5]{h}{trombinoscope.png}{Organigramme des différents Services de CBA Informatique Libérale}
+
+\subsection{Organisation générale}
+
+La disposition des équipes est faite de manière à ce que les équipes ayant le plus d'interactions entre elles soient situées le plus proche possible les unes des autres. Les équipes qui sont amenées à interagir assez souvent ensemble se situent donc à minima sur le même étage et les équipes échangeant le plus se situent sur le même open-space.
+
+CBA est donc divisée en plusieurs départements qui sont l'\textbf{Administration \& Finance} (AF), le \textbf{Marketing \& Commerciale}, les \textbf{Ressources Humaines}, le \textbf{Service Clients} ainsi que les \textbf{Systèmes d'Informations}. Ces départements sont eux-mêmes divisés en plusieurs sous-départements. 
+
+Après avoir expliqué la méthodologie agile SCRUM chez CBA, nous allons donc nous focaliser sur la description du département dont les équipes sont celles avec lesquelles j'interagis le plus, celui du \textbf{Développement}.
+
+% Nous pouvons prendre comme exemple le Système d'Informations composé de 77 collaborateurs. 
+
+% Il est constitué des services du \textbf{Développement}, de l'\textbf{Infrastructure et Réseau}, du \textbf{Design}, de l'\textbf{Assurance Qualité} et du \textbf{Laboratoire Innovation}. \\
+
+\subsection{La méthodologie SCRUM}
+
+Chez CBA, la méthodologie en vigueur est la méthodologie agile SCRUM où chaque équipe possède son propre Sprint de 4 semaines (mise à part l'équipe Lab). \\
+
+Le début des sprints de chaque équipe n'a pas lieu en même temps afin que l'équipe Back-End puisse avoir le temps d'implémenter les fonctionnalités avant que les équipes Front-End n'y soient impliquées.
+
+La méthodologie agile SCRUM est composée de plusieurs cérémonies, en voici un schéma récapitulatif.
+
+\imageCenter[0.4]{h}{sprint.png}{Schéma de l'organisation d'un Sprint chez CBA}
+
+\begin{itemize}
+    \item \textbf{Daily}: Réunion quotidienne - 15min.
+    
+    Elle permet à chaque membre de l'équipe de résumer ce qu'il a réalisé la veille, ce qu'il compte réaliser le jour même, mais également d'expliquer les différentes problématiques rencontrées afin de s'accorder et de les résoudre.
+
+    Je n'ai personnellement rarement eu à expliquer mes problèmes pendant un Daily car dès que j'en ai un je n'hésite pas à aller voir ou appeler les membres de mon équipe. Cependant, cette cérémonie m'aide beaucoup à découvrir les problèmes des autres.
+    
+    \item \textbf{Weekly}: Réunion hebdomadaire - 1h.
+    
+    Elle concerne le Product Owner, le Lead Developer ainsi que le Responsable Production qui se concertent afin de résumer la semaine, les problématiques rencontrées et ce qui a bien fonctionné.
+    
+    \item \textbf{Grooming}: Chaque semaine - 1h30.
+    
+    Cette réunion a lieu autant que besoin durant le sprint, généralement deux à trois fois. Elle permet au Product Owner de présenter les User Stories à chaque membre de l'équipe afin d'être sûr qu'elles soient réalisables, détaillées et comprises par chacun.
+    
+    En tant que développeur, elle nous permet de rajouter des informations techniques qui aideront le développement de cette tâche et aux testeurs d'écrire une première série de tests.
+    Plusieurs US sont de mises dont des ajouts de fonctionnalités, des US techniques mais également d'autres US de correction de bugs.
+
+    Cette cérémonie me permet de me rendre compte de la complexité des tâches à réaliser mais également, lorsque vient la phase de développement, des choses que l'on a pu oublier de prendre en compte lors de cette cérémonie.
+
+    \item \textbf{Poker Planning}: Chaque début de sprint - 2h.
+    
+    Elle concerne tous les membres de l'équipe. \\
+    Elle permet d'estimer chaque US à réaliser et de les attribuer à chacun. Cette estimation compte la documentation, ainsi qu'un temps de test que le développeur doit réaliser avant que les testeurs soient amenés à tester de leur côté.
+    
+    \item \textbf{Review}: Chaque fin de sprint - 1h.
+
+    Concerne tous les membres de l'équipe ainsi que le Responsable Production. \\
+    Le Lead Developer présente un résumé du sprint avec des statistiques et un résumé de ce que l'équipe a produit.
+    Le Product Owner présente ce qui a été développé durant le sprint.
+
+    \item \textbf{Retro}: Chaque fin de sprint - 1h.
+
+    Concerne tous les membres de l'équipe ainsi que le Responsable Production. \\
+    Animé par le responsable production, il s'agit d'un moment de retour d'expérience et de feedback sur le sprint dans le but d'améliorer les prochains.
+    
+\end{itemize}
+
+Cependant, la méthodologie agile SCRUM n'est pas complètement respectée, CBA possède un compteur de \textbf{plus de 150 semaines de sprints}, ce qui lui a permis d'acquérir une certaine \textbf{expérience} sur la méthodologie agile SCRUM et lui a permis de la modifier selon ses besoins.
+
+Tout d'abord, chaque équipe possède un Lead Developer, un Product Manager, un Product Owner, un Tech Lead, un ou deux Contrôleurs Qualité ainsi que quatre à six développeurs. En effet, dans chaque équipe, il n'y a \textbf{pas de SCRUM Master}, ce rôle est mené à bien par le \textbf{Lead Developer} et le responsable production veillant ainsi à ce que la méthodologie SCRUM soit respectée mais relevant également les différentes problématiques afin de trouver des solutions.
+
+Ensuite, chaque User Story n'est pas estimée en complexité mais selon un nombre de points où un point équivaut à une demi-journée de développement pour un seul développeur.
+
+Des Weekly ont également lieu entre le Responsable Production, le Product Owner et le Lead Developer ce qui permet de faire remonter des problèmes, techniques, de gestion ou de relations humaines qui peut parfois y avoir afin de les corriger mais également ce qui fonctionne bien afin de continuer dans ce but.
+
+Un changement ayant eu lieu en Novembre est le passage d'un sprint de 3 semaines à 4 semaines afin d'\textbf{établir un SAS} (\ref{term:sas}) de 3 jours pour que les Contrôleurs Qualité puissent avoir le temps de tester toutes les US, que les développeurs puissent également avoir du temps libre afin d'apprendre, de documenter leurs US mais également avoir le temps de corriger les anomalies remontées par les Contrôleurs Qualité.
+
+Durant le Sprint, étant très concentré sur la réalisation de mes User Stories dans les temps demandés, le SAS me permet de réviser des notions sur lesquelles j'ai pu obtenir certaines difficultés. Il me permet également de réaliser de la documentation.
+
+Le développement en méthodologie SCRUM permet ainsi de livrer fréquemment aux clients de nouvelles versions contenant de nouvelles fonctionnalités ainsi que de la résolution de bugs tout en répondant au besoin des différentes normes de santés nationales changeantes.
+
+\newpage
+
+\subsection{Le département du Développement}
+
+Le département du \textbf{Développement} est le \textbf{coeur de CBA}, il s'agit également de l'environnement dans lequel j'évolue. C'est dans ce dernier que sont développées les différents produits.
+
+Ce département est composé d'environ 80 personnes, il est divisé en plusieurs équipes dont un Responsable Production et des personnes chargées de coordonner ces dernières.
+
+\subsubsection{Équipe Architecture}
+
+L'équipe architecture est composée de 3 personnes, dont un \textbf{architecte Front-end}, un \textbf{architecte Back-End} et d'un responsable Architecture chargé de travailler sur tous les projets.
+
+Cette équipe s'occupe de \textbf{structurer un projet}, de \textbf{résoudre les problèmes liés à cette structure}, de \textbf{passer un projet d'une technologie à une autre} mais également de \textbf{répondre à tout un tas de problématiques lorsque les développeurs sont en difficulté}.
+
+Parmi le rôle des architectes, il est également question de faire monter en compétence les développeurs. L'architecte Front-End est donc également quelqu'un avec qui j'interagis beaucoup lors de mon apprentissage.
+
+Cette équipe ne possède pas d'organisation spécifique.
+
+\subsubsection{Équipe Product Designers}
+
+Composée de \textbf{deux Product Designers}, cette équipe est en étroite collaboration avec les PO et PM de chaque équipe. Les Products Designers sont chargés de réaliser le design de l'ensemble des produits CBA afin que l'entreprise soit \textbf{alignée au niveau de la direction artistique du Design de ces produits}. L'enjeu pour CBA est de posséder un design logiciel propre à elle-même afin de \textbf{démarquer ces produits des produits concurrents}.
+
+Les Designers s'accordent également à développer des outils afin de faciliter le travail des développeurs.
+
+L'équipe ne possède également pas d'organisation spécifique.
+
+\subsubsection{Équipe Agathe You \& Agathe Emotion - Front-End}
+
+L'équipe Agathe est une \textbf{équipe Front-End} composée de 11 personnes. Elle est chargée du développement web et mobile d'AgatheYou et Agathe Emotion.
+
+Agathe You est devenu le logiciel que l'équipe développe le plus aujourd'hui, avec Agathe Emotion qui reste également maintenue par l'équipe.
+
+L'équipe Agathe You \& Agathe Emotion est également mon équipe. Je reviendrai ainsi sur celle-dernière avec beaucoup plus de détails.
+
+\subsubsection{Équipe Milo - FrontEnd}
+L'équipe Milo est une équipe \textbf{Front-End}, composée de 8 personnes et chargée de développer Milo en version Web et Mobile.
+
+Le projet Milo est un clône d'AgatheYou, d'où le fait que cette équipe est également en collaboration avec l'équipe AgatheYou, autant du point de vu technique (étant donné qu'il s'agit des même technologies utilisées) que du point de vue fonctionnel.
+
+\subsubsection{Équipe Back-End}
+L'équipe Back-End est composée de 8 personnes.
+
+Le back est développé en \textbf{Java J2EE} et \textbf{Hibernate}, il est \textbf{commun à l'équipe AgatheYou et à l'équipe Milo mais séparé en quatre parties}, à savoir AgatheYou Mobile, AgatheYou Web, AgatheYou Emotion et Milo.
+
+\subsubsection{Équipe Compta}
+L'équipe compta est une équipe de 6 personnes qui s'occupe du service de comptabilité \textbf{Tempo Compta} et \textbf{Maestro Compta}.
+
+Il s'agit d'une équipe \textbf{Full-Stack}.
+
+\subsubsection{Équipe Outils Internes}
+L'équipe Outils Internes est chargée de répondre aux besoins de l'entreprise.
+
+Il s'agit d'un équipe \textbf{Full-Stack} composée de 11 personnes et divisée en deux sous-équipes, dont une s'occupant du CRM (\ref{term:crm}) et l'autre développant des applications web et des API destinées à l'usage des membres de CBA.
+
+\subsubsection{Équipe Opaline}
+L'\textbf{équipe Opaline} est chargée du développement d'Opaline, anciennement \textbf{MyInfi}.
+
+Cette équipe est une équipe \textbf{Full-Stack} composée de 5 personnes.
+
+\subsubsection{Équipe Infrastructure}
+Elle est chargée de fournir les outils nécessaires au travail des salariés de la boîte (outils de travail des collaborateurs, mise à jour des bases de données, de Gitlab, de la sécurité logicielle et cetera.).
+
+\newpage
+
+\section{Ma mission}
+
+CBA Informatique Libérale recrute chaque année de nouveaux étudiants pour du développement.
+
+Ce recrutement s'articule autour d'un marché de l'emploi tendu, ce qui permet à l'entreprise de former des étudiants dans un environnement adapté mais également de les récupérer par la suite. Par ailleurs, énormément de développeurs chez CBA ont étudié au CERI à l'Université d'Avignon.
+
+Le 04 septembre 2023, j'ai intégré l'équipe chargée du développement Front-End de l'application web et mobile \textbf{Agathe You}, produit phare de CBA. \\
+
+Ma mission consiste au développement de l'application AgatheYou Web et Mobile dans une équipe d'une dizaine de personnes dans le cadre de la méthodologie SCRUM.
+
+Il s'agit d'abord de comprendre le besoin de l'IDEL puis de le retranscrire techniquement.
+
+Il est donc question de concevoir, développer de nouvelles fonctionnalités en accord avec les instructions du Product Owner et du Lead Developer.
+
+Il s'agit également de \textbf{corriger certains bugs de conception}, de participer aux tests et aux contrôles qualité tels que les \textbf{Tests Dev} ou les \textbf{Merge Request} que j'expliquerai dans la prochaine partie.
+
+Il s'agit également de \textbf{challenger les User Stories}, de \textbf{participer à la création et l'implémentation d'User Stories techniques} ainsi que de fournir une bonne documentation.\\
+
+Tout ce travail doit également être accompagné d'un \textbf{respect des processus internes}, de \textbf{normes de sécurité} ainsi que des \textbf{méthodes de gestion de projet interne} comme la méthodologie SCRUM. Il s'agit également de respecter les \textbf{bonnes pratiques d'implémentation} ainsi que les bonnes pratiques de sécurité.
+
+\subsection{Mon équipe}
+L'équipe Agathe You est une équipe composée de 11 personnes (dont je n'ai pas le droit de citer les noms). Le Lead Developer est également mon tuteur entreprise.
+
+\begin{itemize}
+    \item Un \textbf{Product Manager}
+    \item Un \textbf{Product Owner}
+    \item Un \textbf{Lead Developer}
+    \item Un \textbf{Lead Technique} {arrivé durant le quatrième semestre}
+    \item Quatre \textbf{Développeurs} dont deux anciens étudiants du CERI
+    \item Trois \textbf{Contrôleurs Qualité} (web et mobile)
+    \item Et moi même, \textbf{Apprenti Développeur}
+\end{itemize}
+
+L'arrivée de ce nouveau Lead Technique a énormément contribué à faire progresser l'équipe, et m'a surtout permis, à titre personnel, d'évoluer de manière exponentielle : aussi bien dans ma manière de développer, dans la rigueur apportée au code, dans la découverte de meilleures pratiques, mais surtout dans la façon de concevoir, de réfléchir et d'aborder les problèmes.
+
+\newpage
+
+\subsection{Méthodologie de travail}
+
+Les demandes concernant le produit sont \textbf{traitées par le Product Owner} en interaction directe avec les clients mais également avec \textbf{le service Hotline} faisant remonter les problèmes les plus récurrents d'incompréhension du client sur l'application, ce qui conduit à des appels hotlines. \\
+
+La méthodologie agile SCRUM permet ainsi de répondre aux besoins des clients le plus rapidement possible. \\
+
+Le fonctionnement de la méthodologie SCRUM dans l'équipe AgatheYou est le même fonctionnement qu'expliqué précédemment, il n'est ainsi pas nécessaire d'y revenir. Cependant, il est nécessaire de se pencher sur le \textbf{cycle de vie d'une User Story}, qui est quant à lui assez propre à chaque équipe chez CBA. \\
+
+Sur la figure ci-dessous, un schéma illustrant le workflow d'une US (\ref{Worflow d'une US}).
+
+\imageCenter[0.4]{h}{workflow.png}{Workflow d'une US \label{Worflow d'une US}}
+
+Lorsqu'une User Story est créée, une étude de faisabilité a lieu durant le Grooming de part tous les membres de l'équipe. Une fois cette étude réalisée, son temps de réalisation est voté par tous les développeurs de l'équipe durant le Poker Planning. Elle est ensuite attribuée puis réalisée par un développeur.
+
+Durant cette phase de réalisation, le développeur se doit d'échanger avec le Lead Developer mais également avec le Product Owner afin d'éclaircir les zones d'ombre de l'US (qui ont déjà été abordées en Grooming).
+
+Une fois l'User Story développée, la prochaine étape est le \textbf{Test Development} consistant à présenter l'US en question à toute l'équipe, le travail réalisé et à s'assurer du bon visuel et du bon fonctionnement de la fonctionnalité développée.
+
+A ensuite lieu une Merge Request dans la branche Release Candidate (RC, la prochaine version finale stable du logiciel) accompagnée de sa Code Review afin de vérifier que le code est conforme aux conventions et aux normes de développement. Le Lead Developer remonte ainsi les différents problèmes et le développeur se doit de les corriger.
+
+Une fois ces problèmes corrigés, la branche doit être fusionnée dans une branche de test pour que le contrôleur qualité vérifie que le développement n'a engendré aucun bug et que le développement de cette fonctionnalité s'imbrique bien avec les autres fonctionnalités développées par les autres personnes. Si le développement n'est pas conforme, des anomalies sont créées sur Jira et nous devons les corriger.
+
+À toute étape, si le développement n'est pas conforme au résultat attendu, le développeur se doit de revenir à sa phase de développement. Un nouveau \textbf{Test Development} peut éventuellement avoir lieu, mais le test est à nouveau effectué par le Contrôleur Qualité.
+
+Une fois le test fait et validé, l'US passe à l'état "Terminée". Elle peut enfin être fusionnée dans la branche RC et le développeur peut réaliser la documentation de son US.
+
+\newpage
+
+\section{Outils}
+
+Afin de réaliser ces différentes étapes et de rendre le travail fluide, plusieurs outils sont utilisés au quotidien.
+
+\subsection{Git et Gitlab}
+
+\textbf{Git} est un système de contrôle de version que nous utilisons avec \textbf{Gitlab} en tant que gestionnaire de dépôt Git.
+
+Chaque User Story est réalisée dans une branche à part, partant de la release candidate du Sprint actuel et également fusionnée dans cette dernière lorsqu'elle est "Terminée".
+
+Cependant, la gestion des branches est différente en fonction des produits.
+
+Sur l'application mobile, étant donné que les versions sont régies par les utilisateurs (qui installent ou pas les mises à jour), il est question d'une gestion plus complexe car nous devons gérer plusieurs versions en parallèle.
+
+Sur le web, il s'agit toujours d'une seule version qui est en production.
+
+\subsection{Figma}
+
+\textbf{Figma} est utilisé pour la réalisation de maquettes. Ces maquettes sont le résultat du travail du Product Designer ainsi que du Product Owner, elles sont nécessaires à la fluidité de développement car elles permettent de nous assurer, en tant que développeur, que le développement est conforme aux attentes en évitant des allers-retours incessants de vérification.
+
+\subsection{Jira}
+\textbf{Jira} pour la gestion de tickets. Ces tickets peuvent être créés par tous les membres de l'équipe. Les tickets peuvent être des bugs, des User Stories, des demandes de documentation, des anomalies, des remontées hotline.
+
+Jira est primordial pour le suivi de l'état des User Stories grâce à un tableau Kanban.
+
+Nous utilisons également des conventions de nommage afin de lier les commits et les branches à Jira pour facilement s'y retrouver.
+
+\subsection{Confluence}
+Enfin, la documentation de chaque User Story est réalisée sur \textbf{Confluence}.
+Chaque projet possède sa propre documentation classée par fonctionnalité. La documentation était assez mal faite précédemment, elle est aujourd'hui incluse dans le développement d'une User Story étant donné qu'elle est primordiale à la pérennité des produits.
+
+\newpage
+
+\section{Environnement technologique}
+
+La licence \textbf{JetBrains} est la licence utilisée pour les IDE chez CBA et en particulier \textbf{Intellij Idea} et \textbf{WebStorm} qui sont les deux IDE que j'utilise quotidiennement.
+
+Plusieurs outils tels que le \textbf{TLA} (\ref{term:tla}), la \textbf{Carte Vitale} ainsi que la \textbf{Carte Professionnel Santé} qu'utilisent les infirmières sont également des outils que je suis amené à utiliser afin de réaliser nos différents tests. Ces cartes de tests sont fournies par l'\textbf{Agence du Numérique en Santé} (ANS).
+
+\subsection{Struts}
+
+Les applications web Agathe You (en partie) et Emotion utilise \textbf{Struts}, un framework Java EE basé sur l'architecture MVC pour applications web.
+
+Les applications utilisant Struts sont aujourd'hui de l'existant que l'on entretient mais que l'on passe progressivement à Angular 17 grâce à Docker.
+
+\subsection{Angular et Ionic}
+
+L'application mobile Agathe You est développée grâce aux frameworks \textbf{Ionic 6} et \textbf{Angular 16} (que nous passons à Angular 17). 
+De plus, comme évoqué précédemment, une partie de l'application Web est également développée en Angular mais vouée à passer entièrement sur cette technologie. \\
+
+Angular est un Framework OpenSource, basé sur TypeScript, codirigé par l'équipe du projet « Angular » chez Google ainsi que par une communauté de particuliers et de sociétés.
+Il est basé sur TypeScript et fréquemment mis à jour.
+
+Le choix d'Angular est très tendance dans le développement Front d'applications Web, il fonctionne sur la base de composants web (réutilisables) et fournit de très bons outils de développement (Composants, Services, Routing, Modules...).
+
+De plus, combiné à Ionic, qui est un framework de développement mobile multiplateforme, il permet de réaliser des applications mobiles multiplateformes très performantes grâce à l'utilisation de webviews.
+
+Le choix d'une technologie web et pas d'une technologie permettant d'accéder aux outils natifs du téléphone est dû à la complexité du projet mais également à la facilité de recrutement liée à l'utilisation de technologies webs.
+
+\subsubsection{Smart and Dumb components}
+Avec Angular, et ceci sur tous les métiers, nous utilisons une structure spécifique qui est le Smart and Dumb components.
+
+Les Dumbs Components sont des composants qui n'ont pas de logique métier. Ils se contentent de recevoir des données via des @Input et d'émettre des événements via des @Output. Leur rôle principal est de présenter l'interface utilisateur.
+
+Les Smart Components, sont des composants qui contiennent de la logique métier. Ils gèrent l'état de l'application, interagissent avec les services pour récupérer des données, et transmettent ces données aux Dumb Components.
+
+Ce pattern n'est pas complètement respecté dans le code des produits de CBA, mais il permet de définir une structure de travail, de pouvoir réutiliser les Dumb Components et de centraliser la logique métier dans un Smart Component.
+
+\subsection{RxJs}
+\textbf{RxJS} (Reactive Extensions for JavaScript), est une bibliothèque pour la programmation réactive utilisant des observables, pour faciliter la composition de programmes asynchrones ou des programmes basés sur des événements en utilisant des séquences observables.
+
+Il est nécessaire de comprendre les opérateurs RxJs car énormément d'opérations dans l'application sont réalisées grâce à cette bibliothèque.
+
+\subsection{NgRx\label{section:ngrx}}
+
+\textbf{NgRx} est une bibliothèque d'outils pour la gestion d'état réactif permettant de gérer de manière efficace l'état de l'application en utilisant des Observables et des opérateurs RxJS.
+
+La bibliothèque d'outils est basée sur le pattern suivant:
+
+\imageCenter[0.2]{ht}{state-management-lifecycle.png}{Cycle de vie de la gestion d'état NgRx (ngrx.io).}
+
+\begin{itemize}
+    \item Le \textbf{store} est un conteneur pour l'état de l'application. Il maintient l'état global et fournit des méthodes pour accéder à cet état et le modifier.
+    \item Les \textbf{actions} sont des objets qui décrivent un événement. Une action a généralement un type et peut contenir des données supplémentaire pour traiter cette action.
+    \item Les \textbf{reducers} sont des fonctions pures qui spécifient comment l'état de l'application change en réponse à une action. Elles prennent l'état précédent et une action comme arguments et retournent un nouvel état.
+    \item Les \textbf{selectors} sont des fonctions qui permettent d'obtenir des données de l'état de manière performante et structurée.
+    \item Les \textbf{effects} permettent de gérer les effets secondaires (comme les appels API) en réponse aux actions. Ils écoutent les actions et peuvent déclencher de nouvelles actions une fois l'opération asynchrone terminée.
+\end{itemize}
+
+NgRx est vouée à disparaître à cause de sa complexité. Elle sera remplacée au fur et à mesure par un nouveau pattern dont je parlerai au prochain semestre.
+
+\subsection{UI Kit}
+L'\textbf{UI Kit} est une librairie inter-équipes, développée par CBA.
+Le but principal est de servir d'interface de stylisation, en fournissant des composants modulables prêts à être utilisés.
+
+Elle est développée en Angular 17 et utilisée dans le développement de plusieurs applications (Agathe You web et mobile et Milo).
+
+En Angular, cette bibliothèque permet de créer des composants réutilisables dans toute l'application (boutons, alertes, icônes...), qui acceptent des entrées (inputs en Angular) et les affichent sous la forme du composant correspondant.
+
+L'UI Kit permet de rendre le développement plus simple et permet à CBA d'obtenir une certaine cohésion artistique sur ses différents produits.
+
+\subsection{Docker}
+
+\textbf{Docker} est uniquement utilisé pour l'application Web Agathe You qui possède une partie en Struts (existant) et une partie en Angular.
+
+Il permet ainsi de simplifier le développement de l'application Web en facilitant grandement la gestion de l'environnement de chacune des parties.
+
+\newpage
+
+\section{Mon travail}
+
+\subsection{Intégration et formation Angular}
+
+Durant le premier semestre, une phase d'intégration a eu lieu durant la première semaine d'entreprise durant laquelle j'ai pu suivre une phase d'observation, de courtes explications des différentes technologies, des processus, des méthodes ainsi que des outils utilisés tels que Jira, Gitlab ou Teams. On m'a également expliqué le fonctionnement de NgRx, poumon du développement web et mobile d'AgatheYou.
+
+Ne connaissant que très peu Angular avant le début de mon alternance, je me suis ainsi avancé sur ma formation en été 2023, notamment en révisant certaines notions liées à JavaScript, TypeScript, HTML, CSS et en réalisant la formation officielle “Tour Of Heroes” d'Angular.
+
+En alternance, j'ai donc passé les deux semaines suivants ma semaine d'intégration sur Udemy en réalisant les formations Angular de Simon Dieny et celle de Maximilian Schwarzmüller.
+
+Ces formations contenaient des projets à réaliser et qui m'ont permis de comprendre le fonctionnement d'Angular et de NgRx. \\
+
+Mon ancien tuteur entreprise et Lead Developer \textbf{David MERLE} ainsi qu'un Architecte Logiciel ont supervisé mon apprentissage en me questionnant et en me donnant divers exercices à faire. \\
+
+Cette formation qui ne comprenait que la technologie Angular a duré l'entièreté de ces deux premières semaines et a été finalisée par un compte rendu de la formation et d'une validation de ma période d'essai. C'est donc à partir du milieu de ma troisième semaine d'alternance que j'ai commencé à participer au développement de l'application mobile AgatheYou.
+
+\subsection{Le monde de l'entreprise}
+
+Étant nouveau dans le monde de l'entreprise, toute cette organisation était nouvelle pour moi.
+
+C'est durant mon premier semestre d'alternance que j'ai parallèlement acquis certaines notions quant à l'organisation interne d'une entreprise, le rôle de chacun des employés, les différentes hiérarchies mais également aux différentes interactions sociales qui peuvent s'y présenter. \\
+
+Ces deux premiers semestres m'ont également permis de comprendre le fonctionnement concret de la méthodologie SCRUM, les différents changements faits chez CBA ainsi que les hiérarchies qui se présentent au sein d'une équipe.
+
+\subsection{Comprendre le besoin}
+
+Développant des applications pour des IDEL, il est nécessaire de comprendre les besoins du métier en passant par sa routine, son organisation, à la compréhension de la planification de leurs rendez-vous, les différentes étapes de facturations etc.
+
+La compréhension de ce besoin se complique davantage en raison de toutes les abréviations du domaine de la santé à apprendre et à comprendre telles que le \textbf{BSI} (\ref{term:bsi}), l'\textbf{ALD} (\ref{term:ald}), le \textbf{SCOR} (\ref{term:scor}), les différentes majorations (\textbf{MAU} (\ref{term:mau}), \textbf{MIE} (\ref{term:mie}), \textbf{MCI} (\ref{term:mci}), Covid...). \\
+Ces abréviations sont citées afin de permettre au lecteur de comprendre la complexité du besoin.
+
+Il était donc nécessaire que je prenne l'application en main et que je me mette à la place d'une IDEL en réalisant les opérations qu'elle effectue chaque jour telles que la réalisation d'\textbf{Ordonnances}, d'\textbf{Actes Isolées}, de \textbf{Bilans de Soins Infirmiers}, \textbf{facturations}, \textbf{télétransmission}, consultation des données patients et tout un tas d'autres fonctionnalités. \\
+
+Il s'agit également de comprendre les données qui sont envoyées aux différentes parties telles que la \textbf{CPAM} ou les \textbf{mutuelles}, les actions effectuées au Back-End sur ces dernières ou même de comprendre comment s'effectuent les calculs liés à la \textbf{facturation}. \\
+
+La compréhension du besoin est complexe à comprendre et peut à première vu être le travail du Product Owner. Cependant, tout ce \textbf{besoin est traduit du côté code}, il est ainsi primordial de le comprendre afin d'y associer le côté technique et de s'y retrouver dans le développement.
+
+% \subsection{Participation aux cérémonies}
+
+% Je ne connais pas l'application comme les développeurs la connaisse mais bon...
+
+\newpage
+\section{Développement de fonctionnalités}
+
+Cette section aborde le développement de différentes fonctionnalités.
+
+Durant le développement de fonctionnalités, j'ai pu réaliser plusieurs tickets, principalement des User Stories avec de nouvelles fonctionnalités à implémenter.
+
+J'ai également pu remonter des problèmes concernant la correction de code non conforme aux bonnes pratiques, ou de la documentation dépréciée ou mal centralisée.
+
+Afin de réaliser ces tickets, j'ai dû apprendre ou réapprendre à utiliser les différents outils de développement tels que l'\textbf{inspecteur} pour le débogage, \textbf{npm} (node package manager) pour le lancement, le build et la gestion des dépendances de l'application, \textbf{Git}, \textbf{Gitlab} mais également \textbf{Jira} pour la gestion de tickets, permettant de mettre en pratique la méthodologie SCRUM. \\
+
+Une \textbf{documentation} de chacune des US devait également être effectuée.
+
+Mon travail étant composé de tickets à résoudre, je décomposerai cette partie lié à mon travail en sous-sections où chaque sous-section correspond à un ticket (US, bug ou anomalies) que j'ai pu traiter ainsi qu'aux problèmes rencontrés. Il s'agit pour moi de la séparation la plus claire possible étant donné que les User Stories que j'ai pu développer concernent des parties différentes de l'application.
+
+Pour chaque semestre, l’intitulé de la première fonctionnalité viendra préciser la période concernée, permettant ainsi de distinguer facilement les corrections effectuées à chaque semestre.
+
+\subsection{De 99km à 999km}
+Nous abordons les fonctionnalités développées au cours du premier semestre d'alternance. \\
+
+Ma première US consistait à changer la saisie de kilomètres d'une IDEL sur une ordonnance, passant de 99 à 999 km maximum. 
+
+Cette US était évaluée à 1 point, elle était très simple à développer de premier abord mais plusieurs problèmes techniques ont été rencontrés (et n'ont même pas pu être corrigé par mon équipe) comme la non-émission d'un formulaire enfant au formulaire parent en Angular.
+
+J'ai ainsi passé du temps à essayer de résoudre le problème de la meilleure des manières, mais étant donné que le problème était technique et qu'améliorer la qualité du code prenait du temps, on m'a demandé de négliger la qualité du code pour ne pas passer trop de temps sur l'US.
+
+Ainsi, au lieu d'utiliser les validateurs d'Angular et les faire fonctionner avec les Smarts and Dumb components, j'ai dû créer une fonction me permettant de savoir si ma saisie de kilomètres était bonne ou pas. Je devais également obliger l'utilisateur à saisir des nombres à virgule.
+
+C'est également cette première US qui m'a appris à ne plus sous-estimer les prochaines.
+
+\subsection{Paramétrage web}
+
+La communication est une chose primordiale dans la fluidité de fonctionnement d'une équipe, deux US en particulières m'ont permis de faire ce constat.
+
+Cette User Story consistait à \textbf{afficher un message par l'intermédiaire d'une modale au lancement de l'application si le client n'a pas effectué son paramétrage web} et ceci toutes les 24h.
+
+Ayant mal compris les moments où devait apparaître la modale, j'ai perdu du temps à développer un comportement qui n'était pas celui attendu, là où il était de mon devoir d'aller questionner mon Product Owner.
+
+Est-ce que la modale doit apparaître:
+
+\begin{itemize}
+    \item lorsque l'utilisateur éteint l'application et la rallume ?
+    \item lorsque l'utilisateur se connecte grâce à ses identifiants ?
+\end{itemize}
+
+Un développeur de l'équipe et moi ayant pensé instinctivement qu'il s'agissait de la première supposition, j'ai perdu du temps de développement alors que j'aurai dû poser cette question à mon Product Owner dès le départ.
+
+Je n'ai pas dû développer à nouveau la modale mais j'ai dû changer l'endroit ainsi que la manière dont elle était appelée.
+
+\subsection{Consulter les droits vitales depuis le dossier patient}
+
+La deuxième demandait à \textbf{pouvoir consulter les droits vitales depuis le dossier patient}. Voici la maquette (\ref{Fig:Data1}) que l'on m'a demandé de réaliser sur la figure ci-dessous. J'ai ainsi ajouté les boutons "\textbf{Consulter les informations CV}" (première illustration) et "\textbf{Consulter les droits du patient}" (deuxième illustration) en dirigeant l'appui sur ces boutons vers la page affichant les droits vitales du patient (troisième illustration).
+
+\begin{figure}[!h]
+    \centering
+    \begin{subfigure}{0.3\textwidth}
+        \includegraphics[width=\linewidth]{1.png}
+    \end{subfigure}
+    \begin{subfigure}{0.3\textwidth}
+        \includegraphics[width=\linewidth]{2.png}
+    \end{subfigure}
+    \begin{subfigure}{0.3\textwidth}
+        \includegraphics[width=\linewidth]{3.png}
+         \caption{Illustration des différents éléments développés sur l'User Story "\textbf{Pouvoir consulter les droits vitales depuis le dossier patient}".}\label{Fig:Data1}
+    \end{subfigure}
+\end{figure}
+
+Il y a deux manières de récupérer les droits d'un patient: par sa \textbf{carte vitale} grâce au \textbf{TLA Ted} (\ref{term:tla}) ou par \textbf{ADRi} (\ref{term:adri}).
+
+Le problème majeur rencontré était que lors de la consultation des droits d'un patient récupéré sur l'application par \textbf{Carte Vitale}, les informations s'affichaient alors que lors de la consultation des droits d'un patient récupérés par \textbf{ADRi}, les informations ne s'affichaient pas.
+
+La complexité de la transition et du stockage des données dans l'application mobile m'a pris et me prend encore du temps à comprendre, car nous utilisons NgRx avec une sur-couche personnalisée qui permet de faire fonctionner l'application mobile en mode hors ligne grâce à la mise en cache des données de l'application.
+
+Cela m'a donc pris du temps à retrouver et à comprendre le fonctionnement de la transmission des données concernant les droits d'un patient.
+
+Après avoir réussi à le comprendre et à voir que, dès le début, il me manquait des données. La console développeur du navigateur m'a permis d'identifier que la réponse de la requête envoyée au Back-End ne contenait pas les données nécessaires au développement de mon User Story.
+
+Toutes les User Stories devant être pré-évaluées techniquement par le Lead Developer, ce genre de détail aurait pu être évité si l'User Story avait été mieux pré-évaluée.
+
+En effet, le Lead est censé noter (dans les détails techniques de l'User Story) les endpoints du Back-End à utiliser mais également s'ils répondent entièrement au besoin de l'US, ce qui devient un prérequis. Si le Lead détecte qu'il y a un problème, on est censé demander au Back-End de répondre à notre besoin avant le commencement de l'User Story.
+
+Mon US est ainsi passé en bloquée le temps que l'équipe Back-End corrige le problème.
+Une fois le problème corrigé, mon développement fonctionnait parfaitement.
+
+\subsection{AMX et IFI}
+
+Il s'agissait de deux US différentes qui se ressemblaient beaucoup.
+
+Ces deux US consistaient en l'ajout de deux actes "AMX" et "IFI" en ajout de soin manuel pour tout type de comptes.
+
+Elles étaient relativement faciles à développer, il a fallu repérer où elles se situaient dans le code et les ajouter tout en vérifiant qu'elles étaient bien ajoutées pour les comptes remplaçants.
+
+Les remplaçants n'ayant pas les mêmes accès dans les applications et donc l'accès à certaines données (très sensibles), il faut donc vérifier selon les US que l'on arrive bien à atteindre le point voulu et qu'il n'y a pas de point de blocage pour les comptes remplaçants.
+
+\newpage
+
+\subsection{Intégration ALD}
+
+Nous abordons maintenant les fonctionnalités développées au cours du deuxième semestre d'alternance. \\
+
+Cette User Story consistait en l'ajout d'une fonctionnalité permettant d'indiquer si une prescription IDEL est liée à l'ALD (Affection de Longue Durée) du patient.
+
+Si le patient a une ALD dans ses droits, il fallait proposer à l'utilisateur de l'activer.
+Afin de vérifier si le patient dispose de l'ALD, je devais me baser sur le dernier support de droit disponible.
+
+La prescription se remplissant en 4 étapes, il fallait également que j'ajoute l'indication sur le récapitulatif (dernière étape).
+
+Sur la figure ci-dessous \ref{Fig:integration_ALD}, voici les résultats de mon développement.
+
+\begin{figure}[!h]
+    \centering
+    \begin{subfigure}{0.3\textwidth}
+        \includegraphics[width=\linewidth]{res/images/Integration ALD/A.png}
+    \end{subfigure}
+    \begin{subfigure}{0.3\textwidth}
+        \includegraphics[width=\linewidth]{res/images/Integration ALD/B.png}
+    \end{subfigure}
+    \begin{subfigure}{0.3\textwidth}
+        \includegraphics[width=\linewidth]{res/images/Integration ALD/C.png}
+    \end{subfigure}
+     \caption{Illustration des différents éléments développés sur l'User Story "\textbf{Pouvoir indiquer qu'une prescription IDEL est liée a l'ALD du patient}".}\label{Fig:integration_ALD}
+\end{figure}
+
+Lorsque une prescription IDEL est demandée, le patient doit choisir un patient, s'il choisit un patient qui dispose de l'ALD, une modale apparaît (première figure). S'il appuie sur "Utiliser l'exo pour cette prescription", à la prochaine étape, la checkbox "Couvert par l'ALD" doit être cochée.
+Ensuite, à l'étape 4 (le récapitulatif), une mention "ALD" apparaît. \\
+
+Au niveau technique, j'ai pu découvrir comment la navigation entre les différentes étapes était effectuée.
+
+Pour ce faire, chaque étape de la prescription possède son propre composant, ces quatre composants sont donc utilisés par un Smart Component qui fait le lien entre elles. Le Smart Component possède ainsi un formulaire qui peut être utilisé ou modifié dans chaque sous-composant qui est affiché ou non grâce à une directive structurelle "\textbf{ngSwitch}". \\
+
+Une directive en Angular est une classe qui peut modifier le comportement ou l'apparence des éléments du DOM (Document Object Model). \\ 
+
+Il en existe 3 types:
+
+\begin{itemize}
+    \item Directives de composants: Elles possèdent un template et contrôlent une partie de l'interface utilisateur. Chaque composant en Angular est une directive de composant.
+    \item Directives structurelles: Elles modifient la structure du DOM en ajoutant ou supprimant des éléments (\textbf{*ngFor} ou \textbf{*ngSwitch} par exemple).
+    \item Directives d'attributs: Elles modifient l'apparence ou le comportement des éléments existants en changeant leurs attributs (ngClass et ngStyle par exemple).
+\end{itemize}
+
+\subsection{Bilan de soin vocal - 2ème passage}
+
+Cette User Story fait suite à une autre US permettant de réaliser vocalement un Bilan de soins, une fonctionnalité permettant à CBA de vendre encore plus de licences étant donné qu'elle permet aux IDEL de réaliser leur travail encore plus rapidement. Cela constitue également un atout marketing, car l'utilisation d'outils reposant sur l'intelligence artificielle met en valeur la modernité et l'innovation technologique adoptées par CBA.
+
+Celui-ci, après l'enregistrement de l'utilisateur renvoie vers un récapitulatif contenant les commentaires, les constantes et les vigilances associées dictés par l'utilisateur.
+
+L'US demandait ainsi de vérifier le bon fonctionnement visuel de certaines vigilances et/ou erreurs de façon à ce qu'elles apparaissent bien comme spécifié sur la maquette, à savoir: 
+\begin{itemize}
+    \item Si vigilance
+    \begin{itemize}
+        \item Seul l'icône triangle doit apparaître
+        \item Le texte est en noir
+    \end{itemize}
+    \item Si constante en erreur
+    \begin{itemize}
+        \item Card avec liseré rouge
+        \item Tous les textes en rouge
+        \item Message d'erreur avec le “i”
+    \end{itemize}
+\end{itemize}
+
+Je devais également ajouter une modale permettant de confirmer la sortie lors du clique sur le bouton "Annuler" afin d'être sûr que l'utilisateur ait bien appuyé dessus intentionnellement.
+
+Afin de savoir s'il y avait une vigilance ou une erreur, je devais dicter en fonction de la constante des mesures totalement aberrantes, par exemple: "Mon patient vient d'atteindre 70 degrés de fièvre, son pouls dépasse les 400, il faudra faire attention à ce qu'il prenne bien son comprimé de paracétamol tous les jours.".
+
+Voici sur la figure ci-dessus (\ref{Fig:BSV}) les maquettes que je me devais de respecter:
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=1.1\linewidth]{res/images/Bilan de soin vocal/BSV.png}
+    \caption{Maquettes Figma de l'User Story "\textbf{BSV - Popup}".}\label{Fig:BSV}
+\end{figure}
+
+Cette User Story m'a permis de mieux comprendre le fonctionnement des modals en Angular.
+
+Les modals sont des fenêtres superposées sur l'interface utilisateur principale. Elle  permettent d'afficher du contenu ou de capturer des interactions sans quitter la page actuelle. Elles sont souvent utilisées pour des actions telles que les confirmations, les formulaires, les notifications, et les dialogues d'alerte.
+
+Pour la gestion des ces modals en Angular, nous utilisons la bibliothèque Angular Material pour l'application Web et Ionic pour le mobile.
+
+Angular Material est une bibliothèque de composants UI pour Angular, on l'utilise car elle gère très bien les modals sur Web.
+
+Comme toutes les User Stories que j'ai pu développer, le côté le plus compliqué n'était pas d'implémenter la fonctionnalité, mais de l'implémenter de la bonne manière.
+
+\newpage
+
+\subsection{Opaline Pro - Rendez-vous}
+
+Opaline étant une solution de mise en relation entre patients et IDEL, la liaison à cette solution est ainsi développée sur Agathe You Mobile permettant aux clients Agathe You de recevoir une notification des demandes de rendez-vous des patients en direct et de les accepter ou de les refuser. Ce service est particulièrement intéressant pour les IDEL qui commencent à s'installer, car il leur permet de constituer une patientèle.
+
+Sur Agathe You mobile, le service est payant, mais les IDEL proposant la prise de rendez-vous en téléconsultation (via des services comme Opaline) bénéficient d'une aide de l'État. Cette aide, supérieure au coût du service Opaline, profite à toutes les parties (sauf à l'État), même lorsque les clients n'utilisent pas réellement le service.
+
+L'User Story demandait ainsi à changer le comportement et à rendre la solution payante.
+L'utilisateur reçoit ainsi toutes les demandes de prise de rendez-vous des patients, il peut cliquer sur "Voir le détail". S'il clique sur refuser, cela refuse le rendez-vous, mais lorsqu'il clique sur "Accepter", une nouvelle modale apparaît avec un bouton "Découvrir Opaline".
+
+Si l'on clique sur ce bouton, une webview vers le site Opaline est ouverte.
+
+Sur la figure ci-dessous (\ref{Fig:Opaline pro}) le résultat du développement de cette User Story.
+
+\begin{figure}[!h]
+    \centering
+    \begin{subfigure}{0.3\textwidth}
+        \includegraphics[width=\linewidth]{res/images/Opaline pro/A.png}
+    \end{subfigure}
+    \begin{subfigure}{0.3\textwidth}
+        \includegraphics[width=\linewidth]{res/images/Opaline pro/B.png}
+    \end{subfigure}
+    \begin{subfigure}{0.3\textwidth}
+        \includegraphics[width=\linewidth]{res/images/Opaline pro/C.png}
+    \end{subfigure}
+     \caption{Résultat du développement de l'User Story "\textbf{Ne pas pouvoir accepter les rendez-vous si je ne suis pas Opaline PRO Payant}".}\label{Fig:Opaline pro}
+\end{figure}
+
+Sur cette User Story, les tests étaient un peu plus longs que les anciens, car je devais trouver des comptes patients Opaline présents dans la même zone, mais également deux comptes clients Agathe You:
+
+\begin{itemize}
+    \item Un compte possédant le service Opaline Pro pouvant accepter sans voir la modale.
+    \item Un compte ne possédant pas le service Opaline Pro et qui doit donc voir la modale apparaître pour acheter un abonnement.
+\end{itemize}
+
+Je devais également créer des demandes de rendez-vous sur ce compte patient pour les voir apparaître sur ces deux comptes.
+
+Ensuite, le plus compliqué n'était également pas que cela fonctionne mais que cela fonctionne en respectant les normes de développement.
+
+Dans mon cas, je devais créer une modale par dessus une autre modale.
+
+Instinctivement, je me suis dit qu'il serait intéressant de ne pas supprimer la modale et de créer la nouvelle modale sur cette dernière. Afin de réaliser ce comportement, je me devais donc de générer la modale avant le retour de la modale précédente.
+
+Cependant, au niveau du code ceci n'est pas bon car chaque modale doit retourner quelque chose avant de générer une autre modale. \\
+J'ai donc dû ouvrir (ou pas) la modale lors du retour de la dernière. \\
+Lorsque j'accepte le rendez-vous, la modale se ferme et la modale "Découvrir Opaline" s'ouvre, et lorsque cette dernière se ferme j'ouvre à nouveau l'ancienne modale.
+
+J'ai également eu des problèmes lié à TailWind CSS. 
+Tailwind CSS est un framework qui offre des classes prédéfinies pour créer des interfaces utilisateur personnalisées directement en HTML. Ce framework permet donc de simplifier le développement et la maintenance des styles.
+
+Le problème lié à TailWind concernait le défilement de ce qui se situait dans la modale "Découvrir Opaline". Celle-ci ne fonctionnait pas correctement visuellement car ce qui était à l'intérieur de ma modale dépassait du header de cette dernière.
+
+Ne comprenant pas pourquoi, j'ai résolu ce problème avec mon Lead Developer.
+
+Enfin, j'ai rencontré un souci concernant la librairie UI Kit. En effet, pour le bouton "Découvrir Opaline", je devais utiliser le composant "Button" UI Kit, cependant chaque produit de CBA possède sa propre palette de couleurs fixes et chaque palette de couleur est associée à chaque produit.
+
+Plusieurs allez-retours ont eu lieu en code review, j'ai donc dû surcharger la variable liée à cette couleur dans le fichier SCSS de mon composant. N'étant pas la meilleure chose à faire j'ai donc remonté le problème du fait qu'on ne puisse pas utiliser les couleurs des autres produits de CBA à l'équipe chargée de l'UI Kit. 
+
+\subsection{Archivage}
+
+J'ai également réalisé ma toute première User Story sur la partie du projet Web en Struts.
+
+Cette partie était accompagnée de l'installation de l'environnement web Struts grâce à la documentation Confluence. 
+Cette documentation n'étant pas complète, j'ai créé un ticket afin de l'améliorer (je ne l'ai pas fait sur le coup car j'étais trop concentré à faire en sorte que ça fonctionne, de plus je n'étais pas sûr de ce qui fonctionnait et de ce qui ne fonctionnait pas).
+
+Étant sur le point de changer de PC dans la semaine et de devoir tout réinstaller, j'en ai profité pour compléter la documentation avec les éléments manquants. \\
+
+Ayant fini d'installer l'environnement, j'ai donc commencé le développement de l'User Story.
+
+Voici sa description: En tant qu'IDEL, je veux avoir le bouton d'accès aux données archivées que si j'en dispose.
+
+Trois pages permettent d'accéder aux données archivées: la liste des ordonnances, la liste des factures et la liste des patients.
+
+Pour conditionner l'affichage du bouton, je devais faire un appel au back grâce à une façade, me permettant de savoir si le client dispose de données archivées.
+
+Le back me renvoyait un objet avec trois booléens, où chacun correspondait à la disposition de données archivées pour l'ordonnance, les factures et les patients. Je devais donc l'utiliser dans chaque partie afin de conditionner l'affichage des boutons.
+
+Cette User Story était relativement simple à réaliser et m'a permis de faire un premier pas dans l'environnement Struts.
+
+\subsection{Fournir des logs pour l'ordonnance magique}
+
+L'ordonnance magique permet, grâce au SCOR (\ref{term:scor}) de récupérer les soins présents sur une ordonnance en prenant une photo de cette dernière.
+
+Afin que l'équipe du Lab fasse des statistiques sur le taux de réussite de la prédiction des soins par le SCOR, il fallait utiliser un WebService afin envoyer la version de l'application ainsi que l'UUID de l'acte en question à l'équipe Back-End afin de l'injecter en base de données. \\
+
+Le développement de cette User Story s'est déroulé en plusieurs étapes durant lesquelles j'ai rencontré plusieurs difficultés qui n'étaient pas prévues dans le développement de l'User Story.
+
+Premièrement, je devais récupérer une ordonnance pour laquelle le SCOR fonctionnait et récupérait les soins écrits sur celle-ci.
+
+Ensuite, j'avais récupéré un compte avec lequel le SCOR ne fonctionnait pas du tout à cause d'une inscription en base de données. J'ai quand même posé la question, suite à quoi on m'a dit que tous les comptes pouvaient utiliser l'ordonnance magique. Pensant que c'était de la faute de mon développement, j'ai donc mis un peu de temps avant de tester avec un autre compte.
+
+De plus, quelques soucis techniques étaient également de la partie.
+
+Je devais récupérer la version de l'application grâce au plugin "AppVersion" de Cordova, cependant celui-ci ne m'envoyait pas la bonne version de l'application.
+
+Un membre de mon équipe m'a expliqué que le souci était dû au plugin qui ne fonctionne plus et qu'il avait, pour ce faire, développé une US technique durant le sprint permettant de remplacer ce plugin.
+
+J'ai donc fusionné sa branche de développement pour récupérer ce plugin, j'ai fait quelques tests puis le lendemain, au daily notre Product Owner nous a informé que la version est affichée dans "A propos" et qu'il n'y avait pas de raison qu'il ne fonctionne pas pour la récupération des logs.
+
+On s'est ainsi rendu compte que pour obtenir la bonne version grâce à ce plugin, je devais absolument réaliser un test via Jenkins, un outil open-source d'intégration continue et de livraison continue permettant également de réaliser des tests dans des conditions réelles. Il est lié à TestFlight sur IOS qui permet de tester facilement des applications ainsi que des extraits d'applications en version bêta et au PlayStore sur Android.
+
+J'ai donc repris le premier plugin, et au final il s'avère qu'il ne fonctionnait qu'en utilisant Jenkins, qui surchargeait la version grâce à la version donnée dans le package.json étant un fichier crucial qui contient des informations sur le projet (dont la version) et gère les dépendances nécessaires pour le développement et le fonctionnement de l'application.
+
+\subsection{Alerte en cas de PS avec Adeli}
+
+En France, les professionnels de santé sont identifiés par des numéros spécifiques: le numéro RPPS (\ref{term:RPPS} et le numéro ADELI. Ces numéros permettent de recenser et de suivre les praticiens tout au long de leur carrière.
+
+Le RPPS est destiné à remplacer progressivement le système ADELI. L'intégration des différentes professions de santé au RPPS se fait de manière progressive, et certaines professions paramédicales n'y sont pas encore incluses. \\
+
+Une fonctionnalité sur l'application Agathe You mobile est le partage de dossiers de soins que l'on peut partager à différents professionnels de santé.
+
+Cette User Story consistait ainsi à faire en sorte que les praticiens possédant un numéro ADELI ne soient pas sélectionnables lors du partage de dossier de soins. \\
+
+Je devais donc développer deux fonctionnalités:
+
+\begin{itemize}
+    \item Afficher une alerte contenant un bouton "Professions sans RPPS" qui, lors d'un appui par l'utilisateur, affichait une modale permettant de voir la liste des professionnels de santé ne possédant pas encore de numéro RPPS.
+    \item Rendre les professionnels de santé possédant un numéro ADELI non-sélectionnables.
+\end{itemize}
+
+La difficulté de cette User Story résidait dans la revue de code.
+
+D'une part, le Product Owner souhaitait que le bouton de l'alerte soit centré, mais le composant "alert" de la bibliothèque UI-Kit ne permet pas de le faire.
+
+J'ai donc envisagé de redévelopper manuellement l'élément, sans utiliser le composant "alert" pré-conçu de l'UI-Kit. Cependant, cela aurait impliqué de devoir effectuer manuellement les mises à jour futures si l'affichage du composant "alert" venait à changer dans l'UI-Kit.
+
+Avec l'accord de mon Lead Developer, j'ai finalement utilisé le composant de l'UI-Kit, même si le bouton ne pouvait pas être centré. \\
+
+D'autre part, j'avais créé ma propre classe CSS dans mon composant pour rendre les cartes des praticiens sans numéro RPPS non cliquables et visuellement "désactivées". J'ai dû corriger cela en utilisant une classe CSS de l'UI-Kit que je ne connaissais pas auparavant.
+
+\subsection{Rendre le paramétrage WebV2 optionnel par client}
+
+Nous abordons maintenant les fonctionnalités développées au cours du troisième semestre d'alternance. \\
+
+La version web d'Agathe You, initialement développée avec le framework Struts, est opérationnelle depuis plusieurs années. Cependant, avec le temps, l'interface utilisateur (UI) et l'expérience utilisateur (UX) ont dû être modernisées, ce qui a conduit à une refonte progressive et au développement de nouvelles fonctionnalités en Angular, tout en maintenant une cohabitation avec l'environnement Struts. \\
+
+Pour faciliter cette transition sans perturber les utilisateurs actuels, il a été décidé de rendre la bascule vers la version WebV2 optionnelle. 
+
+Un bandeau a été mis en place pour permettre aux clients de naviguer entre la version actuelle (en Struts) et la nouvelle version (en Angular) pour certaines fonctionnalités, telles que la création, la modification et la visualisation des ordonnances. \\
+
+Mon rôle a consisté à rendre l'affichage de ce bandeau en fonction d'une variable stockée en base de données pour chaque client.
+
+Pendant le développement, j'ai rencontré plusieurs difficultés, principalement dues à la cohabitation des deux environnements (Struts et Angular), chacun ayant ses propres fichiers de configuration.
+
+En effet, côté Front-End, les deux environnements pointaient vers des bases de données différentes, ce qui a nécessité plusieurs allers-retours avec l'équipe Back-End afin de résoudre ce problème.
+
+Ce problème, bien qu'élémentaire, n'est pas intuitif et a mis du temps à être identifié. Il est probable que des développeurs précédents y aient déjà été confrontés, et il reste un risque de retomber dessus à l'avenir, ce qui pourrait continuer à engendrer des pertes de temps.
+
+J'ai donc signalé cette difficulté à mon Lead Developer. Cependant, en raison de la priorité accordée à d'autres sujets importants en cours, aucune solution concrète n'a encore été mise en place.
+
+\subsection{Implémentation d'outils de développement sur divers projets}
+
+Cette section traite de l'intégration d'outils, aussi bien en local que dans les pipelines CI/CD, une pratique qui, selon moi, devrait être adoptée et documentée sur tous les projets collaboratifs, où l'on est voué à travailler à plusieurs. \\
+
+Ces outils ont pour objectif de simplifier l'automatisation des processus de versionnage et de publication, tout en assurant une stricte conformité des messages de commit. \\
+
+Ainsi, j'ai intégré ces outils à divers projets, les voici en détail.
+
+\subsubsection{Semantic-Release}
+
+Semantic-Release est une bibliothèque qui automatise entièrement le processus de gestion des versions et de publication de packages. \\
+
+Elle analyse les messages de commit pour déterminer automatiquement le numéro de version suivant (en suivant les conventions de commits), génère les notes de version correspondantes, met à jour les fichiers de changement et publie la nouvelle version sur les registres de packages (comme npm) ainsi que sur les plateformes de gestion de code source (comme GitHub).
+
+\subsubsection{Commitlint}
+
+Commitlint est une bibliothèque qui vérifie que les messages de commit respectent une convention spécifiée, nous utilisons la convention "Conventional Commits". \\
+
+Cela garantit que les messages de commit sont structurés de manière cohérente, ce qui facilite l'analyse automatique des commits pour la gestion des versions et la génération de notes de version.
+
+\subsubsection{Husky}
+
+Husky est une bibliothèque qui permet de configurer et d'exécuter des hooks Git personnalisés. \\
+
+Ces hooks peuvent être utilisés pour automatiser des tâches avant ou après des actions Git spécifiques, telles que les commits, les pushes, et les merges.
+
+Dans ce contexte, husky est utilisé pour exécuter commitlint lors de chaque commit, s'assurant que le message de commit respecte la convention définie. \\
+
+La publication ayant lieu dans une pipeline, j'ai également pu découvrir la CI Gitlab et son fonctionnement.
+
+\subsubsection{Documentation}
+
+Ces bibliothèques ont d'abord été intégrées à des librairies spécifiques aux produits de mon équipe, dans un objectif de test. Cependant, grâce à la clarté et aux avantages qu'elles apportent, leur implémentation était destinée à être étendue à de nombreux outils chez CBA. \\
+
+J'ai ainsi rédigé une documentation complète sur l'intégration de ces bibliothèques. Bien que ce travail soit chronophage, il est extrêmement bénéfique à long terme. \\
+
+Un élément particulier de ma documentation est l'ajout d'une FAQ à la fin, où j'ai consigné et répondu à toutes les questions que je me suis posées au cours du processus d'implémentation. À la fin de cette dernière, j'invite également les lecteurs à y inscrire les questions et les réponses qu'ils y ont obtenues.
+
+\subsection{Gestion du temps pour la dictée du bilan de soins vocal}
+
+Lors de la dictée d'un bilan de soins vocal dans l'application Agathe You, il était nécessaire d'indiquer le temps restant et de couper automatiquement l'enregistrement audio après une durée de 60 secondes.
+
+L'objectif était d'afficher un indicateur de temps “/60 sec” à côté du compteur pendant l'enregistrement vocal, afin de donner à l'utilisateur une visibilité sur la durée restante. Une fois la limite des 60 secondes atteinte, l'enregistrement devait être automatiquement interrompu pour garantir la conformité des bilans. \\
+
+Pour implémenter cette fonctionnalité, j'ai simplement utilisé la méthode stopRecording de la bibliothèque capacitor-voice-recorder, couplée à un minuteur afin de contrôler la durée de l'enregistrement.
+
+\newpage
+
+\subsection{TED: Contrôle et mise à jour de l'heure}
+
+La hotline reçoit régulièrement des appels liés à un problème avec les TLA (\ref{term:tla}) nommés TED (parce qu'il s'agit niveau marketing d'un petit ours), dont la date est incorrecte en raison d'un léger décalage de quelques minutes accumulé chaque jour.
+
+L'objectif était de synchroniser automatiquement la date et l'heure des lecteurs TED avec l'heure actuelle du téléphone du client, sans nécessiter d'intervention de l'utilisateur, afin de rendre le processus entièrement transparent. Plusieurs ajustements ont été réalisés pour optimiser le processus. \\
+
+Initialement, il était prévu de comparer l'heure du lecteur TED avec l'heure système avec une marge de 5 minutes lors de chaque appel, mais cela générait des appels API supplémentaires et inutiles. \\
+
+Le processus a ainsi été optimisé de la manière suivante:
+
+La méthode \texttt{SetTime} est désormais exécutée uniquement lors du premier appel au TLA de la journée. Une fois le temps synchronisé, aucun autre appel n'est effectué pour le reste de la journée. Par ailleurs, bien que l'implémentation de \texttt{GetTime} soit maintenue, elle n'est jamais utilisée dans un processus automatique, remplacée systématiquement par un appel direct à \texttt{SetTime}. \\
+
+Un problème particulier a été rencontré, uniquement sur les appareils IOS lorsque ceux-ci sont configurés en mode AM/PM. Dans ce cas, le comportement des méthodes de gestion du temps est différent:
+
+\begin{itemize}
+    \item L'appel \texttt{GetTime} ne fonctionne pas correctement en mode AM/PM, ce qui empêche de récupérer l'heure exacte.
+    \item L'appel \texttt{SetTime} fonctionne, mais si une heure en PM est définie, celle-ci est affichée au format 24 heures sur le lecteur TED en matinée. Par exemple, en réglant l'heure sur 11:26PM, le TED affichera 11:26 au lieu de 23:26.
+\end{itemize}
+
+Le problème lié au format horaire AM/PM s'est avéré mineur, car, selon notre Product Owner, très peu de clients utilisent ce format sur leur téléphone, ce qui limite fortement les répercussions. Par ailleurs, la priorité était avant tout d'assurer l'affichage de la date correcte sur les lecteurs TED afin d'éviter que leurs factures ne soient décalées d'un jour. \\
+
+J'ai pu découvrir, grâce à cette story, le développement en Swift (IOS), en Java sur Android ainsi que la communication de ces derniers via une tierce application.
+
+\newpage
+
+\subsection{Création d'une image Docker}
+
+Comme expliqué précédemment, le projet Agathe You web est hybride et possède ainsi deux technologies Front cohabitant entre elles (Struts et Angular). 
+
+Afin de les faire cohabiter, nous utilisons Docker. \\
+
+Docker est un outil qui permet de créer, déployer et exécuter des applications dans des conteneurs. \\
+Un conteneur contient tout ce dont une application a besoin pour fonctionner (code, dépendances, bibliothèques, etc.), ce qui garantit qu'elle fonctionne de la même manière sur n'importe quel environnement, que ce soit sur un ordinateur, un serveur ou dans le cloud.
+
+Afin de faire fonctionner notre projet, nous utilisons diverses images.
+
+\begin{itemize}
+    \item Angular: Lance le côté Angular de l'application 
+    \item Struts: Compile le projet Java.
+    \item Wildfly: Exécute l'application Java.
+    \item Nginx: Sert l'application web en exposant les ports nécessaires.
+\end{itemize}
+
+En voici un schéma explicatif.
+
+\imageCenter[0.12]{h}{docker/docker_architecture.png}{Architecture Docker de l'application AgatheYou Web}
+
+Un Reverse Proxy est un serveur placé entre les clients (utilisateurs ou navigateurs) et un ou plusieurs serveurs backend. Son rôle est de recevoir les requêtes des clients, de les traiter ou de les transmettre aux serveurs backend appropriés, puis de renvoyer les réponses aux clients.
+
+Nginx agit comme point d'entrée et reverse proxy, redirigeant le trafic vers Angular (front moderne) ou Wildfly (application Java). Le conteneur Emotion compile le code Java et le déploie via un volume partagé vers Wildfly qui l'exécute. Tous les conteneurs communiquent via le réseau \textbf{Docker Network}, permettant ainsi la cohabitation des technologies Struts et Angular. \\
+
+Travaillant sur un MacBook équipé d'une architecture ARM, je rencontrais des lenteurs avec les images en X64, provoquant des temps de chargement allant jusqu'à 30 secondes pour afficher une page. Pour résoudre ce problème, j'ai remplacé toutes les images des conteneurs par des versions compatibles ARM.
+
+Cependant, pour le conteneur Wildfly, seules les images des versions de Wildfly 26 et supérieures étaient disponibles en ARM. J'ai donc dû créer une image Wildfly à partir de l'image ARM de la version 11 de Java.
+
+Après cette adaptation, le problème de temps de chargement était résolu, j'ai ainsi pu travailler de manière efficace sur l'application web.
+
+\subsection{Introduction aux signaux en Angular}
+
+Depuis ses débuts, Angular utilise l'algorithme classique de détection des changements fournis par zone.js pour identifier les mises à jour de données et actualiser l'interface utilisateur en conséquence.
+
+Utilisé en Angular jusqu'à la version 17, zone.js fonctionne en interceptant les événements asynchrones pour déclencher automatiquement une détection des changements. Bien que pratique, cette approche n'est pas optimisée car elle déclenche des vérifications globales, même si seule une petite partie des données ont changé.
+
+En Angular 16, une fonctionnalité majeure a été introduite: les signaux.
+
+Ces derniers permettent de réagir uniquement aux changements de données spécifiques, sans avoir besoin de surveiller et de vérifier constamment l'état de toute l'application. L'utilisation des signaux rend également le développement plus intuitif. \\
+
+J'ai donc dû me former aux signaux, puis, afin de renforcer mon apprentissage, je me suis exercé en refactorisant une partie de l'application mobile ainsi qu'une partie de l'application web. \\
+
+Étant un nouveau paradigme de développement, prendre le temps de comprendre le fonctionnement des signaux était très important pour la suite du développement de l'application AgatheYou.
+
+De plus, l'adoption des signaux fait place à une nouvelle architecture utilisée chez CBA et adaptée à leur fonctionnement, ouvrant la voie à des développements plus performants et maintenables.
+
+\subsection{Nouvelle architecture de développement: FAST}
+
+Chez CBA, une nouvelle architecture a vu le jour sur les projets Front-End, le \textit{\textbf{FAST} (\textbf{F}acade \textbf{A}pi \textbf{S}tore \textbf{T}opology).} \\
+
+La librairie FAST étant une solution développée en interne et relevant de la propriété intellectuelle de l'entreprise, je ne peux pas en exposer l'intégralité du fonctionnement pour des raisons de confidentialité. En revanche, je peux en partager une ébauche de documentation que j'ai rédigée, et en présenter certaines bases.
+
+La mise en place d'une nouvelle architecture FAST répond à un manque d'
+d'organisation et à la mauvaise implémentation de \textbf{NgRx}. Pour rappel, \textbf{NgRx} (\ref{section:ngrx}) est une bibliothèque d'outils, basée sur le modèle Redux, pour la gestion d'état réactive en Angular.
+
+Bien que \textbf{NgRx} offre un modèle très complet, sa mise en œuvre peut s'avérer complexe. Une mauvaise implémentation entraîne souvent de la dette technique, rendant le code difficile à maintenir.
+
+De plus, l'apparition des signaux dans Angular, introduits en version 16 (dev-preview) et officiellement en version 17, a permis de concevoir cette nouvelle architecture qui fournit un modèle de conception bien plus simple à mettre en place et permet ainsi de développer bien plus aisément. \\
+
+En Angular, un service est une classe injectable conçue pour centraliser de la logique métier ou des fonctionnalités réutilisables, comme la gestion de données ou la communication avec une API, afin de les partager entre différents composants.
+
+La notion de Façade est également très importante dans l'architecture du FAST.
+Une façade est un service qui agit comme un intermédiaire centralisé entre les composants et la logique métier, en orchestrant les interactions avec les stores, les APIs, ou d'autres services pour simplifier l'accès aux données et maintenir les composants légers et découplés.
+
+Le \textbf{FAST} utilise la notion de \textbf{signal}, afin de stocker et de manipuler l'état via des \textbf{services}.
+
+Cette architecture a pour but d'être utilisée sur l'ensemble des produits de CBA mais au moment où j'écris ces lignes, elle a uniquement été implémentée par mon Lead Developer. \\
+
+J'ai ainsi été chargé de documenter l'architecture \textbf{FAST}, ce qui m'a conduit à l'étudier et à former les autres développeurs à son utilisation.
+
+Cette documentation est vouée à être réalisée en itération.
+
+\subsection{Implémentation de tests unitaires}
+
+En TypeScript (et également dans plusieurs autres langages de programmation), les fichiers \textbf{helper} et \textbf{utils} sont utilisés pour maintenir le code organisé et réduire la redondance, ceci en déléguant des logiques non spécifiques à ces fonctions externes. \\
+
+Un fichier "helper" contient des fonctions spécifiques ou des utilitaires destinés à effectuer des tâches courantes ou complexes pour un domaine précis, comme le formatage des dates. Ces fonctions sont souvent centrées sur un besoin fonctionnel particulier.
+
+Un fichier "utils" regroupe quant à lui des fonctions génériques ou des outils réutilisables indépendants du contexte métier, comme des manipulations d'objets, de tableaux ou des calculs mathématiques. Ces utilitaires sont destinés à être utilisés dans divers contextes au sein de l'application.
+
+Cette User Story orientée sur les besoins du développeur consistait à refactoriser une fonction d'un fichier "utils" afin de la simplifier, d'y ajouter des tests unitaires et de réfléchir à la pertinence d'implémenter des tests unitaires pour des fonctions utilisées de manière aussi globale dans l'application.
+
+Voici les principaux enseignements que j'en ai tirés.
+
+L'argument principal contre l'implémentation de tests unitaires repose souvent sur le rapport coût/qualité. En effet, la réalisation de tests unitaires peut être chronophage, ce qui engendre un coût non négligeable.
+
+Cependant, avec l'émergence des intelligences artificielles génératives, la création de tests unitaires, particulièrement pour des fonctions simples, est devenue beaucoup plus rapide et facile. Cela améliore considérablement le rapport coût/qualité, rendant leur implémentation plus accessible et rentable.
+
+\subsection{Opaline Pro}
+
+Opaline Pro est une solution permettant à une IDEL de partager un dossier de soins avec un autre professionnel de santé.
+
+Cette User Story consistait à l'ajout du nom, prénom d'un patient ainsi que du nom et prénom du médecin. Sur la page de redirection d'un dossier de soin. \\
+
+Le développement de cette US était simple mais j'ai rencontré un bug durant le développement. En effet, les adresses ciblaient les serveurs de \textbf{production} à la place de cibler les serveurs de \textbf{pré-production}.
+
+Il s'agissait, d'après l'architecte Back-End, d'un problème rencontré plus d'une fois par l'équipe Back-End depuis la mise en place d'Opaline Pro. \\
+
+J'ai donc remonté le problème à l'équipe Back-End qui l'a corrigé.
+
+\subsection{Nomenclature incomplète}
+
+La nomenclature générale des actes professionnels (NGAP) comprend les dispositions générales et la liste des actes pris en charge par l'Assurance Maladie.
+
+Sur l'application mobile, la nomenclature se retrouve sur une partie de l'application. Ils se situent 
+
+J'ai donc développé deux User Stories consistant à l'ajout de nomenclature durant ce semestre.
+
+Niveau développement, rien de très intéressant étant donné que nous implémentons les actes en dur.
+
+\subsection{Contrôle patient existant sur nouveau RDV}
+
+Lors de la création d'un nouveau rendez-vous et d'un patient, aucun contrôle n'était effectué pour vérifier si le patient existait déjà.
+
+Cette User Story visait à implémenter une modale qui s'affiche lorsqu'un patient créé via la création d'un rendez-vous existe déjà parmi les patients de l'IDEL.
+
+
+La comparaison ne doit pas être sensible à la casse et la recherche est stricte et se base uniquement sur le nom et le prénom.
+
+\begin{itemize}
+    \item Si le patient existe, l'utilisateur devra appuyer sur le patient en question.
+    \item Si le patient n'existe pas, l'utilisateur devra appuyer sur le bouton “Il s'agit d'un nouveau patient”.
+\end{itemize}
+
+Si aucune suggestion n'est trouvée, cette étape ne sera pas affichée.
+
+\imageCenter[0.4]{h}{rdv_patient_existant/patient_existant.png}{Modale de confirmation d'un patient existant}
+
+Techniquement, j'ai dû implémenter, dans un helper, une méthode de recherche permettant de comparer le nom et/ou le prénom du nouveau patient avec la base existante. Cette méthode devait renvoyer une liste des patients correspondant aux critères de recherche.
+
+Pendant le développement, j'ai toutefois rencontré trois problèmes.
+
+\begin{itemize}
+    \item Un problème de compréhension sur l'User Story clarifié par la suite par mon Product Owner.
+    \item Les contrôleurs qualité écrivent une suite de test à réaliser par le développeur ainsi que les attendus de chaque test. Un attendu d'un test n'était pas logique. Ceci était dû à une incompréhension du contrôleur qualité. J'ai donc demandé au contrôleur qualité de le clarifier.
+    \item Un problème lié à la maquette, qui me fournissait une représentation incorrecte de la card "patient", compliquant l'implémentation et demandant plus de temps que le temps initialement prévu. 
+\end{itemize}
+
+Après avoir consulté mon Lead Developer, j'ai utilisé une card patient qui ne correspondait pas exactement à la maquette. Cependant, étant donné que le temps alloué à l'User Story risquait d'être dépassé, ce développement a été considéré comme une évolution à traiter ultérieurement.
+
+Ce type de compromis est fréquent lorsque le besoin décrit par le Product Owner manque de clarté.
+
+\subsection{SCOR - Changement du workflow}
+
+Pour rappel, le téléservice SCOR permet au professionnel de santé de dématérialiser l'envoi des pièces justificatives papiers (ordonnances et feuilles de soins) aux régimes d'assurance maladie obligatoires (AMO).
+
+Cette User Story consistait ainsi à réaliser plusieurs évolutions liées à l'étape SCOR, première étape de la création d'une ordonnance. \\
+
+Voici l'ancienne et la nouvelle version du design de l'étape SCOR ainsi que la liste des évolutions qu'il y avait à réaliser.
+
+\begin{figure}[!h]
+    \centering
+    \begin{subfigure}{0.45\textwidth}
+        \includegraphics[width=\linewidth]{res/images/SCOR/ancien.png}
+        \caption{Ancienne version du Design de l'étape SCOR}
+    \end{subfigure}
+    \begin{subfigure}{0.45\textwidth}
+        \includegraphics[width=\linewidth]{res/images/SCOR/newDesign.png}
+        \caption{Nouvelle version du Design de l'étape SCOR}
+    \end{subfigure}
+\end{figure}
+
+\begin{itemize}
+    \item Le bouton "Recherche ou glisse/dépose un fichier" pouvant mener à trois autres actions est maintenant divisé en 4 boutons:
+    \begin{itemize}
+        \item Scanner
+        \item Mes scans en attente
+        \item Scan d'ancienne ordo
+    \end{itemize}
+    \item Changer le design de la nouvelle limite de fichiers.
+    \item Refactoriser du code qui s'avérait être déprécié.
+\end{itemize}
+
+Étant donné qu'une autre équipe est amenée à utiliser ces composants, SCOR a été refactorisé en une nouvelle bibliothèque. C'est sur cette bibliothèque que je devais développer les fonctionnalités demandées. \\
+
+Durant le développement, j'ai rencontré plusieurs problèmes.
+
+D'une part, il s'agissait d'un problème de versions gérées par NPM (Node Package Manager), un système de gestion de dépendances pour Node (Node est utilisé par Angular pour exécuter des commandes). \\ En effet, certaines dépendances partageaient elles-mêmes des dépendances qui ne possédaient pas la bonne version. Plusieurs mises à jour de dépendances sur plusieurs projets ont donc dû être réalisées. \\
+
+D'autre part, j'ai également dû, pour pouvoir avoir un rendu en direct, créer des dépendances avec la librairie locale (SCOR) sur laquelle je devais développer les fonctionnalités demandées. \\
+
+Grâce à ses divers problèmes, j'ai pu découvrir plus en profondeur le fonctionnement de Node Package Manager, comment lier des librairies en local ainsi que les différentes problématiques liées aux dépendances d'un projet, surtout lorsqu'il s'agit de librairies personnalisées.
+
+\newpage
+
+\subsection{Ajustements et nouvelles fonctionnalités - Partage DDS}
+
+Cette User Story consistait à faire évoluer le Workflow du partage de DDS (Dossier De Soins), permettant de ne plus partager uniquement le DDS via Opaline Pro mais également au format PDF, un format attendu et demandé depuis longtemps par les IDELs. De plus, il s'agissait d'ajouter quelques fonctionnalités sur le récapitulatif.
+
+Pour rappel, un dossier de soins possède plusieurs données de santé comme des constantes (BPM, taux de glycémie...), que l'on peut partager à différents professionnels de santé.
+
+Accompagné de maquettes "avant" et "après", voici une liste des tâches que je devais réaliser.
+
+\begin{itemize}
+    \item L'étape "Quoi" et "Comment" qui formaient une seule étape sont maintenant scindées en deux étapes.
+    \item À l'étape "Comment", ajouter une ligne "Fiche de liaison (PDF).
+    \item À l'étape "Quand"
+    \begin{itemize}
+        \item Il ne sera possible de sélectionner que 31 jours maximum à partir de la date de début de partage. On sélectionnera la date du jour de début, et j-31 en date de fin.
+        \item À la validation de l'étape date, ajouter un contrôle en cas de donnée vide pour la période choisie.
+    \end{itemize}
+    \item Créer un bouton "Partage DDS" qui permettra (lors du développement d'une autre User Story) d'ajouter la logique.
+\end{itemize}
+
+Il est fréquent qu'une User Story soit liée à une autre. Pour faciliter notre travail et garantir que chaque User Story ne dépasse pas 10 points, notre Product Owner les divise souvent en plusieurs User Stories plus petites. \\
+
+D'autres modifications devaient avoir lieu dans le récapitulatif (dernière étape du partage DDS).
+
+\begin{itemize}
+    \item Ajout d'une card "Patient" et "Comment"
+    \item Lors de l'étape "Comment", si "Fiche de liaison PDF" a été choisie, "Données imprimées" remplace "Données transmises".
+    \item Rendre modifiables les éléments grâce à une icône "crayon" symbolisant la modification.
+    \begin{itemize}
+        \item Patient
+        \item Contact
+        \item Comment: cela réinitialise les étapes Période et quoi (on repassera par ces étapes après si on change le comment)
+        \item Période: attention aux contrainte en fonction du choix “Comment”
+        \item Données transmises
+    \end{itemize}
+\end{itemize}
+
+Voici une maquette de l'étape 2 et 3 qui étaient auparavant réunies en une seule étape.
+
+\imageCenter[0.12]{h}{partage_dds/ancien.png}{Maquette des étapes 2 et 3 étant auparavant réunies en une seule étape}
+
+Voici les maquettes (Figure \ref{Fig:partage_dds}) du résultat attendu.
+
+\begin{figure}[!h]
+    \centering
+    \begin{subfigure}{0.23\textwidth}
+        \includegraphics[width=\linewidth]{res/images/partage_dds/step3.png}
+    \end{subfigure}
+    \begin{subfigure}{0.23\textwidth}
+        \includegraphics[width=\linewidth]{res/images/partage_dds/step4.png}
+    \end{subfigure}
+    \begin{subfigure}{0.23\textwidth}
+        \includegraphics[width=\linewidth]{res/images/partage_dds/step5.png}
+    \end{subfigure}
+    \begin{subfigure}{0.23\textwidth}
+        \includegraphics[width=\linewidth]{res/images/partage_dds/recap.png}
+    \end{subfigure}
+     \caption{Maquette du rendu attendu des éléments développés sur l'User Story "\textbf{Ajustements et nouvelle fonctionnalités - Partage DDS}".}\label{Fig:partage_dds}
+\end{figure}
+
+Le développement de cette User Story était assez simple mais également assez long. L'étape de pré-évaluation que l'on réalise avant le vote d'une User Story a été mal réalisée.
+
+J'ai dû modifier un service Angular permettant de réaliser le passage et la logique entre les différentes étapes. J'ai également dû utiliser la notion de signaux afin de faire communiquer les composants et services entre eux.
+
+Pour rappel, en Angular, un service est une classe destinée à centraliser la logique métier ou les fonctionnalités réutilisables, souvent utilisée pour gérer des données, communiquer avec des API, ou partager des informations entre composants.
+
+\subsection{Simplification de la navigation}
+
+Nous abordons maintenant les fonctionnalités développées au cours du quatrième semestre d'alternance. \\
+
+Dans cette User Story destinée à l'application AgatheYou mobile, j'ai supprimé une pop-up intermédiaire devenue inutile lors de la création d'une téléexpertise. L'utilisateur est désormais redirigé directement vers le tchat de téléexpertise, rendant le parcours plus fluide.
+
+Techniquement, cette modification a nécessité la suppression du module teleexpertise-creation-ay.module.ts, de ses routes associées, ainsi que le renommage des headers pour harmoniser les libellés. \\
+
+La suppression de code mort est une pratique que les développeurs ont parfois tendance à négliger. Pourtant, sur une application de la taille et de la complexité d'AgatheYou, les développeurs doivent veiller à l'éliminer systématiquement. Ce type de code inutile alourdit la base de code, complique la maintenance, et contribue à générer de la dette technique sur le long terme car certains développeurs pourraient être amenés à utiliser le code qui était censé être supprimé.
+
+\subsection{Achat In App - SalesForce}
+
+Sur AgatheYou Mobile, une fonctionnalité a été mise en place pour contourner (légalement) les commissions habituellement prélevées par Apple sur les achats réalisés via l'App Store. Au lieu de passer par le système d'achat in-app d'Apple qui impose un prélèvement pouvant atteindre 30\% sur chaque transaction, l'utilisateur effectue directement son achat lors du processus de souscription intégré à l'application. Ce fonctionnement permet à l'entreprise de percevoir l'intégralité du montant de l'abonnement, sans reversement de commission à Apple. \\
+
+Dans le cadre de cette User Story, l'objectif était de rétablir la création automatique de leads (pistes commerciales) dans Salesforce lorsqu'un client souscrit à l'application iOS. Cette fonctionnalité existait historiquement, mais avait été interrompue suite à plusieurs changements dans les outils internes et les échanges entre les différentes couches applicatives. \\
+
+Salesforce est un CRM (Customer Relationship Management) utilisé par l'équipe commerciale. Il permet de centraliser et de suivre les prospects, les clients et leurs interactions avec l'entreprise. Lorsqu'un utilisateur souscrit à l'application, un lead est automatiquement créé dans Salesforce afin de permettre aux équipes commerciales de disposer des informations nécessaires pour assurer un suivi ou proposer des services complémentaires. \\
+
+Techniquement, il était convenu qu'il fallait simplement intégrer l'appel à la nouvelle API fournie par le back-end. Cependant, cette US m'a demandé un temps d'analyse et des échanges avec les équipes back-end afin de clarifier les besoins réels des outils internes. Il y avait énormément d'incohérences entre ce que nous envoyions dans le formulaire et ce qui était attendu par la nouvelle API. Nous nous sommes finalement rendu compte qu'absolument aucun développement n'avait été réalisé du côté des outils internes.
+
+Il s'agissait donc d'une mauvaise communication entre les équipes, notre Product Owner a ainsi déplacé le ticket à un sprint ultérieur.
+
+\subsection{Ajout des traces CNDA}
+
+Cette User Story avait pour objectif d'intégrer la remontée des traces CNDA au sein de l'application Agathe You, afin de conserver un historique des actions liées aux appels aux services du lecteur de carte SESAM-Vitale (K300). Ces traces permettent notamment de faciliter les diagnostics techniques en cas de problème rencontré par les utilisateurs. \\
+
+Lors de chaque appel aux fonctionnalités CNDA (lecture de carte Vitale, ADR…), l'application devait enregistrer une trace technique en base de données. Cela permet d'améliorer le suivi, la traçabilité et le support client en cas d'anomalie future.
+
+L'US ne nécessitait pas de maquettes spécifiques, l'ensemble des développements étant purement techniques et sans impact direct sur l'interface utilisateur. \\
+
+Je me suis appuyé sur un travail préparatoire réalisé par un autre développeur (Jérôme) sur un précédent commit, dont j'ai extrait uniquement les parties nécessaires concernant les appels CNDA. Afin de limiter les risques d'erreur et d'ajouter uniquement le nécessaire, j'ai volontairement exclu tout le reste du commit qui ne concernait pas ces appels.
+
+J'ai pris le soin de valider manuellement les principales fonctionnalités concernées, à savoir la lecture de carte vitale et les appels ADRi(\ref{term:adri}).
+
+J'ai effectué ces vérifications en environnement de pré-production sur mon compte de test. J'ai également utilisé une requête SQL permettant de s'assurer de la bonne insertion des traces en base de données, requête SQL que j'ai également fournie aux contrôleurs qualité.
+
+\subsection{Liste des actes - Comportement de la liste}
+
+Avant de commencer, il est important d'expliquer ce qu'est un ticket de type EPIC mais également l'explication du côté fonctionnel concernant la liste des actes.
+
+La notion d'EPIC est issue de la méthodologie Agile qui désigne une fonctionnalité de grande envergure ou un ensemble d'exigences fonctionnelles. Étant donné qu'une EPIC est censée être trop vaste pour être développée d'un seul coup, une EPIC est généralement découpée en plusieurs User Stories plus petites, chacune représentant un morceau de l'EPIC.
+
+Elle permet de structurer le travail dans le temps, de donner une vision stratégique sur une évolution produit significative (ex: refonte d'un module, ajout d'un nouveau parcours utilisateur), tout en conservant une granularité de suivi via les US. \\
+
+Historiquement appelée « Liste des actes », cette fonctionnalité correspond en réalité à une liste de séances. Chaque séance regroupe un ou plusieurs actes médicaux, et possède ses propres métadonnées telles que la date, l'heure de réalisation et l'infirmier(e) auquel elle est attribuée.
+
+L'une des tâches majeures de mon dernier semestre a consisté à réaliser deux tickets de cette EPIC visant la refonte complète de l'affichage et de la gestion des actes médicaux liés à une ordonnance.
+
+Cette refonte avait un double objectif: moderniser l'expérience utilisateur sur un écran important pour les IDEL, tout en reposant sur une nouvelle architecture technique utilisant de nouveaux endpoints fournis par le BackEnd et améliorant l'expérience du développeur.
+
+Chaque ordonnance comprend un ensemble de séances, elles-mêmes composées d'actes pouvant évoluer dans le temps (fait, non fait, annulé, facturé…). Le challenge était de concevoir un nouveau composant principal chargé d'afficher dynamiquement cette liste, en utilisant un défilement infini, tout en gérant finement les interactions complexes liées à la pratique quotidienne: filtrage, défilement (scroll), mise à jour des états, affichage intelligent, réattribution, changement de lieu, etc. \\
+
+Voici l'ancienne ainsi que la nouvelle maquette élaborée par notre Product Designer.
+
+\imageCenter[0.27]{ht}{res/images/ListeDesActes/maquette-ancienne-liste-des-actes.png}{Liste des actes: ancienne maquette}
+
+\imageCenter[0.5]{ht}{res/images/ListeDesActes/maquette-nouvelle-liste-des-actes.png}{Liste des actes: nouvelle maquette}
+
+La première User Story sur laquelle j'ai travaillé a consisté à reconstruire entièrement le composant racine affichant cette liste d'actes.
+
+Sur cette première User Story, il ne s'agissait pas d'une refonte graphique, mais d'une reconstruction architecturale: le composant est ainsi désormais conçu comme un conteneur dans lequel nous insérons des inputs (entrées). Il est ainsi totalement découplé du reste de la page.
+
+Cette approche a nécessité l'intégration du FAST en guise de store (au lieu du NgRx historique), et la mise en place d'un comportement sticky sur le header lors du scroll. Ce composant prend en charge le chargement dynamique des séances (avec pagination), l'affichage d'un skeleton, du nombre de séances planifiées ainsi que du montant total de l'ordonnance. C'est également dans cette User Story qu'a été implémenté le passage de l'onglet 'Cotation' à l'onglet 'Libellé' permettant d'afficher les actes de deux manières différentes. \\
+
+Un skeleton est un composant visuel temporaire qui imite la forme d'un contenu en cours de chargement, comme une zone grise à la place d'un texte ou d'une card. Il permet d'améliorer l'expérience utilisateur en signalant qu'une donnée est en train d'arriver, tout en évitant les sauts d'affichage.
+
+Au cours du développement de cette User Story, j'ai pu identifier et remonter deux points d'amélioration concernant la conception de la librairie FAST:
+\begin{itemize}
+    \item Le premier portait sur le typage du payload utilisé pour charger une séance: le type employé dans FAST était identique à celui du payload censé être renvoyé par le backend. Or, cette approche posait problème car il est rarement pertinent d'utiliser le même type pour la création et pour la réponse du serveur. J'ai ainsi suggéré une séparation plus claire entre les modèles d'entrée et les modèles de retour d'API, suggestion qui a ensuite été développé sur la librairie du FAST.
+    \item Le second concernait la gestion de la pagination dans le store FAST: aucun attribut ne permettait de connaître le nombre total d'entités disponibles côté back, ce qui limitait certaines logiques d'affichage ou de chargement conditionnel. J'ai ainsi proposé et intégré un nouvel attribut optionnel, "totalCount", permettant de suivre plus précisément le volume total d'éléments remontés par le backend.
+\end{itemize}
+
+Faute de temps, en raison de la transition entre l'entreprise et le retour à l'université, je n'ai pas pu finaliser l'affichage de cette dernière partie. Le développement était quasiment terminé, et c'est un membre de mon équipe qui a repris le relais pour intégrer l'affichage de la logique du skeleton.
+
+Cette User Story a posé les bases techniques de tout le reste de l'EPIC et a constitué un chantier important, tant sur le plan de la conception que de l'intégration Front-End, tout en servant de point d'ancrage pour les premiers échanges avec les nouveaux endpoints proposés.
+
+\subsection{Liste des actes - Branchements}
+
+Une deuxième US, réalisée par un membre de mon équipe, a consisté à construire les cards représentant chaque séance, avec leur état (fait, non fait, annulé, facturé), leurs cotations, majorations et montants. Cette partie s'est appuyée sur les maquettes Figma et a permis d'ancrer visuellement l'usage des différentes actions que les utilisateurs peuvent effectuer. \\
+
+Cette US a été le point d'appui pour le développement de la troisième US, à laquelle je me suis ensuite attelé, qui concernait toutes les actions utilisateurs sur les séances.
+
+\subsubsection{Gestion des interactions sur les actes}
+
+Ainsi, la deuxième US que j'ai développée sur cette EPIC, chronologiquement la troisième de cette dernière, a permis de réaliser des actions pérennes sur la liste devenant ainsi interactive.
+
+Il s'agissait d'intégrer l'ensemble des interactions nécessaires à la gestion quotidienne des actes médicaux infirmiers.
+
+\begin{itemize}
+    \item Le marquage global d'une séance comme \textit{faite} ou \textit{non faite}, avec un impact visuel direct sur son état.
+    \item La modification ou la suppression d'un acte de soin (via une pop-up existante).
+    \item La réattribution d'un acte à un infirmier titulaire, un remplaçant, ou à l'état « non attribué ».
+    \item Le basculement du lieu d'intervention entre \textit{cabinet} et \textit{domicile}, avec prise en compte automatique des frais de déplacement.
+    \item L'ajout, la suppression ou la réactivation des majorations de type \textit{nuit} ou \textit{férié}, impactant le montant de la séance donc le montant total de l'ordonnance.
+\end{itemize}
+
+Ces fonctionnalités s'appuyaient sur plusieurs appels aux nouveaux endpoints fournis par le back-end, ainsi que sur l'intégration de la librairie FAST. La difficulté ne venait pas tant des appels en eux-mêmes, mais plutôt de la gestion assez fine des états, de la cohérence visuelle et de la fluidité de l'expérience utilisateur.
+
+De plus, afin de garantir une bonne expérience utilisateur (UX), lorsque les données ne sont pas encore disponibles à l'affichage, j'ai mis en place un système de skeleton affiché au niveau de chaque carte de séance. Le comportement était le suivant:
+
+\begin{itemize}
+    \item Sur une connexion rapide, si la modification est immédiate, aucun skeleton ne s'affiche, rendant l'action quasi instantanée.
+    \item Sur une connexion lente, le skeleton s'affiche pour signaler le traitement.
+    \item Lorsqu'une séance est modifiée, le skeleton est ciblé uniquement sur celle-ci et non sur toute la liste.
+    \item Si la modification d'une séance concerne la date de la séance, alors toute la liste est rechargée, peu importe si la connexion est rapide ou lente.
+\end{itemize}
+
+Plusieurs problèmes sont apparus durant le développement, certains liés à la librairie FAST ou à la complexité même de la fonctionnalité, mais la majorité provenait d'anomalies côté back-end.
+
+\begin{itemize}
+    \item \textbf{Problème de synchronisation des données post-modification}: après modification d'une séance, les actes associés n'étaient plus présents dans la réponse du backend, contrairement à ce qu'indiquait le Swagger (\ref{term:swagger}).
+    En communiquant avec l'équipe back-end, j'ai appris qu'à chaque fois qu'une modification était faite, il fallait récupérer la séance avec un autre endpoint, ceci en ajoutant un paramètre \texttt{expands=actes} afin de forcer le retour des données manquantes (les actes pour ma part).
+
+    \item \textbf{Bug d'affichage de séances dupliquées}: après certaines actions, une même séance apparaissait plusieurs fois dans la liste. Le problème venait d'une implémentation incomplète de l'ID composite, qui combine l'identifiant de l'ordonnance et celui de la séance pour garantir l'unicité de chaque entité dans le store. Pour corriger ce comportement, j'ai mis en place un serializer permettant de construire et reconnaître correctement cet identifiant composite à chaque chargement ou mise à jour.
+    Il s'agissait d'un bug dû à une mauvaise implémentation du Store lors de la première User Story reprise par un membre de mon équipe.
+
+    \item \textbf{Comportement du switch d'état (fait/non fait)}: le \texttt{uikit-switch} déclenchait des évènements indépendamment de la logique d'affichage attendue, notamment dans le cas des séances facturées, où l'action devait être désactivée. J'ai dû contourner ce comportement en utilisant des \texttt{FormControl} pour forcer la cohérence entre la valeur affichée et la logique métier.
+    En Angular, un \texttt{FormControl} est une classe qui permet de gérer l'état et la valeur d'un champ de formulaire de manière réactive.
+
+    \item \textbf{Comportement du store lors des updates}: l'appel à la méthode de chargement d'une entité dans le store entraînait systématiquement une incrémentation de l'état global du chargement de store, même lorsqu'une seule séance était modifiée. Cela faussait l'affichage conditionnel des skeletons. J'ai ainsi dû adapter la logique du skeleton pour détecter uniquement les modifications ciblées.
+
+    \item \textbf{Adaptation d'un composant hérité}: le composant existant utilisé pour modifier un acte n'acceptait qu'un ancien type de modèle, alors que mon développement s'appuyait sur un type plus récent issu des nouveaux endpoints de l'API. J'ai donc dû dupliquer ce composant et en adapter les entrées afin d'assurer la compatibilité. Étant donné qu'il n'était pas du ressort de mon User Story de le recréer, j'ai créé une User Story technique afin qu'on y passe du temps pour le reproduire.
+
+    \item \textbf{Composants Ui-Kit changés}: la version des composants UI-Kit permettant l'affichage des actes ont changé entre le développement des deux dernières User Stories. Ceci impactait l'affichage qui devait rayer le contenu du composant lorsque un acte était passé à "non-fait". J'ai corrigé ce problème en surchargeant le style du composant. J'ai ensuite créé une User Story technique afin que le composant évolue et puisse obtenir une nouvelle entrée permettant d'indiquer si l'on souhaite rayer ou pas le contenu du composant.
+
+    \item \textbf{Incohérences sur les majorations férié/nuit}: dans le cas où deux majorations s'appliquaient en même temps (les majorations férié et nuit appliquées car la séance a lieu le dimanche après 20h), lorsqu'une majoration était supprimée et que celle qui prenait le relais était également supprimée, l'ancienne majoration appliquée reprenait le relais, ce qui n'était pas le comportement attendu. C'est un problème qui a dû être réglé côté BackEnd. De plus, côté Front-End, lorsqu'une majoration était affichée puis supprimée, il n'était plus possible de la remettre, aucune propriété sur le modèle envoyé par l'endpoint ne m'était envoyé. \\ 
+    J'ai donc dû reproduire la logique permettant de déterminer si une majoration devait être appliquée, afin de garantir à l'utilisateur la possibilité de l'ajouter ou de la retirer selon le contexte.
+
+    \item \textbf{Indemnité forfaitaire de déplacement}: lorsque une séance change de l'état "cabinet" à "domicile", une indemnité forfaitaire de déplacement doit s'appliquer à la séance, ajoutant donc un certain montant à la séance. Le problème rencontré est que cette indemnité forfaitaire de déplacement ne s'appliquait pas lorsque l'on changeait l'état de "domicile" à "cabinet". J'ai remonté ce problème au Back-End qui l'a ainsi corrigé.
+
+    \item \textbf{Null Pointer Exception}: le endpoint utilisé afin de changer une séance de "cabinet" à "domicile" nous envoyait un Null Pointer Exception. J'ai également remonté ce problème à l'équipe Back-End.
+
+    \item \textbf{Séance facturée}: Côté Front-End, à chaque appel du back, s'il y a une erreur alors j'affiche chaque erreur renvoyé par le Back-End côté Front-End. Lorsqu'une séance est facturée, tous les endpoints concernant la modification de l'ordonnance nous remontent une erreur: "La séance est facturée, elle n'est pas modifiable". Cependant, l'endpoint d'attribution d'une séance ne me renvoyait pas d'erreur. Comme pour les autres, j'ai remonté le problème à l'équipe Back-End. Au final, le message n'était même pas le bon message. Faute de temps, mon Product Owner et mon Lead Developer m'ont demandé de surcharger l'affichage du message.
+
+\end{itemize}
+
+Les anomalies et retours liés à la librairie FAST étaient les suivants :
+
+\begin{itemize}
+    \item Lors du changement de date d'une séance, la liste étant triée par date, il est nécessaire d'afficher un skeleton sur l'ensemble des cards. Cela permet d'indiquer à l'utilisateur que la liste est en cours de rechargement, et d'éviter qu'une séance change de position sans transition visuelle. \\
+    Étant donné cette contrainte et le défilement théoriquement infini (jusqu'à la fin de la liste des séances de l'ordonnance), un bug affectait la fonctionnalité d'affichage de la liste des actes. \\
+    En effet, lorsqu'une séance était déplacée, elle changeait de position dans la liste des actes côté FrontEnd, mais également dans l'ensemble des séances côté BackEnd. Ainsi, si le FrontEnd avait chargé les 10 premières séances et que la séance modifiée passait en dernière position sur le FrontEnd mais en 15ème position sur le BackEnd, alors la séance nouvellement devenue 10ème côté BackEnd n'était pas présente dans les données chargées côté FrontEnd. \\
+    Faute de temps dans le sprint, notre Product Owner a ainsi convenu que, lorsque une séance doit changer de place, qu'il fallait recharger la pagination à partir de la première page. Ainsi, l'utilisateur devait re-défiler afin de voir l'entièreté de sa liste.
+    \item De plus, étant donné que sur ma liste de séances, il était demandé à ce qu'un skeleton apparaisse sur l'ensemble des cards afin de recharger la liste lorsqu'un élément change de date, et donc de position, j'avais besoin de connaître l'état de saving de l'ensemble de la liste (je ne disposais jusque-là que de l'état de loading).
+    Or, le FAST ne proposait pas de fonctionnalité permettant de savoir si au moins une entité de ma liste d'entités était en cours d'enregistrement (saving). J'ai donc demandé l'implémentation de cette fonctionnalité.
+\end{itemize}
+
+Le développement de cette User Story s'est révélé bien plus complexe que prévu. De nombreux problèmes sont survenus, certains hérités de la User Story précédente côté Front-End, d'autres liés à des dysfonctionnements côté back-end. \\
+
+De plus, étant donné l'arrivée de mon Lead Tech, la demande de qualité de code était particulièrement élevée comparée aux derniers semestres. \\
+
+Étant donné ces difficultés, cette US a été particulièrement formatrice. Elle m'a permis de renforcer mes compétences en gestion de l'état avec la librairie FAST, tout en apprenant à jongler entre les contraintes métier, les limites techniques et l'exigence d'une bonne expérience utilisateur. \\
+
+Chaque action implémentée avait un impact réel sur la facturation perçue par l'utilisateur, ce qui m'a poussé à rester particulièrement rigoureux dans l'implémentation de cette dernière.
+
+\newpage
+
+\section{Résolution de bugs}
+
+Cette section présente la résolution des bugs rencontrés tout au long de mon alternance, ceci dans l'ordre chronologique. Pour chaque semestre, l’intitulé du premier bug viendra préciser la période concernée, permettant ainsi de distinguer facilement les corrections effectuées à chaque période.
+
+J'ai également réalisé des tickets consistant à la résolution de bugs mais également à la résolution d'anomalies sur d'anciennes User Stories Web. \\
+
+Entre fin 2022 et mi-2023, de nombreuses User Stories, principalement liées aux fonctionnalités mobiles, ont été développées sans constituer une priorité immédiate. Aujourd'hui, tout en poursuivant le développement des User Stories les plus prioritaires, nous devons également corriger les anomalies résultant de ces développements passés. \\
+
+Afin de corriger un bug, la reproduction de ce dernier est la première étape à réaliser. J'ai appris que si celle-ci n'est pas possible, il faut ainsi apprendre à ne pas perdre de temps à essayer de la reproduire tout en fournissant un compte rendu de ce que l'on a réalisé afin que la personne ayant remonté le bug puisse savoir ce que le développeur a réalisé, revenir vers lui si elle pense que ce dernier s'est trompé et lui expliquer comment reproduire et rouvrir le ticket du bug, ou alors le tester de nouveau et ainsi bien clore le ticket. Cette problématique m'est arrivée sur deux US de résolution de bug.
+
+L'application AgatheYou mobile étant assez conséquente, la correction de ces bugs m'a permis de l'explorer, autant du point de vue fonctionnel de l'IDEL que du point de vue technique. \\
+
+Les bugs suivants ne concernent que l'application Agathe You mobile.
+
+\subsection{Fuseau horaire (Guyane)}
+
+Nous abordons ici les bugs rencontrés au cours du premier semestre de l'alternance.
+
+Étant donné que la Guyane française possède un fuseau horaire différent de la France métropolitaine, un bug affichait la date des télétransmissions en Guyane à J-1.
+
+Il fallait donc comprendre pourquoi et se baser sur ce qui était envoyé.
+
+Les bugs de fuseau horaire sont très redondants sur Agathe You car il n'y a pas de règle stricte sur les dates entre le back et le front.
+C'est donc un problème connu des équipes, mais non prioritaire.
+
+\subsection{Actes se dédoublant}
+
+Lors de la sélection d'un acte via nomenclature, cet acte se dédoublait en ordonnance classique et en acte isolé.
+
+En cherchant le commit associé à la modification de cette ligne, j'ai compris que le bug était dû à l'oubli de la suppression d'une ligne en plus lors de la fusion d'une branche de développement à la branche Release Candidate. Cette ligne était un emit d'un event qui permet en Angular de fournir des informations au composant parent.
+
+J'ai également appris à quel point il est très frustrant de passer du temps à chercher un bug, à déboguer pour au final enlever qu'une seule ligne pour le résoudre.
+
+\subsection{Affichage de l'alerte hors ligne alors que bien connecté}
+
+Il s'agit d'un bug sur lequel j'ai passé un certain temps, mais que ni mon collègue ni moi n'avons réussi à reproduire.
+Ce bug ne se manifeste que dans des cas très spécifiques. Il a donc fallu que j'y consacre un peu de temps pour investiguer. Cependant, étant donné qu'il n'était ni grave ni bloquant, il n'était pas nécessaire d'y passer trop de temps.
+
+\subsection{Le rendez-vous du jour n'apparaît pas}
+Nous abordons ici les bugs rencontrés au cours du deuxième semestre de l'alternance.
+
+Le planning des soins possédant deux onglets qui servent de filtre "A venir" et "Passé", le rendez-vous du jour n'apparaissait ni dans les soins passés, ni dans les soins à venir, on devait ainsi attendre le lendemain pour le voir.
+
+Ce bug était dû au fait que, lors de la comparaison de la date pour l'affichage des rendez-vous, la comparaison s'effectuait sur la date du jour mais également sur l'heure actuelle.
+
+J'ai donc indiqué l'heure de comparaison à minuit afin que les rendez-vous du jour s'affichent bien sur l'onglet "À venir".
+
+\subsection{Modifier l'ordonnance (profil remplaçant)}
+
+En renouvellement d'ordonnance, à l'étape "Récapitulons", lors d'un clic sur le bouton "Modifier", le message “Ton profil remplaçant ne te permet pas de modifier l'ordonnance” apparaissait alors que l'on était bien sur une session de titulaire.
+
+Ce bug était dû à une fonction "hasRightsIfRemplacant" qui ne réalisait pas ce qu'on lui demandait de faire. La correction a été faite et par ailleurs, le nom de la fonction ne reflétait pas ce qu'elle réalisait réellement, son nom a donc été un réel débat, il fallait qu'il soit clair et concis. Nous l'avons finalement remplacé par "checkIfRemplacantAndHasAccess".
+
+\subsection{Montant erroné en acte isolé}
+
+A l'étape 8/8 de la création d'une ordonnance, en saisissant 1AMI 1,5 et 1AMI 1, le montant à facturer indique d'abord le mauvais montant en ajoutant une MAU (majoration d'acte unique) au montant total alors qu'il n'y a pas à ajouter cet acte car il est bien question de 2 actes isolés.
+
+Ceci était dû au fait que le calcul était d'abord effectué côté Front-End (pour le hors ligne), puis lors de l'appui sur le bouton "Facturer", un service web était envoyé et nous retournait le bon montant.
+
+Côté Front-End, le bug était causé par le choix d'un mauvais opérateur RxJs dans la fonction "eligibleMAU". Il fallait donc changer l'opérateur "find" par l'opérateur "some".
+
+Pour information, voici ce que ces deux fonctions réalisent.
+
+\begin{itemize}
+    \item find: Recherche la première valeur dans un flux (Observable) qui satisfait une condition et émet cette valeur (ou undefined si aucune ne correspond). Une fois trouvée, l'Observable se complète.
+    \item some: Vérifie si au moins une valeur dans le flux satisfait une condition. Il émet un booléen (true ou false) et se complète immédiatement après avoir évalué suffisamment de valeurs pour répondre.
+\end{itemize}
+
+\subsection{Anomalies Web V2}
+
+Nous abordons ici les bugs rencontrés au cours du troisième semestre d'alternance.\\
+
+
+
+Les Addendums sont des mises à jour du cahier des charges SESAM-Vitale, le système français de télétransmission des feuilles de soins électroniques. Chaque Addendum répond à diverses évolutions réglementaires et technologiques. Le dernier en date est l'Addendum 8. \\
+
+Sur l'application Web Agathe You, l'environnement web était disponible en Addendum 7. Cependant, la mise en production a été retardée en raison de l'Addendum 8. Ce décalage, combiné à l'intégration de changements majeurs apportés par l'Addendum 8, a entraîné des dysfonctionnements sur le web V2, initialement conçu en Addendum 7. Cela explique le nombre important d'anomalies à corriger. \\
+
+Les développeurs doivent gérer plusieurs anomalies portant sur divers sujets. J'ai dû en traiter plusieurs (près d'une dizaine sur ce semestre).
+
+\subsection{Jenkins - Problèmes de build iOS}
+
+Plusieurs problèmes de build iOS ont été rencontrés sur Jenkins au cours du semestre. Ces problèmes étaient liés à des conflits de dépendances de packages, gérés via CocoaPods, un gestionnaire de paquets spécifique à iOS.
+
+Pour rappel, Jenkins est un serveur open source d'intégration continue (CI/CD) que nous utilisons pour automatiser les différentes étapes du développement logiciel, notamment la réalisation des builds. \\
+
+Avant de détailler les problèmes rencontrés, il est important d'expliquer brièvement le fonctionnement des dépendances dans une application Angular Ionic. 
+
+Les dépendances sont gérées via npm (Node Package Manager). 
+
+Le fichier package.json liste l'ensemble des dépendances, et lors de leur installation, elles sont placées dans un répertoire nommé node\_modules.
+
+Capacitor, étant un framework pour la création d'applications mobiles hybrides, génère les projets natifs Android et iOS en utilisant des technologies web comme HTML, CSS et JavaScript. \\
+
+Lors de la construction du projet iOS, Cocoapods génère deux fichiers.
+
+\begin{itemize}
+    \item Podfile: C'est le fichier où l'on déclare les dépendances. On spécifie les versions souhaitées avec ce qu'on appelle des "règles de versioning".
+    \item Podfile.lock: C'est un fichier généré lors de la première installation des pods via le Podfile. Ce fichier enregistre les versions exactes des pods installés et garantie que toute l'équipe utilise les mêmes versions.
+\end{itemize}
+
+Un pod correspond à un package dans l'écosystème iOS/macOS. \\ 
+
+Certaines dépendances des pods dépendent également de packages locaux, souvent situés dans le répertoire node\_modules généré par le fichier package.json. \\
+
+Comme certains pods dépendaient de packages définis dans le package.json et que certaines des dépendances générées dans le Podfile étaient incompatibles, cela a entraîné des échecs lors du build de l'application.
+
+La cause principale de ces problèmes était que le fichier Podfile.lock n'était pas versionné dans Git. En conséquence, chaque branche (cinq au total) devait être corrigée individuellement. 
+
+Pour chaque branche, il a fallu:
+
+\begin{itemize}
+    \item Identifier les dépendances problématiques.
+    \item Installer les versions appropriées des dépendances.
+    \item Tester les corrections apportées.
+    \item Y revenir si les corrections ne fonctionnaient pas.
+    \item Versionner le fichier Podfile.lock pour éviter que le problème ne se reproduise.
+\end{itemize}
+
+Ces ajustements ont donc permis de corriger les builds iOS.
+
+\subsection{Menu Profil V2}
+
+À partir de cette sous-section, nous aborderons les bugs rencontrés au cours du quatrième semestre de l'alternance.
+
+Une User Story a été développée par un membre de mon équipe, elle consistait à mettre à jour l'interface du menu "profil" de l'application selon plusieurs spécifications.
+Plusieurs anomalies ont donc été remontées par les testeurs, j'ai dû corriger ces dernières.
+
+\subsection{ Achat in app n'envoi plus de mail}
+
+Ce bug est apparu avant le développement de l'US "AchatInApp - SalesForce". \\
+Sur iOS, lorsqu'un client achetait AgatheYou sur l'application, le service commercial ne recevait plus le mail d'information sur l'achat effectué. \\
+
+En analysant l'historique des commits effectués sur les fichiers de cette fonctionnalité, j'ai identifié que l'appel au back-end avait été supprimé lors d'un précédent développement. Je l'ai donc réintégré.
+
+Lors de cette correction, j'ai également identifié un second problème fonctionnel: si l'utilisateur choisissait le statut IDEL remplaçant ou étudiant dans le formulaire, le mail n'était jamais envoyé. J'ai identifié grâce au numéro du ticket associé au commit que les tests attendaient à ce que le mail soit quand même envoyé, ce qui a mal été compris par le précédent développeur. \\
+
+J'ai ainsi corrigé cette anomalie afin que l'envoi de mail puisse désormais fonctionner, quel que soit le statut renseigné.
+
+\subsection{ Refactorisation de toutes les dates de l'application Agathe Emotion}
+
+L'application Agathe Emotion correspond à la version antérieure d'AgatheYou. De ce fait, les développements de nouvelles fonctionnalités y sont devenus très rares, mais l'application continue néanmoins d'être maintenue et suivie.
+
+Récemment, Google a exigé que l'application Agathe Emotion soit migrée de Capacitor 5 vers Capacitor 7, sinon, elle serait retirée du Play Store.
+
+Pour rappel, Capacitor est un framework développé par Ionic qui permet de créer des applications mobiles hybrides en utilisant des technologies web (HTML, CSS, JavaScript/TypeScript) ceci en accédant aux fonctionnalités natives des appareils (caméra, GPS, fichiers, etc.). \\
+Il agit comme une passerelle entre le code web et le code natif, facilitant le développement multi-plateforme pour iOS, Android et le Web avec une seule base de code.
+
+Capacitor étant le socle technique permettant l'hybridation du code, cette migration a nécessité la mise à jour de nombreuses autres librairies, voire la suppression de certaines d'entre elles. Parmi les mises à jour majeures, les versions d'Ionic et d'Angular ont également dû être montées. Cette montée de version a notamment conduit à la suppression de deux anciennes librairies de gestion de dates, parmi plusieurs autres dépendances qui sont également devenues obsolètes.
+
+Cette migration a donc engendré des anomalies. Une base de migration permettant de remplacer les anciens composants dépendants de ces librairies a été conçue en amont par mon Lead Technique. Je m'en suis ainsi appuyé pour procéder à la refactorisation complète des composants de date de l'application.
+
+Ces composants concernaient principalement l'affichage de pop-ups de sélection de dates, intégrant parfois des contraintes spécifiques telles que des bornes de dates (minimum ou maximum), ou encore la sélection restreinte à un mois ou à une année. \\
+
+Au total, j'ai dû intervenir sur plus d'une vingtaine d'occurrences dans l'application pour procéder au refactor et à la mise à jour de ces éléments.
+
+\subsection{ Analyse et résolution d'un bug d'affichage sur iOS}
+
+Ce ticket signalait un dysfonctionnement récurrent sur iPhone, notamment sous iOS 17 (version 15.4 au moment du ticket). Après chaque mise à jour de l'application, certaines clientes constataient un affichage « cassé » dès l'ouverture de l'application. Ce défaut d'affichage semblait lié à un mauvais chargement des données et ne disparaissait qu'après avoir déchargé l'application via les réglages iOS. Cependant, une simple suppression et réinstallation de l'application ne réglait pas durablement le problème.
+
+Une analyse plus poussée, notamment grâce aux logs Sentry, m'a permis d'identifier l'origine de l'erreur. \\
+
+Sentry est un outil de monitoring et de suivi des erreurs utilisé en production. Il permet de remonter en temps réel les exceptions, crashes ou les comportements survenus côté client ou serveur. Chaque erreur est accompagnée d'informations contextuelles (stack trace, environnement, utilisateur, etc.), ce qui facilite grandement l'analyse et la reproduction des bugs rencontrés. \\
+
+L'exception relevée était la suivante :
+
+\begin{quote}
+\textit{UIGraphicsBeginImageContext() failed to allocate CGBitmapContext: size={0, 0}, scale=3.000000, bitmapInfo=0x2002. Use UIGraphicsImageRenderer to avoid this assert.}
+\end{quote}
+
+L'erreur provenait d'une tentative de création de contexte graphique avec une taille invalide (0,0), ce qui déclenche un plantage sur iOS 17 où la méthode \texttt{UIGraphicsBeginImageContext()} est désormais dépréciée. \\
+
+En examinant les traces Sentry, j'ai identifié plusieurs sources potentielles :
+
+\begin{itemize}
+\item \textbf{CameraExtensions}
+\item \textbf{Screenshot}
+\item \textbf{SentryOnDemandReplay}
+\item \textbf{SentryScreenshot}
+\end{itemize}
+
+Les plugins \texttt{SentryScreenshot} et \texttt{SentryOnDemandReplay} semblaient particulièrement concernés, appelant \texttt{UIGraphicsBeginImageContext()} sans vérifier préalablement la taille passée en paramètre.
+
+Par ailleurs, une grande corrélation a été trouvée avec le plugin \texttt{Intercom}, utilisé pour la gestion du support client intégré à l'application, qui semblait également déclencher l'erreur via certaines de ses popups natives.
+
+Une recherche approfondie a permis d'identifier qu'Intercom avait publié un correctif pour ce problème spécifique d'incompatibilité avec iOS 17 sur sa communauté de développeurs. Il était donc recommandé de mettre à jour la librairie Intercom vers sa dernière version pour limiter l'apparition de ce bug.
+
+Par ailleurs, pour d'autres frameworks (tels que React Native par exemple), plusieurs développeurs ont proposé une solution technique consistant à remplacer l'appel à \texttt{UIGraphicsBeginImageContext()} par un contrôle préalable sur la taille, suivi d'un usage de \texttt{UIGraphicsImageRenderer()}, désormais préconisé sur les versions supérieures ou égales à iOS 17 :
+
+\begin{verbatim}
+if size.width > 0 && size.height > 0 {
+    let renderer = UIGraphicsImageRenderer(size: size)
+    let image = renderer.image { ctx in
+        view.drawHierarchy(in: rect, afterScreenUpdates: true)
+    }
+}
+\end{verbatim}
+
+L'un des aspects les plus délicats de ce ticket résidait dans l'impossibilité de reproduire systématiquement le bug en environnement de développement, rendant l'analyse et la validation de potentiels correctifs particulièrement complexes.
+
+\textbf{Plan d'action proposé}
+
+Sur la base de cette analyse, j'ai envisagé plusieurs pistes correctives :
+
+\begin{itemize}
+\item Mettre à jour le plugin \texttt{Intercom} à sa dernière version disponible compatible iOS 17.
+\item Mettre à jour les pods \texttt{SentryScreenshot} et \texttt{SentryOnDemandReplay}, ou si nécessaire, intervenir dans le code natif pour sécuriser l'appel à \texttt{UIGraphicsBeginImageContext()}.
+\item Étudier un passage sur \texttt{Capacitor 7}, dont les nouvelles versions améliorent la gestion native.
+\end{itemize}
+
+Étant donné qu'un autre correctif récent nécessitait déjà la mise à jour du plugin Intercom, il a été décidé de procéder à cette mise à jour, tout en envisageant en parallèle une montée de version vers Capacitor 7. Cette évolution permettrait d'anticiper et de corriger d'éventuels problèmes similaires à l'avenir.
+
+\subsection{ Confirmation de rendez-vous Opaline en fonctionne plus}
+
+Sur l'application AgatheYou, un ticket a été ouvert par l'équipe Opaline suite à un problème rencontré lors de la confirmation de rendez-vous. En effet, depuis le compte d'un Product Owner Opaline, la confirmation d'un rendez-vous ne fonctionnait pas : le rendez-vous n'apparaissait pas dans la liste une fois confirmé. Pensant qu'il s'agissait d'une anomalie côté AgatheYou, le ticket nous a été transmis. \\
+
+Dans le fonctionnement classique, lorsqu'un patient demande un rendez-vous via Opaline, celui-ci est censé apparaître sur le compte AgatheYou de l'infirmier dès lors que le patient est rattaché à sa zone de travail. Cependant, dans ce cas précis, je n'arrivais même pas à générer de rendez-vous, ce qui rendait la reproduction du scénario impossible.
+
+Après plusieurs échanges, en expliquant la problématique au contrôleur qualité de leur équipe, on est allé vérifier dans la base de données (en pré-production) les données du compte en question. Il m'a donc expliqué que les données du compte sont incohérentes en environnement de pré-production et que c'est pour ça que je n'arrivais pas à recevoir de rendez-vous.
+
+Étant donné que l'environnement de pré-production est une copie (anonymisée) de la production, il s'agissait sûrement du même problème qui se situait en production. \\
+
+J'ai donc sollicité un collaborateur ayant les droits d'accès nécessaires en production pour effectuer la même vérification. Après contrôle, les données en production étaient bien incorrectes et ont donc été corrigées par leur équipe.
+
+\subsection{ Mode hors ligne sur le Dossier de Soins : pop-up infinie}
+
+Lors de l'utilisation de l'application mobile Agathe You en mode hors ligne, un dysfonctionnement très particulier a été identifié sur le Dossier de Soins empêchant son bon affichage et bloquant complètement la navigation de l'utilisateur.
+
+\textbf{Étapes de reproduction du bug :}
+
+\begin{itemize}
+    \item Désactivation du Wi-Fi sur le téléphone (application fermée au préalable).
+    \item Ouverture de l'application Agathe You.
+    \item Sélection d'un patient (ex : ADRCINQ Bruno) via la barre de recherche.
+    \item Accès au menu \textit{Dossiers de soins}.
+    \item Lors du chargement et du scroll dans le DDS, la pop-up \textit{mode hors ligne} s'affiche.
+    \item En cliquant plusieurs fois sur la croix ou le bouton \textit{OK}, la pop-up finit par disparaître.
+    \item Lors de nouveaux scrolls, la pop-up réapparaît en boucle avant de finalement afficher un écran noir, rendant toute action impossible.
+\end{itemize}
+
+\textbf{ Analyse technique du problème}
+
+Le dysfonctionnement provenait d'un composant générique, utilisé à de multiples endroits dans l'application et contenant beaucoup de dette technique accumulée au fil des années.
+
+L'origine du problème semblait remonter à un commit datant de 2020, où certaines parties du code contenaient des commentaires laissés sans explications claires dans la description du commit.
+
+Grâce à Git, il est possible d'obtenir un historique très précis (par commit) de chaque ligne de code mais également d'identifier l'auteur du commit. Par chance, le développeur ayant développé ce composant était toujours présent dans l'entreprise.
+
+D'après le développeur ayant développé le composant, il est probable que des tests et correctifs complexes aient été réalisés à l'époque sans suppression de certaines lignes temporairement commentées.
+
+Ce contexte rend le diagnostic complexe, d'autant plus qu'aucune autre remontée significative n'a été identifiée auprès de la hotline. Ce bug reste donc extrêmement spécifique à certaines conditions d'usage hors ligne.
+
+J'ai ainsi proposé deux solutions :
+
+\begin{itemize}
+    \item \textbf{Ne rien faire} : étant donné la rareté du bug et l'absence de remontées utilisateurs, une correction immédiate n'est pas du tout prioritaire, d'autant plus que cela pourrait avoir des répercutions aux endroits où le composant est utilisé.
+    \item \textbf{Refonte du composant \textit{cba-list}} : solution plus pérenne mais impliquant un chantier conséquent car nécessitant un effort de refactorisation complet du composant.
+\end{itemize}
+
+Notre Product Owner a donc choisi de ne rien faire. \\
+
+Ce type de problématique illustre bien la difficulté de maintenir une application de grande ampleur lorsque la dette technique traîne et ne fait que s'amplifier. La difficulté se corse également lorsque les anciens correctifs manquent de documentation claire ou que les noms de commits sont peu explicites, rendant le travail d'investigation et de compréhension bien plus laborieux.
+
+\subsection{ Anomalies WebV2}
+
+La deuxième version du Web développé en Angular (actuellement utilisée principalement sur les fonctionnalités liées aux ordonnances (création, modification et détails) représente un énorme chantier qui s'est étalé sur près de quatre ans. Malheureusement, ce projet a souffert d'un manque de supervision technique, de documentation fonctionnelle insuffisante et de nombreuses fusions de fonctionnalités réalisées sans véritable revue de code ni contrôle qualité rigoureux. \\
+
+Cette accumulation d'erreurs a transformé le Web V2 en une source de dette technique, avec des effets de bord systématiques... Très souvent, corriger un bug entraîne l'apparition de nouveaux problèmes ailleurs dans l'application. Ce contexte rend chaque correction délicate et très chronophage. Sur certaines anomalies, le simple fait d'ajouter quelques lignes de code peut nécessiter un à trois jours de recherche et de compréhension du fonctionnement sous-jacent. \\
+
+Rien que ce dernier semestre, j'ai ainsi eu l'occasion de traiter plus d'une vingtaine d'anomalies liées au Web V2. 
+
+Corriger une anomalie prend beaucoup de temps, n'est pas enrichissant et, contrairement au développement d'une fonctionnalité, cela ne rapporte pas beaucoup d'expérience car il s'agit souvent d'une longue phase de débogage et de diagnostic, sans véritable valeur ajoutée technique ou fonctionnelle. \\
+
+Afin d'en illustrer la complexité et le travail réalisé tout en laissant place à des parties bien plus intéressantes dans mon rapport, je me contenterai ici de lister simplement quelques anomalies que j'ai traitées.
+
+\begin{itemize}
+    \item Réduction d'une série de soins dupliquée provoquant un doublement erroné du nombre total de séances, corrigé après une actualisation manuelle de la page.
+    \item Problème d'affichage lors de la fusion d'un patient.
+    \item Problèmes de persistance et d'affichage des filtres : attributions non visibles au retour, états « non fait » décochés après validation, et filtre Cabinet/Domicile non fonctionnel.
+    \item Impossible d'accéder au détail d'un lot : le clic sur l'icône « oeil » ne déclenche aucune action.
+    \item Impossible de supprimer une mutuelle depuis le dossier patient.
+    \item Bouton "Réessayer" manquant en facturation depuis l'ordonnance et depuis le tableau de bord de facturation.
+    \item Lorsqu'une ordonnance totalement facturée est modifiée, la navigation passe incorrectement de l'étape 2/2 « Prescription » à une deuxième fois l'étape 2/2 « Contexte de remboursement ».
+    \item Lors de la modification du libellé depuis le résumé d'ordonnance, la validation bloque l'écran sur le message « encore un petit instant » sans jamais se finaliser.
+    \item Lors de l'ajout d'une mutuelle sur un patient, l'annulation bloque l'écran sans possibilité de sortir, nécessitant une actualisation manuelle.
+    \item Lors de la modification d'une mutuelle, il est impossible de modifier la date de début ou de fin de validité.
+    \item En modification de mutuelle, lorsqu'on navigue en arrière après avoir cliqué sur « je n'ai pas l'attestation », deux clics sont nécessaires pour revenir à l'étape précédente.
+    \item En création d'ordonnance avec la préférence « pratique du Tiers Payant » désactivée, une option reste pré-cochée en V2 alors qu'en V1 aucun choix n'était sélectionné.
+    \item Lors de la création d'une ordonnance en V2, la date « jusqu'au » est bien renseignée au départ, mais s'affiche en « null séance » sur l'étape de récapitulatif final.
+    \item Impossible d'ajouter un scan d'ordonnance dans la modification d'une ordonnance.
+\end{itemize}
+
+Et de nombreux autres encore.
+
+\newpage
+\section{Travaux annexes}
+
+L'ensemble de ces travaux s'inscrit exclusivement dans le cadre des missions réalisées durant ce quatrième semestre d'alternance.
+
+\subsection{ Étape de conception d'une User Story}
+
+Dans une optique de montée en compétences, mon Lead Technique a souhaité me confronter à l'exercice de la conception d'une User Story. Il m'a ainsi proposé de venir présenter moi-même mes réflexions et choix techniques en amont du développement. \\
+
+J'ai ainsi passé environ une journée avec lui à revoir les différentes étapes de réflexion et de conception : analyse des besoins métier, découpage fonctionnel (traduit en découpage technique), anticipation des complexités techniques et choix de l'architecture. Cet échange m'a énormément fait progresser en me donnant des méthodes concrètes pour mieux structurer mes idées, poser les bonnes questions en amont, anticiper des zones de risques techniques que je n'apercevais pas et concevoir des solutions plus propres et maintenables.
+
+\subsection{ Code Review}
+
+Au cours de la première moitié du semestre, une décision a été prise : les revues de code (code reviews) n'étaient plus réservées uniquement aux Leads, mais ouvertes à l'ensemble des développeurs. Cette nouvelle organisation a été mise en place pendant mes deux semaines en cours à la faculté. Je me suis donc investi dans ces revues de code dès mon retour. \\
+
+Il s'est avéré que j'étais l'un des membres de l'équipe les plus rigoureux sur cet exercice. Au départ, l'état d'esprit général n'était pas encore totalement aligné sur cette exigence de qualité. Certains développeurs avaient parfois tendance à vouloir contourner certaines remarques de review dans l'objectif de terminer rapidement leur développement. Il m'est même arrivé de constater que certains validaient mes retours sans avoir procédé aux modifications demandées. \\
+
+L'arrivée de notre nouveau Lead Technique a été déterminante pour renforcer l'importance de ces revues. Partageant une approche similaire à la mienne mais avec un recul technique bien plus solide, il a permis de remettre au centre cette exigence de qualité dans l'équipe.
+
+J'ai trouvé cet exercice formateur et enrichissant. Analyser le code des autres m'a permis de découvrir de nouvelles approches de développement, d'élargir ma vision technique et de proposer des optimisations que je n'aurais pas forcément envisagées dans mon propre code. \\
+
+Malheureusement, après plusieurs semaines, la direction a finalement décidé de mettre un terme à cette organisation. La charge supplémentaire engendrée par les revues systématiques a été jugée incompatible avec les objectifs de livraison des sprints, même si je reste infiniment convaincu de la forte valeur ajoutée de cet exercice sur la qualité du produit et la progression technique de l'équipe.
+
+\subsection{ Complétion de la documentation du FAST}
+
+La documentation de la librairie FAST est un sujet que j'avais commencé à aborder lors du troisième semestre, mais que j'ai largement enrichi au cours du quatrième. \\
+
+En effet, cette documentation n'a pas été rédigée en une seule fois: je l'ai complétée progressivement, en parallèle de plusieurs User Stories réalisées durant ce dernier semestre.
+
+Comme évoqué précédemment, je ne peux pas dévoiler l'ensemble des aspects techniques liés à la librairie FAST. Toutefois, je suis fier du travail accompli sur cette documentation. Je tiens donc à présenter les différentes parties que j'ai rédigées et les éléments que j'ai pu y intégrer, ceci afin de pouvoir tout de même illustrer concrètement mon investissement et les apports de ce travail.
+
+\begin{itemize}
+    \item \textbf{Architecture}: But du FAST, la définition de ses éléments propres, l'explication du fonctionnement sous-jacent de typescript (Generic type parameters), des exercices, des exemple et des liens vers la librairie du code afin d'illustrer les propos.
+    \item \textbf{Comment bien concevoir ?}: Conseils de conception, les étapes pour migrer d'une fonctionnalité NgRx vers le FAST, des exemples de cas d'utilisation, des tips et les bonnes pratiques.
+    \item \textbf{Conventions de nommage}: règles pour nommer les fichiers, classes, etc.
+    \item \textbf{FAQ}: réponses aux questions fréquentes sur l'architecture FAST.
+    \item \textbf{Bonus}: rappel des principes de conception logicielle SOLID. \\
+\end{itemize}
+
+Supervisé par notre CTO (Chief Technical Officer), j'ai écrit cette documentation de près de 8 pages durant les quelques périodes de SAS.
+
+Étant donné les points évoqués précédemment (notamment sur la fonctionnalité "Liste des actes"), la librairie FAST n'est pas encore parfaite, elle est donc amenée à évoluer. Sa documentation suit donc cette même dynamique d'évolution, s'adaptant et s'enrichissant au fil des ajustements et des besoins que l'on rencontre.
+
+\subsection{ Élaboration d'une structure de documentation}
+
+En analysant l'utilisation des anciennes documentations et la façon dont elles étaient maintenues, une problématique est survenue durant la cérémonie de rétrospective d'un Sprint et nous sommes rapidement arrivés à un constat clair : nos documentations sont mal maintenues, donc mal exploitées.
+
+Chacun ajoutait ses informations un peu où et comme il le souhaitait, sans réelle cohérence, sans contrôle, et surtout sans responsable clairement défini pour veiller à la qualité et à la pertinence des contenus.
+
+Or, plus une équipe s'agrandit, plus la nécessité de poser un cadre de travail devient indispensable. En développement, on parlerait de framework, nous avons donc appliqué ce principe à la gestion documentaire.\\
+
+J'ai ainsi pris en main cette problématique afin d'y apporter une solution concrète et structurée.\\
+J'ai travaillé sur une nouvelle structure de documentation, avec comme objectif de réussir à relier de manière logique et cohérente le fonctionnel et le technique, tout en évitant que cela ne devienne rapidement ingérable. \\
+
+Pour cela, nous avons défini trois responsables, en charge de valider et de maintenir les différentes parties de la documentation (fonctionnelle et technique). \\
+
+Voici l'architecture complète :
+
+\begin{itemize}
+    \item \textbf{Introduction}
+    \begin{itemize}
+        \item Bienvenue dans l'équipe
+        \item Présentation des équipes et de leur organisation (PO, Dev, QA…)
+    \end{itemize}
+    
+    \item \textbf{Environnement de travail}
+    \begin{itemize}
+        \item Installation (Docker, Web Struts, Web Angular, App Mobile, CBA Link)
+        \item Accès aux bases de données
+        \item Liens et outils utiles (Jira, ClickUp, Gitlab, etc.)
+    \end{itemize}
+    
+    \item \textbf{Procédures de développement (Méthodologie SCRUM AgatheYou)}
+    \begin{itemize}
+        \item Workflow complet : de la conception PO jusqu'à la MEP (Mise En Prod)
+        \item Répartition des rôles et responsabilités
+        \item Topologie des tickets chez CBA : Epic, US, BugProd, US Technique, Ano, Evo, Hotfix
+        \item Cas particuliers : tâches bloquées, process spécifiques
+    \end{itemize}
+    
+    \item \textbf{Documentation des fonctionnalités}
+    \begin{itemize}
+        \item Présentation générale d'AgatheYou
+        \item Découpage par Epic 
+        \begin{itemize}
+            \item Découpage par Feature (chaque Epic possède plusieurs features)
+            \begin{itemize}
+                \item Documentation fonctionnelle
+                \item Documentation technique associée à la Feature
+            \end{itemize}
+        \end{itemize}
+    \end{itemize}
+    
+    \item \textbf{Espace Fonctionnel Transverse}
+    \begin{itemize}
+        \item Cahiers des charges
+        \item Patchnotes
+        \item Partages PO
+    \end{itemize}
+    
+    \item \textbf{Espace Technique Transverse}
+    \begin{itemize}
+        \item Versioning (Git, branches)
+        \item Architectures (Web V2, Web Struts, App Mobile, architecture des fichiers)       
+        \item Documentation FAST
+        \item Partages technique
+    \end{itemize}
+    
+    \item \textbf{Espace Qualité}
+    \begin{itemize}
+        \item Suivi et gestion des activités QA
+        \item Process QA
+    \end{itemize}
+    
+    \item \textbf{Rétrospectives et Suivi d'Actions}
+    \begin{itemize}
+        \item Suivi des problématiques par sprint et des actions associées
+        \item Suivi des actions résolues ou en cours
+    \end{itemize}
+    
+    \item \textbf{Brouillons et Validation}
+    \begin{itemize}
+        \item Espace temporaire pour les documentations en cours de validation
+    \end{itemize}
+    
+    \item \textbf{Archives et Suppressions}
+    \begin{itemize}
+        \item Archivage
+        \item Espace de demande de suppression
+    \end{itemize}
+\end{itemize}
+
+Enfin, j'ai également établi trois grandes règles de fonctionnement, qui permettent désormais de garantir une qualité et une cohérence globales des informations documentées.
+
+\begin{itemize}
+    \item Lorsque l'on créer une documentation, on l'intègre dans la page nommée "Brouillons". Le responsable de la documentation sera chargée de l'incorporer dans la documentation, au bon endroit.
+    \item On évite au maximum de créer des liens vers d'autres documentations. Cela finit vite par compliquer la lecture et rendre la documentation difficile à organiser correctement. Le système de hierarchisation est justement là pour naturellement créer du lien.
+    \item On ne modifie pas la documentation d'une tierce personne sans son accord, à la place, on saisit un commentaire.
+\end{itemize}
+
+Cette structure de documentation a vocation à évoluer, notamment sur l'aspect technique de chaque fonctionnalité où notre Lead Technique privilégie une documentation directement intégrée au code. \\
+
+Elle a été adoptée par notre équipe et m'a également été demandée par l'équipe Milo suite à son évocation lors d'un sprint précédent.
+
+\newpage
+\section{Conclusion}
+
+\subsection{ Premier Semestre}
+
+En somme, ces deux premiers semestres d'alternance m'ont beaucoup apporté. J'ai pu consolider de nombreux acquis.
+
+Les membres de mon équipe m'ont beaucoup accompagné, j'ai beaucoup appris sur les technologies, sur le métier de l'IDEL, sur la communication et le fonctionnement dans une équipe, mais également inter-équipes.\\
+
+Évoluant dans un open-space, j'apprends également des interactions sociales des autres, notamment en ce qui concerne le management, la prise de décisions, la manière de gérer un problème, les différents soucis qui peuvent se poser au niveau des conventions, etc. 
+
+Je rencontre ainsi tout un tas d'interactions sociales que l'on peut trouver dans un open-space lié au développement d'applications et où se situent plusieurs hiérarchies.
+
+\subsection{ Deuxième Semestre}
+
+Le premier semestre était assez court au niveau du temps en entreprise, ce deuxième semestre étant plus long, il m'a permis de développer, de comprendre et d'apprendre bien plus de choses. \\
+
+Sur cette fin de deuxième semestre, je me sens beaucoup plus à l'aise et confiant sur les projets de CBA, même s'il me reste beaucoup à apprendre (un peu plus d'un an). Je touche à de plus en plus de choses chaque jour. \\
+
+Mon tuteur entreprise ayant changé d'équipe, avec le recul, je trouvais que je n'étais pas assez encadré durant ce premier semestre d'alternance. Cependant, l'arrivée de Tom Andrieu en tant que Lead Developer mais également en tant que tuteur entreprise m'a bien aidé et donné un meilleur cadre de soutien dans mon apprentissage. \\
+
+Ces deux premiers semestres en alternance m'ont donc permis d'obtenir une très bonne maîtrise de la méthodologie agile SCRUM ainsi qu'une première expérience sur les projets de CBA.
+
+\newpage
+
+\subsection{ Troisième Semestre}
+
+Ce troisième semestre a été une période de forte présence sur site, notamment durant les mois de juin à août. Cette immersion prolongée m'a permis de m'investir pleinement ainsi que d'aborder des problématiques plus complexes que celles rencontrées lors de mes précédents semestres en alternance. \\
+
+En étant plus fréquemment sur site, j'ai pu m'intégrer davantage dans le rythme des sprints et participer à 100\% à toutes les cérémonies et activités du cycle SCRUM. Contrairement à mes périodes de cycle d'alternance où mon implication dans un sprint est partielle, cette fois, j'ai pu suivre l'intégralité des processus, ceci de la planification à la livraison. \\
+
+Cette présence plus soutenue m'a également permis de contribuer à des User Stories plus complexes et d'en découvrir les nombreuses facettes, ce qui, naturellement, m'a permis de monter en compétences techniques. \\
+
+J'ai d'autant plus hâte de poursuivre mon apprentissage (à plein temps à partir du mois de mars) durant ce quatrième semestre.
+
+\newpage
+
+\subsection{ Quatrième Semestre}
+
+Ce quatrième semestre marque la fin de mon alternance, mais aussi la fin de mon Master ILSEN, et plus largement la conclusion de cinq années d'études supérieures, dont deux réalisées en alternance chez CBA. \\
+
+Ce semestre a finalement été celui où j'ai passé le plus de temps en entreprise. Avec le rythme alterné de deux semaines en cours et deux semaines en entreprise, j'ai cumulé, sur ce semestre seul, un volume de présence équivalent à celui des deux premiers semestres réunis. \\
+
+Clôturer ce parcours par une alternance a été un choix ambitieux mais extrêmement formateur. Être alternant, c'est vivre deux vies parallèles: celle d'un étudiant soumis aux échéances académiques, et celle d'un professionnel impliqué dans la réussite d'un produit, dans un contexte d'équipe, de qualité logicielle, de délais et de contraintes bien plus concrètes que tout projet pédagogique.
+
+Si ce choix m'a demandé beaucoup d'investissement personnel, notamment en termes de gestion du temps et d'énergie, il m'a permis de développer une maturité professionnelle que peu d'étudiants en formation classique peuvent revendiquer à la sortie de leur diplôme. \\
+
+J'ai pu apprendre à évoluer dans une entreprise structurée, à respecter des processus rigoureux, à interagir avec différentes équipes métiers et techniques, et surtout à devenir un développeur Front-End opérationnel. L'usage quotidien de technologies modernes comme Angular et Ionic, très demandées aujourd'hui sur le marché du travail, me donne une véritable longueur d'avance sur mon évolution de carrière. Cette compétence, combinée à mon implication et à la confiance de mes responsables, m'a permis d'aboutir à une proposition de CDI chez CBA et de commencer ma vie professionnelle dans un environnement que je connais bien, où j'ai pu m'épanouir et progresser, est une opportunité que je mesure pleinement. \\
+
+Au-delà de la technique, cette alternance m'a permis de développer des qualités humaines essentielles: savoir communiquer avec mon équipe, remonter une anomalie de manière structurée, documenter une fonctionnalité pour en assurer la pérennité, écouter les retours lors des code reviews, ou encore proposer des améliorations pertinentes lors des rétrospectives de sprint. \\
+
+Je souhaite tout d'abord remercier Christophe Huntzinger, DSI chez CBA, ainsi que David Merle, mon premier tuteur, pour m'avoir accordé leur confiance dès le départ et m'avoir permis d'intégrer un environnement aussi stimulant.
+
+Ensuite, mes remerciements s'adressent à Tom Andrieu, mon tuteur entreprise. Il a repris le suivi d'un apprenti qui était un peu perdu dans son apprentissage et a su, dès le départ, m'épauler et m'accompagner tout au long de mon alternance. Je tiens à le remercier sincèrement pour sa bienveillance, sa disponibilité, son exigence et ses conseils qui ont énormément contribué à ma progression, qu'elle soit technique ou humaine. Merci Tom.
+
+Durant ce dernier semestre, l'arrivée d'Alexandre, notre nouveau Lead Technique, a marqué un véritable tournant dans mon apprentissage. Doté d'une pédagogie remarquable, il prend le temps, encore aujourd'hui, de me faire des retours qui me permettent de progresser de jour en jour, aussi bien sur le plan technique qu'humain. Je tenais donc également à lui adresser un remerciement tout particulier. Merci Alexandre.
+
+Merci également à toute mon équipe, qui a su me transmettre avec pédagogie et patience une partie de son savoir et de son expérience.
+
+Un grand merci à Pierre Jourlin, mon tuteur pédagogique au CERI, pour son accompagnement rigoureux, son écoute et ses conseils tout au long de ces deux années d'alternance. \\
+
+Enfin, je tiens à remercier le CERI (Centre d'Enseignement et de Recherche en Informatique) pour l'organisation du salon de l'alternance, qui m'a offert l'opportunité de réaliser ces deux années d'alternance chez CBA Informatique Libérale. \\
+
+Ces deux années représentent une transition réussie, entre l'étudiant que j'étais et le professionnel que je deviens. Elle m'a préparé à affronter les défis de demain avec méthode, rigueur et confiance. Et même si les journées ont parfois été longues, je ressors de cette expérience avec une certitude: le jeu en valait largement la chandelle.
+
+\newpage
+
+\section{Lexique}
+
+\begin{description}
+    \item[ADELI\label{term:ADELI}] Automatisation DEs LIstes. \\
+    Le numéro ADELI (9 chiffres) est un identifiant personnel attribué à tous les professionnels de santé salariés et libéraux et qui se veut être remplacé par le numéro RPPS.
+
+    \item[ADRi\label{term:adri}] Acquisition des DRoits intégrée (ADRi) \\
+    Téléservice permettant aux professionnels de santé d'acquérir les informations concernant la situation médico-administrative d'un bénéficiaire de soins nécessaires à l'élaboration d'une facture.
+
+    \item[AI\label{term:ai}] Acte Isolé \\
+    Désigne un acte médical ou infirmier réalisé de manière ponctuelle et indépendante, sans lien direct avec d'autres soins.
+
+    \item[ALD\label{term:ald}] Affection de Longue Durée \\
+    Indique une pathologie nécessitant une prise en charge prolongée et bénéficiant d'une prise en charge spécifique de l'Assurance Maladie.
+
+    \item[AMI\label{term:ami}] Acte Médico-Infirmier \\
+    Acte prescrit exclusivement par un médecin et ne pouvant être prescrit par une IDEl.
+
+    \item[BSI\label{term:bsi}] Bilans de Soins Infirmiers \\
+    Évaluations systématiques de la santé d'un patient, réalisées par l'IDEL dans le cadre d'un suivi régulier.
+
+    \item[CPAM\label{term:cpam}] Caisse Primaire d'Assurance Maladie \\
+    Organisme public en charge de la gestion de l'assurance maladie en France, assurant le remboursement des frais médicaux.
+
+    \item[CRM\label{term:crm}] Customer Relationship Management \\
+    Système permettant à une entreprise de gérer les interactions avec ses clients.
+
+    \item[ES-KA-PAD\label{term:es-ka-pad}] Version précédente du TLA Ted
+
+    \item[Garantie Paiement\label{term:gp}] Garantie d'être payé par un ou des parties pour un patient.
+
+    \item[HDS\label{term:hds}] Hébergeur de Données de Santé
+
+    \item[IDE\label{term:ide}] Infirmier Diplômé d'État
+
+    \item[IDEL\label{term:idel}] Infirmier Diplômé d'État Libéral
+
+    \item[Lead Dev\label{term:leaddev}] Chez CBA, le rôle du Lead Dev est de diriger une équipe de développeurs, de s'occuper de la charge managériale d'un sprint, ainsi que de trouver la source des problèmes et d'améliorer les processus internes à l'équipe.
+
+    \item[MAU\label{term:mau}] Majoration Acte Unique
+
+    \item[MCI\label{term:mci}] Majoration Coordination Infirmière \\ 
+    Concerne les actes impliquant une coordination particulière entre plusieurs infirmiers dans le cadre des soins dispensés à un patient.
+
+    \item[MIE\label{term:mie}] Majoration Jeune Enfant (moins de 7 ans)
+
+    \item[PS\label{term:ps}] Professionnel de Santé
+
+    \item[RPPS\label{term:RPPS}] Répertoire partagé des professionnels de santé. \\
+    Le numéro RPPS (11 chiffres) est un identifiant national, unique et pérenne que le professionnel conserve tout au long de sa carrière.
+
+    \item[SAS\label{term:sas}] Appelé SAS pour la référence à un SAS de décompression.
+    
+    \item[SCOR\label{term:scor}] Téléservice permettant aux professionnels de santé de dématérialiser l'envoi de justificatifs.
+
+    \item[Sesam Vitale\label{term:sesam}] Programme de dématérialisation des feuilles de soins pour l'assurance maladie reposant sur la carte Vitale.
+
+    \item[Swagger\label{term:swagger}] Outil qui permet de documenter et de tester facilement des API REST, en générant une interface interactive à partir des spécifications de l'API. Il aide les développeurs à comprendre les endpoints disponibles, les paramètres attendus, les formats de réponse, et à effectuer des appels de test sans avoir à écrire de code. 
+
+    \item[TLA\label{term:tla}] Lecteur de cartes bi-fentes. \\ Permet de lire simultanément la carte vitale du patient et la carte de praticien CPS, facilitant la création et la télétransmission des feuilles de soins électroniques.
+    
+    \item[User Story\label{term:us}] Description simple d'un besoin exprimée par un ou des clients et se devant être développé au niveau du code.
+
+\end{description}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                            Document ends here                                %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}

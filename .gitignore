@@ -1,0 +1,44 @@
+# ============================================================
+#  LaTeX - fichiers temporaires de compilation (regeneres)
+# ============================================================
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.toc
+*.lof
+*.lot
+*.synctex.gz
+*.synctex(busy)
+*.bbl
+*.blg
+*.bcf
+*.run.xml
+*.idx
+*.ilg
+*.ind
+*.glo
+*.gls
+*.glg
+*.acn
+*.acr
+*.alg
+*.nav
+*.snm
+*.vrb
+*.xdv
+
+# ============================================================
+#  PDF compiles (regenerables par compilation) -> exclus
+#  /!\ On ignore UNIQUEMENT les "main.pdf" produits par latexmk.
+#  Les PDF sources (res/images/.../guard.pdf, page.pdf) et le
+#  livrable a la racine ne s'appellent pas main.pdf -> conserves.
+# ============================================================
+main.pdf
+
+# ============================================================
+#  OS / divers
+# ============================================================
+Thumbs.db
+.DS_Store
