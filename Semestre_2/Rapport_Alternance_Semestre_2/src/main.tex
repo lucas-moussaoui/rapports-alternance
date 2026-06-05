@@ -65,10 +65,9 @@ Afin de mettre en pratique la théorie apprise depuis plus de 5 ans, mon but pre
 C'est ainsi que, grâce au Forum de l'Alternance réalisé par le CERI, j'ai pu rencontrer Chahida Zidani, Responsable du développement RH de CBA, et Tom Andrieu, lead développeur à CBA. 
 Suite à cela, j'ai réalisé un test d'aptitude d'Angular sur site avec le Lead Tech et le Lead Dev.
 
-Je vais aborder dans ce rapport mes débuts dans l'entreprise en tant que développeur Front-End dans l'équipe du logiciel Agathe You, de mi-août jusqu'à fin décembre, en passant par la présentation de l'entreprise, l'environnement de travail et les différentes missions que j'ai réalisées.
+Ce rapport couvre l'intégralité de ma première année d'alternance chez CBA, de la mi-août jusqu'à aujourd'hui, en tant que développeur Front-End dans l'équipe du logiciel Agathe You. Les parties rédigées au premier semestre ont été mises à jour avec les évolutions de ce second semestre, et de nouvelles sections sont venues les compléter, avec une attention particulière portée aux aspects techniques ainsi qu'à l'intégration de l'intelligence artificielle dans les pratiques de l'entreprise.
 
-% TODO S2 — INTRODUCTION : actualiser ce paragraphe. Le rapport couvre désormais les DEUX semestres (S1 + S2).
-%   -> mentionner la période élargie et l'angle "intégration de l'IA dans les pratiques de l'entreprise".
+J'y aborde la présentation de l'entreprise, l'environnement de travail, mes débuts en entreprise, ainsi que les différentes missions que j'ai réalisées au fil de ces deux semestres.
 
 \section{CBA Informatique Libérale}
 
@@ -323,8 +322,6 @@ Pour l'organisation interne et le suivi rigoureux des tâches, nous utilisons pl
     
     \item \textbf{Confluence et ClickUp} : Ces plateformes sont dédiées à la documentation technique et au partage des connaissances. Elles centralisent les spécifications fonctionnelles, les guides d'installation et les procédures internes.
 
-    \item \textbf{LibreChat} : Nous disposons d'un accès à un serveur local permettant d'utiliser des intelligences artificielles. Cet outil nous accompagne quotidiennement dans nos recherches techniques et l'optimisation de certaines portions de code.
-
     \item \textbf{Lucca} : Toute la gestion administrative, notamment la pose des congés et le suivi des temps de travail, est centralisée sur cette plateforme.
 \end{itemize}
 
@@ -396,14 +393,29 @@ Développé en Angular, il est utilisé notamment par Agathe You (Web et Mobile)
 Concrètement, il met à disposition des composants réutilisables (boutons, alertes, icônes, etc.) configurables via des propriétés, ce qui simplifie le développement et garantit une cohérence visuelle et ergonomique entre les différents produits de CBA.
 
 \subsubsection{Le développement iOS}
-% TODO S2 — iOS : nouvelle technologie découverte ce semestre.
-%   -> contexte (build mobile via Capacitor, Xcode/Jenkins, spécificités iOS...), ce que tu as appris.
+
+Qui dit développement mobile dit systèmes d'exploitation mobiles : l'application Agathe You doit fonctionner aussi bien sur Android que sur iOS. Le développement iOS se démarque par un écosystème beaucoup plus fermé que celui d'Android : la compilation et la signature de l'application exigent un Mac équipé de Xcode, et les règles de validation imposées par Apple sont plus strictes.
+
+Ces contraintes ont un impact direct sur l'organisation de l'équipe Agathe You :
+
+\begin{itemize}
+    \item Seuls deux développeurs de l'équipe disposent d'un Mac, ce qui concentre les vérifications spécifiques à iOS sur ces deux personnes ;
+    \item Des \textit{runners} iOS sont disponibles sur GitLab afin de compiler le projet sans Mac, mais au prix de temps de compilation plus longs et de journaux d'erreurs (\textit{logs}) difficilement exploitables, ce qui complique le débogage ;
+    \item L'équipe ne possède que deux iPhones de test, partagés entre tous les développeurs.
+\end{itemize}
+
+Grâce à Capacitor, présenté précédemment, l'équipe n'a pas besoin d'apprendre Swift, le langage natif d'Apple : le développement reste en Angular, et le même code est ensuite embarqué dans l'application iOS.
+
+Une vérification sur iPhone reste néanmoins indispensable. Notre application s'exécute dans une \textit{WebView}, c'est-à-dire une page web embarquée à l'intérieur de l'application. Or, sur iPhone, Apple impose que ces pages soient affichées par son propre moteur de rendu, celui du navigateur Safari, qui peut interpréter notre code légèrement différemment d'Android. Un écran parfaitement fonctionnel sur Android peut donc présenter des défauts d'affichage sur iPhone, ce qui oblige l'équipe à tester ses développements sur les deux plateformes.
+
+% NOTE S2 — l'ancrage personnel iOS (ce que Lucas a vécu) sera traité dans les
+%   Fonctionnalités développées S2 → penser au renvoi croisé vers cette section à ce moment-là.
 
 \subsection{L'intelligence artificielle au quotidien}
 % TODO S2 — IA (ta section différenciante) : NE PAS définir l'IA.
 %   Parler de :
-%     - TON utilisation concrète (LibreChat déjà cité en 3.3.2, génération/explication de code,
-%       écriture de tests, recherche technique, revue...) ;
+%     - TON utilisation concrète (LibreChat — retiré de la section Outils 3.3.2 pour être traité ici —,
+%       génération/explication de code, écriture de tests, recherche technique, revue...) ;
 %     - l'usage à l'échelle de l'entreprise (projets internes, outils mis à disposition) ;
 %     - les formations / sensibilisations reçues ;
 %     - les bonnes pratiques et limites (données de santé HDS, vérification du code généré, confidentialité).

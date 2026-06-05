@@ -19,6 +19,13 @@ Mémo de travail pour ce rapport. À lire avant toute intervention sur `src/main
   1. **mettre en forme en LaTeX** en respectant le style du document existant (`\subsection`, `itemize`, `\textbf`, `\imageCenter`, `\newpage`…) ;
   2. **challenger Lucas comme un examinateur de soutenance** sur ce qu'il doit dire ou non (fond, pertinence, cohérence, attendus d'un rapport d'alternance).
 - **Ne JAMAIS inventer** le travail, les missions ou les chiffres : c'est un document académique évalué décrivant une expérience réelle. On n'adapte que le contenu fourni par Lucas.
+- **Convention `;;`** : quand Lucas écrit `;;` dans un message, ce qui suit s'adresse à Claude
+  (méta-commentaire, consigne) et ne fait PAS partie du contenu à intégrer au rapport.
+- **Conventions typographiques du rapport** :
+  - `\textit{...}` pour les termes anglais / jargon technique (*User Story*, *WebView*, *logs*, *toggle*…) ;
+  - `\textbf{...}` pour la mise en valeur (noms de produits, rôles, notions clés) ;
+  - à la **première occurrence** d'un terme complexe : courte explication en français entre parenthèses
+    ou via « c'est-à-dire » — le rapport doit rester lisible par un non-informaticien.
 
 ## 3. Intentions du nouveau rapport
 
@@ -69,6 +76,9 @@ Le découpage par semestre n'est visible qu'à **deux endroits** (le reste est f
 
 (Optionnel, façon Hicham : une section **« Résolution de bugs »** si des anomalies ont été corrigées — pages concrètes et appréciées d'un correcteur.)
 
+(Idée différée — **Lexique** façon Hicham : pas pour ce semestre (le rapport est encore assez court et
+les termes sont expliqués à la première occurrence) ; à envisager au S3/S4 quand le volume aura grossi.)
+
 ## 6. Décisions prises (récap des échanges)
 
 - ❌ **Pas de découpage « Partie I / Partie II »** : on actualise en place plutôt que de juxtaposer (évite la redite et tient la promesse d'« approfondir »).
@@ -109,10 +119,11 @@ Le découpage par semestre n'est visible qu'à **deux endroits** (le reste est f
 - [ ] **Retour tuteur CERI sur le S1** : pas encore reçu (attendu ~semaine du 8 juin 2026) → intégrer les corrections dès réception.
 - [ ] Intro de la nouvelle partie S2 (changements équipe/mission + évolution du travail)
 - [ ] 3.5 Intelligence artificielle — à rédiger
-- [ ] 3.4.5 Développement iOS — à rédiger
+- [x] 3.4.5 Développement iOS — rédigé (angle "techno de l'équipe" ; le vécu perso iOS ira dans les tickets S2 avec renvoi croisé)
 - [ ] Tickets S2 (5.8+) — à rédiger
 - [ ] 6.2 Analyse critique S2 — à rédiger
 - [ ] 7.2 Conclusion du Semestre 2 — à rédiger
-- [ ] MAJ : intro, 3.1 équipe, 3.2.1 Master Planning, 6.3, 6.4, 7.1 synthèse, 7.3 ouverture
+- [x] MAJ intro (§1) : couvre les 2 semestres + angle IA
+- [ ] MAJ : 3.1 équipe, 3.2.1 Master Planning, 6.3, 6.4, 7.1 synthèse, 7.3 ouverture
 
 > Les emplacements exacts à remplir sont balisés par des commentaires `% TODO S2` directement dans `src/main.tex`.
