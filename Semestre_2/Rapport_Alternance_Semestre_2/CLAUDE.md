@@ -21,6 +21,9 @@ Mémo de travail pour ce rapport. À lire avant toute intervention sur `src/main
 - **Ne JAMAIS inventer** le travail, les missions ou les chiffres : c'est un document académique évalué décrivant une expérience réelle. On n'adapte que le contenu fourni par Lucas.
 - **Convention `;;`** : quand Lucas écrit `;;` dans un message, ce qui suit s'adresse à Claude
   (méta-commentaire, consigne) et ne fait PAS partie du contenu à intégrer au rapport.
+- **Édition concurrente de `main.tex`** : ne PAS modifier `main.tex` pendant que Lucas y rédige
+  (risque de conflit de sauvegarde / perte de brouillon). Attendre qu'il confirme avoir sauvegardé,
+  ou lui demander de coller son texte dans le chat.
 - **Conventions typographiques du rapport** :
   - `\textit{...}` pour les termes anglais / jargon technique (*User Story*, *WebView*, *logs*, *toggle*…) ;
   - `\textbf{...}` pour la mise en valeur (noms de produits, rôles, notions clés) ;
