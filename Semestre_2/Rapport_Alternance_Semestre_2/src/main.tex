@@ -34,8 +34,8 @@
 }
 % document date
 \date{
-    Master 1 --- Parcours ILSEN --- Année universitaire 2025--2026\\
-    CBA Informatique Libérale --- Montfavet (Avignon)\\
+    Master 1 ILSEN, année universitaire 2025-2026\\
+    CBA Informatique Libérale, Montfavet (Avignon)\\
     Contrat du 18 Août 2025 au 25 Août 2027\\
     Tuteur entreprise : Tom ANDRIEU\\
     Tuteur CERI : Vincent LABATUT
@@ -424,14 +424,52 @@ Une vérification sur iPhone reste néanmoins indispensable. Notre application s
 %   Fonctionnalités développées S2 → penser au renvoi croisé vers cette section à ce moment-là.
 
 \subsection{L'intelligence artificielle au quotidien}
-% TODO S2 — IA (ta section différenciante) : NE PAS définir l'IA.
-%   Parler de :
-%     - TON utilisation concrète (LibreChat — retiré de la section Outils 3.3.2 pour être traité ici —,
-%       génération/explication de code, écriture de tests, recherche technique, revue...) ;
-%     - l'usage à l'échelle de l'entreprise (projets internes, outils mis à disposition,
-%       lien avec l'équipe Lab Innovation présentée en 2.3.8) ;
-%     - les formations / sensibilisations reçues ;
-%     - les bonnes pratiques et limites (données de santé HDS, vérification du code généré, confidentialité).
+
+\subsubsection{Une adoption structurée à l'échelle de l'entreprise}
+
+Avec l'arrivée de l'intelligence artificielle dans le monde de l'informatique, CBA se devait de s'adapter à cette nouveauté. Les personnes qui travaillaient déjà sur des projets d'IA au sein de l'entreprise, notamment l'équipe Lab Innovation, ainsi que plusieurs volontaires, se sont accordées sur la manière de l'accueillir :
+
+\begin{itemize}
+    \item \textbf{Le fournisseur} : le choix s'est porté dans un premier temps sur les modèles de l'entreprise Anthropic, d'autres fournisseurs pouvant s'ajouter une fois l'ensemble stabilisé.
+
+    \item \textbf{Les initiatives} : chaque collaborateur peut proposer des initiatives IA pour améliorer les processus, comme l'ajout d'un robot de revue de code dans les \textit{pipelines} GitLab. Chaque proposition est étudiée, puis conservée si elle s'avère utile.
+
+    \item \textbf{Les outils internes} : plusieurs personnes travaillent actuellement à la création d'outils pour faciliter la conception des \textit{User Stories}, le design avec l'UI-Kit et bien d'autres encore.
+\end{itemize}
+
+\subsubsection{La formation des équipes}
+
+Des formations ont été mises en place par les collaborateurs les plus proches de l'IA afin de sensibiliser chaque personne de l'entreprise :
+
+\begin{itemize}
+    \item \textbf{La sensibilisation} : chaque corps de métier (\textit{Product Owner}, développement, conception, marketing) a reçu une formation personnalisée, avec un approfondissement plus ou moins important selon ses besoins.
+
+    \item \textbf{Les développeurs} : nous avons reçu les formations les plus approfondies, centrées sur l'outil Claude Code, en abordant les différentes manières de l'utiliser (comment, quand et pourquoi). On nous y a également rappelé que chaque développeur reste pleinement responsable du code généré par l'IA.
+
+    \item \textbf{La confidentialité} : CBA étant certifié Hébergeur de Données de Santé, il nous est formellement interdit de transmettre à l'IA du code contenant des données sensibles. En pratique, cette contrainte impacte peu notre équipe Front-End, car la partie visuelle de l'application ne manipule que très peu, voire pas, de données de ce type.
+\end{itemize}
+
+\subsubsection{Claude Code et le plugin GenIA}
+
+Claude Code est un agent d'intelligence artificielle qui s'exécute directement dans l'environnement de travail du développeur : lancé à la racine d'un projet, il en visualise l'intégralité et peut interagir avec l'ensemble de celui-ci. Son utilisation est encadrée par plusieurs dispositifs :
+
+\begin{itemize}
+    \item \textbf{Le plugin GenIA} : créé en interne, il regroupe tous les \textit{skills} nécessaires pour bien développer selon le langage utilisé ; un \textit{skill} est un module de consignes et de bonnes pratiques que l'agent mobilise selon le contexte. Chaque développeur est tenu d'installer le \textit{plugin} et d'utiliser les \textit{skills} correspondant à son projet, notamment le \textit{skill} \textbf{cba-angular}, créé par l'équipe Architecture, qui rassemble toutes les bonnes pratiques Angular de l'entreprise.
+
+    \item \textbf{L'abonnement} : chaque développeur dispose d'un abonnement entreprise, avec un quota de jetons (\textit{tokens}) qui se renouvelle toutes les cinq heures. Si un développeur a besoin d'un quota plus important, un référent IA analyse ses sessions afin de diagnostiquer son utilisation (contexte trop volumineux, instructions mal formulées, etc.) et de le conseiller ; si son utilisation s'avère correcte, un abonnement supérieur lui est octroyé.
+
+    \item \textbf{LibreChat} : l'IA ne se limite pas aux développeurs. LibreChat, dont une partie est hébergée localement chez CBA, reste à la disposition de tous ; il est notamment utilisé par les profils non-développeurs, ou pour des questions simples qui ne nécessitent pas d'entamer son quota de jetons.
+\end{itemize}
+
+Il est à noter que les estimations des \textit{User Stories} restent pour l'instant établies sur un temps de développement « sans IA ».
+
+\subsubsection{Mon apprentissage avec l'IA}
+
+En ma qualité d'alternant, j'ai volontairement reçu l'accès à l'IA plus tardivement que les autres développeurs, afin de continuer à m'habituer à développer par moi-même et à découvrir le code d'Agathe You.
+
+J'ai ensuite utilisé le mode « apprentissage » (\textit{learning}) de Claude : dans ce mode, l'IA n'écrit aucune ligne de code, mais analyse mon travail, répond à mes questions et me fait découvrir de nouvelles notions. Je disposais ainsi d'un véritable expert capable de répondre à toutes mes interrogations.
+
+Une fois habitué à Angular et aux processus de l'équipe, un abonnement complet m'a été octroyé : je développe désormais mes \textit{User Stories} avec l'appui de l'IA pour accélérer le processus, tout en analysant systématiquement ce qu'elle produit afin de continuer à progresser.
 
 \newpage
 
