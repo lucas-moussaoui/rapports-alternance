@@ -24,6 +24,24 @@
 	\
 }
 
+%%
+% Adds an image sized relative to the text width (useful for large screenshots)
+% (added S2)
+%
+% Arguments:
+%	[1] - fraction of the text width, default: 1
+%	{2} - the image positionning (use H to force the exact position)
+%	{3} - the image path
+%	{4} - the image caption
+\newcommand{\imageFit}[4][1]{
+	\begin{figure}[#2]
+		\centering
+		\includegraphics[width=#1\textwidth]{#3}
+		\caption{#4}
+	\end{figure}
+	\
+}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Gantt diagrams
 % the below part is taken from StackExchange:

@@ -705,7 +705,43 @@ Travailler sur cette US m'a montré la différence entre l'ancien code et la ges
 % (placer les images dans res/images)
 
 \subsection{Refonte de la tournée V2}
-% TODO S2 — ÉNORME ticket n°1 (~2 pages + 1-2 figures).
+
+La page de la tournée est la première que voit l'IDEL en se connectant à Agathe You : c'est elle qui lui permet de visualiser l'organisation de sa journée et les soins à effectuer. On y retrouve les rendez-vous à venir, les actions de modification et de suppression, le changement de compte au sein du cabinet, le système de filtres, la barre de recherche de patients ainsi que l'accès au profil. Son ergonomie se doit donc d'être irréprochable.
+
+% TODO FIGURE : ancienne version de la page de tournée (déposer l'image dans res/images puis décommenter)
+\imageCenter[0.5]{H}{tournee_ancienne.png}{Ancienne version de la page de tournée}
+
+Cependant, cette page rencontrait plusieurs limites : des problèmes techniques et d'usage avaient été constatés, et son affichage vieillissant n'était plus adapté aux usages actuels. Une refonte visuelle complète de la page a donc été décidée, accompagnée d'un ajustement des comportements d'affichage et de navigation. L'objectif de cette \textit{Epic} est de réduire la charge mentale des IDEL en leur offrant une interface plus claire, plus lisible et plus fluide, afin qu'elles puissent se concentrer sur le soin plutôt que sur l'organisation de leur tournée.\\
+
+Cette mission de plusieurs mois a été découpée en plusieurs \textit{User Stories}, organisées autour de cinq grands axes :
+
+\begin{itemize}
+    \item La création de la page et de son \textit{header}, c'est-à-dire l'en-tête de la page ;
+    \item La création des \textit{cards}, les cartes représentant chaque rendez-vous, et de leurs différentes déclinaisons visuelles ;
+    \item Le comportement des \textit{cards} dans la page (ordre, changements d'état, actions au \textit{swipe}, un glissement du doigt sur l'écran) et les différents états de la page (aucun rendez-vous, rendez-vous validés) ;
+    \item Le fonctionnement du filtre ;
+    \item Le branchement des données (création des \textit{stores} NgRx, etc.).
+\end{itemize}
+
+Des évolutions d'usage sont également à l'étude, comme la sélection multiple de rendez-vous ou l'ajout de boutons d'action rapides.\\
+
+Le ticket qui m'a été confié était le premier de cette liste : la création de la page et de son \textit{header}, un bandeau coloré (vert, rouge ou violet selon l'abonnement de l'utilisateur) regroupant toutes les informations correspondantes, accompagnée d'un premier branchement de données. Il était estimé à 8 points, soit environ quatre jours de développement.\\
+
+Ce ticket était d'une priorité élevée dans le sprint et je n'étais présent dans l'entreprise que depuis quelques mois. J'ai donc travaillé en parallèle d'un développeur expérimenté : sa version était destinée à la production, tandis que la mienne avait un but pédagogique, l'objectif étant que je parvienne à réaliser le ticket proprement dans les mêmes conditions que lui. Son accompagnement m'a beaucoup appris sur le fonctionnement d'Angular et ses spécificités, en particulier la construction d'une page en partant de zéro.
+
+\textbf{La conception avant le code.} Avant d'écrire la moindre ligne, je suis passé par une étape de conception approfondie : j'ai réalisé une carte mentale recensant tout ce que j'allais devoir produire. Une fois cette carte validée par mon tuteur, elle est devenue le fil conducteur de l'ensemble de mon développement.
+
+% TODO FIGURE : carte mentale de conception (déposer l'image dans res/images puis décommenter)
+\imageFit[1]{H}{carte_mentale_header.png}{Carte mentale de conception du header}
+
+Partir d'un composant entièrement vide était très déstabilisant : contrairement à mes missions précédentes, où je faisais évoluer un existant, il fallait cette fois tout construire. C'est précisément là que la conception a montré sa valeur : je savais par quoi commencer et dans quel ordre avancer.
+
+\textbf{La réalisation.} En suivant ma carte à la lettre, j'ai rencontré des difficultés, utilisé des approches déconseillées qu'il a fallu corriger, demandé de l'aide et effectué de nombreuses recherches. J'ai finalement atteint un résultat satisfaisant.
+
+% TODO FIGURE : nouvelle version du header (déposer l'image dans res/images puis décommenter)
+\imageCenter[0.5]{H}{tournee_header_nouveau.png}{Nouvelle version du header de la page de tournée}
+
+Cette mission est sans doute celle qui m'a le plus fait progresser ce semestre. Au-delà de la maîtrise d'Angular, elle m'a enseigné une leçon précieuse : le temps investi dans la conception n'est jamais perdu, il est largement récupéré lors du développement. C'était aussi la première fois que je construisais une page complète en partant de rien, ce qui m'a donné une vision d'ensemble, de la maquette jusqu'au code.
 
 \subsection{Bug en production sur les heures du dossier patient}
 
