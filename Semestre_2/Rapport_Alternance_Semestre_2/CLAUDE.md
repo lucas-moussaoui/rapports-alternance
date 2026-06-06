@@ -120,6 +120,7 @@ les termes sont expliqués à la première occurrence) ; à envisager au S3/S4 q
 - [x] Squelette LaTeX posé (sections vides + marqueurs `% TODO S2`), document compile (`exit=0`).
 - [x] Page de garde complétée (entreprise + ville, année/parcours) — **à VÉRIFIER par Lucas**.
 - [ ] **Retour tuteur CERI sur le S1** : pas encore reçu (attendu ~semaine du 8 juin 2026) → intégrer les corrections dès réception.
+- [ ] **EN COURS : Tickets S2** — Lucas rédige les fonctionnalités développées
 - [ ] Intro de la nouvelle partie S2 (changements équipe/mission + évolution du travail)
 - [x] 3.5 Intelligence artificielle — TERMINÉE (adoption / formations+HDS / Claude Code & GenIA & LibreChat / apprentissage perso)
 - [x] 3.4.5 Développement iOS — rédigé (angle "techno de l'équipe" ; le vécu perso iOS ira dans les tickets S2 avec renvoi croisé)
@@ -128,5 +129,6 @@ les termes sont expliqués à la première occurrence) ; à envisager au S3/S4 q
 - [ ] 7.2 Conclusion du Semestre 2 — à rédiger
 - [x] MAJ intro (§1) : couvre les 2 semestres + angle IA
 - [ ] MAJ : 3.1 équipe, 3.2.1 Master Planning, 6.3, 6.4, 7.1 synthèse, 7.3 ouverture
+      → décision Lucas : ces petites MAJ seront traitées lors de la RELECTURE COMPLÈTE finale
 
 > Les emplacements exacts à remplir sont balisés par des commentaires `% TODO S2` directement dans `src/main.tex`.

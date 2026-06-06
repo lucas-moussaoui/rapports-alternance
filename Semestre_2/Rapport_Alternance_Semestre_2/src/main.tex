@@ -700,12 +700,46 @@ Travailler sur cette US m'a montré la différence entre l'ancien code et la ges
 %     nouveaux éléments techniques) ;
 %   - présence accrue en entreprise ce semestre.
 
-% Gabarit à recopier pour CHAQUE nouveau ticket (puis supprimer ces commentaires) :
-%
-% \subsection{Titre du ticket}
-% Contexte / besoin :
-% Travail réalisé :
-% Compétences acquises :
+% Pour chaque ticket : Contexte / besoin -> Travail réalisé -> Compétences acquises.
+% Figures : 1 à 2 par ticket avec \imageCenter[échelle]{h}{fichier.png}{Légende}
+% (placer les images dans res/images)
+
+\subsection{Refonte de la tournée V2}
+% TODO S2 — ÉNORME ticket n°1 (~2 pages + 1-2 figures).
+
+\subsection{Bug en production sur les heures du dossier patient}
+
+Sur Agathe You, chaque patient dispose d'un dossier dans lequel l'IDEL peut ajouter de nouvelles données : une constante (température, tension, etc.) ou d'autres types d'informations, accompagnées d'une date, d'une heure et d'un éventuel commentaire. Ces données peuvent être renseignées directement dans l'interface, ou dictées à voix haute grâce à la saisie vocale développée par le Lab Innovation : un système d'IA découpe la phrase prononcée et remplit automatiquement les champs, le titulaire n'ayant plus qu'à valider. Par exemple, pour la phrase « À 15h, le patient avait une température de 36,5 », le champ de l'heure affichera 15h00 et l'espace des constantes 36,5.\\
+
+Un problème sur cette fonctionnalité a été remonté par la hotline, avec plusieurs cas signalés en production. C'était le premier bug de production qui m'était affecté. Ces tickets particuliers sont prioritaires et suivent un circuit précis : une fois le développement terminé, le correctif est validé par les testeurs, relu par un collègue expérimenté, puis fusionné dans la branche choisie par le \textit{Product Owner}.\\
+
+Le bug apparaissait avec une phrase comme « Hier, le patient était à 36,5 » :
+
+\begin{itemize}
+    \item La constante (36,5) et la date (la veille) étaient correctement remplies ; l'heure, n'ayant pas été précisée, passait à 00h00 : comportement prévu ;
+    \item À la validation, une fenêtre demandait à l'IDEL de préciser l'heure exacte, par exemple 15h : comportement prévu également ;
+    \item Résultat final : la donnée était bien enregistrée à la date de la veille\ldots{} mais à 23h00 au lieu de 15h00.
+\end{itemize}
+
+Après revue du code, j'ai identifié deux problèmes distincts. D'une part, l'heure transmise par la fenêtre de précision n'était pas écoutée par la logique principale : elle était ignorée, et le 00h00 initial était conservé. D'autre part, ce minuit était victime d'un mauvais formatage lié au fuseau horaire : converti en temps universel (UTC), 00h00 en heure française (UTC+1) devient 23h00 la veille, et cette valeur n'était ensuite jamais reconvertie en heure locale, d'où l'heure aberrante affichée.\\
+
+Ce ticket était d'autant plus important que l'ajout de données au dossier patient ne fonctionnait plus du tout dans ce cas de figure. Il m'a permis de comprendre l'ensemble du système de saisie vocale et du dossier patient, et de me familiariser avec la manipulation des dates en JavaScript, dont le formatage et la gestion des fuseaux horaires sont particulièrement délicats.
+
+\subsection{Déplacement du toggle « Acte isolé »}
+% TODO S2 — ÉNORME ticket (~1,5-2 pages + 1-2 figures).
+%   Renvoi croisé obligatoire vers le ticket S1 « Acte isolé par défaut » (section 5.7) → progression !
+
+\subsection{Scroll de la timeline}
+% TODO S2 — ÉNORME ticket (~1,5-2 pages + 1-2 figures).
+%   Si testé/débuggé sur iPhone → renvoi vers la section 3.4.5 (développement iOS).
+
+\subsection{Mise à jour du template PDF}
+% TODO S2 — ticket modéré (~0,5-1 page + 1-2 figures).
+
+\subsection{Intégration de l'IA au projet mobile}
+% TODO S2 — mission du SAS actuel : création du CLAUDE.md et des skills dans le repo principal
+%   du logiciel mobile. Renvoi croisé vers la section 3.5 (plugin GenIA / skills).
+%   C'est TA contribution personnelle à la démarche IA de CBA → à valoriser.
 
 \section{Analyse et bilan de l'alternance}
 
