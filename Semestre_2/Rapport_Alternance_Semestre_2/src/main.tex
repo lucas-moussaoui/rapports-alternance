@@ -661,6 +661,7 @@ Enfin, j'avais pour mission de clarifier la plupart des textes de la cinématiqu
 Cette US était très technique car elle était développée en \textbf{Struts}. J'ai dû comprendre en profondeur comment fonctionnent les fenêtres surgissantes (\textit{popups}) et les fonctions de validation du framework pour que les changements soient bien pris en compte sans erreurs.
 
 \subsection{Acte isolé par défaut en création d'ordonnance}
+\label{subsec:acte-isole-defaut}
 
 Lorsqu'une IDEL crée une ordonnance dans l'application Web, elle enregistre la prescription du médecin pour planifier les soins et préparer la facturation. Dans ce formulaire, elle peut cocher un bouton (\textit{toggle}) intitulé : « S'agit-il d'un acte isolé ? ».
 
@@ -764,6 +765,29 @@ Ce ticket était d'autant plus important que l'ajout de données au dossier pati
 \subsection{Déplacement du toggle « Acte isolé »}
 % TODO S2 — ÉNORME ticket (~1,5-2 pages + 1-2 figures).
 %   Renvoi croisé obligatoire vers le ticket S1 « Acte isolé par défaut » (section 5.7) → progression !
+
+Dans une optique de simplification de l'ergonomie et de la compréhension du parcours de création d'une ordonnance, la direction a décidé de revoir l'emplacement d'une option clé de ce formulaire. Pour rappel, lorsqu'une IDEL crée une ordonnance pour un patient, elle y renseigne le prescripteur, la date de prescription, les codes de soins, etc. Parmi les types d'ordonnances existe l'\textbf{acte isolé} : il permet de déclarer un soin ponctuel à un moment donné (un vaccin, un test PCR\ldots) sans l'inscrire dans un plan de soins de longue durée, ce qui en fait une forme d'ordonnance bien plus légère sur le plan administratif. J'avais déjà manipulé ce paramètre au semestre précédent, lors d'un ticket où il fallait l'activer par défaut pour les IPA (voir la section~\ref{subsec:acte-isole-defaut}) ; cette fois, la mission portait sur sa \textbf{place dans le parcours}.\\
+
+Concrètement, un \textit{toggle} (un bouton à bascule) permet d'indiquer si l'ordonnance est un acte isolé. Il se trouvait jusqu'alors dans l'avant-dernière étape de la création, et l'on m'a demandé de le remonter dans les toutes premières étapes. Activer ou désactiver ce \textit{toggle} ne modifie en réalité que deux choses :
+
+\begin{itemize}
+    \item à l'activation, un champ « date et heure du soin » apparaît, que l'IDEL doit renseigner ;
+    \item le bloc d'attribution de la tournée, lui, disparaît.
+\end{itemize}
+
+L'ensemble se situait dans l'avant-dernière étape du formulaire. Déplacer le \textit{toggle} au début du parcours impliquait donc de remonter avec lui le bloc de saisie de la date et de l'heure du soin, au même endroit, afin de conserver une lecture cohérente. Il fallait en parallèle mettre en place un mécanisme capable de répercuter l'état du \textit{toggle} (activé ou non) dès les premières étapes, pour masquer ou afficher le bloc d'attribution de la tournée, qui restait quant à lui à son emplacement d'origine.\\
+
+En apparence, la tâche semblait simple. Un paramètre changeait pourtant complètement la donne : la création d'ordonnance est la \textbf{fonctionnalité centrale d'Agathe You}. La moindre régression introduite sans m'en apercevoir, et passée inaperçue, pouvait avoir de lourdes conséquences une fois en production.\\
+
+Cette \textit{User Story} était estimée à 2 points, soit environ une journée de développement. J'ai effectivement réalisé très vite le déplacement du \textit{toggle} et la logique d'affichage des différents blocs. C'est ensuite qu'est née une sensation particulière : la crainte d'avoir oublié un cas ou cassé quelque chose. J'ai donc testé méthodiquement de nombreux scénarios\ldots{} et mon changement s'est révélé avoir des répercussions bien plus nombreuses que prévu.\\
+
+Pour donner un exemple concret, je n'avais pas anticipé le cas de la \textbf{modification} d'une ordonnance. Le formulaire est en effet le même pour la création et la modification : c'est un paramètre qui indique dans quel état on se trouve. Or, en modification, l'application n'affiche que les deux ou trois étapes réellement nécessaires du parcours, et non sa totalité. Mon \textit{toggle}, que je venais justement de remonter dans les premières étapes, ne s'affichait alors plus du tout.\\
+
+En modification, le caractère « acte isolé » ne se règle d'ailleurs pas soin par soin via ce \textit{toggle}, mais au niveau de l'ordonnance entière, par l'intermédiaire d'un état \textbf{NgRx} qu'il fallait passer à \textit{true}. À cela s'ajoutait une contrainte métier : une ordonnance regroupant plusieurs soins à des dates différentes ne peut pas devenir un acte isolé. Il fallait donc, en amont, exécuter une série de vérifications pour décider d'afficher ou non le \textit{toggle} selon la situation.\\
+
+Ce cas ne fut qu'un exemple parmi beaucoup d'autres ; je ne les détaillerai pas tous tant ils étaient nombreux. C'est grâce à un véritable travail d'équipe que j'ai pu en venir à bout : les testeurs m'ont signalé les implications potentielles du déplacement, mon \textit{Product Owner} m'a précisé le comportement attendu de chaque page concernée, et mes collègues développeurs m'ont aidé à franchir les nombreux obstacles techniques. Au terme de ce travail, tous les problèmes étaient résolus et la fonctionnalité parfaitement opérationnelle.\\
+
+\textbf{Ce que j'en retiens.} C'est avec ce ticket en apparence « banal » que j'ai réellement compris qu'il ne faut jamais sous-estimer une tâche. Lors du \textit{grooming} (la réunion d'estimation des tickets), nous ne lui avions attribué que 2 points, convaincus que ce serait rapide ; dans les faits, il a demandé plus de quatre fois le temps prévu. Cette expérience m'a appris à mieux mesurer l'impact d'une modification sur une fonctionnalité critique, et à considérer un chiffrage non pas comme une certitude, mais comme une hypothèse qu'il faut savoir remettre en question.
 
 \subsection{Scroll de la timeline}
 % TODO S2 — ÉNORME ticket (~1,5-2 pages + 1-2 figures).
