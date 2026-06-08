@@ -405,6 +405,7 @@ Développé en Angular, il est utilisé notamment par Agathe You (Web et Mobile)
 Concrètement, il met à disposition des composants réutilisables (boutons, alertes, icônes, etc.) configurables via des propriétés, ce qui simplifie le développement et garantit une cohérence visuelle et ergonomique entre les différents produits de CBA.
 
 \subsubsection{Le développement iOS}
+\label{subsec:ios}
 
 Qui dit développement mobile dit systèmes d'exploitation mobiles : l'application Agathe You doit fonctionner aussi bien sur Android que sur iOS. Le développement iOS se démarque par un écosystème beaucoup plus fermé que celui d'Android : la compilation et la signature de l'application exigent un Mac équipé de Xcode, et les règles de validation imposées par Apple sont plus strictes.
 
@@ -424,6 +425,7 @@ Une vérification sur iPhone reste néanmoins indispensable. Notre application s
 %   Fonctionnalités développées S2 → penser au renvoi croisé vers cette section à ce moment-là.
 
 \subsection{L'intelligence artificielle au quotidien}
+\label{subsec:ia}
 
 \subsubsection{Une adoption structurée à l'échelle de l'entreprise}
 
@@ -706,13 +708,14 @@ Travailler sur cette US m'a montré la différence entre l'ancien code et la ges
 % (placer les images dans res/images)
 
 \subsection{Refonte de la tournée V2}
+\label{subsec:tournee-v2}
 
 La page de la tournée est la première que voit l'IDEL en se connectant à Agathe You : c'est elle qui lui permet de visualiser l'organisation de sa journée et les soins à effectuer. On y retrouve les rendez-vous à venir, les actions de modification et de suppression, le changement de compte au sein du cabinet, le système de filtres, la barre de recherche de patients ainsi que l'accès au profil. Son ergonomie se doit donc d'être irréprochable.
 
 % TODO FIGURE : ancienne version de la page de tournée (déposer l'image dans res/images puis décommenter)
 \imageCenter[0.5]{H}{tournee_ancienne.png}{Ancienne version de la page de tournée}
 
-Cependant, cette page rencontrait plusieurs limites : des problèmes techniques et d'usage avaient été constatés, et son affichage vieillissant n'était plus adapté aux usages actuels. Une refonte visuelle complète de la page a donc été décidée, accompagnée d'un ajustement des comportements d'affichage et de navigation. L'objectif de cette \textit{Epic} est de réduire la charge mentale des IDEL en leur offrant une interface plus claire, plus lisible et plus fluide, afin qu'elles puissent se concentrer sur le soin plutôt que sur l'organisation de leur tournée.\\
+Cependant, cette page rencontrait plusieurs limites : des problèmes techniques et d'usage avaient été constatés, et son affichage vieillissant n'était plus adapté aux usages actuels. Une refonte visuelle complète de la page a donc été décidée, accompagnée d'un ajustement des comportements d'affichage et de navigation. L'objectif de cette \textit{Epic} (un grand chantier fonctionnel regroupant plusieurs \textit{User Stories}) est de réduire la charge mentale des IDEL en leur offrant une interface plus claire, plus lisible et plus fluide, afin qu'elles puissent se concentrer sur le soin plutôt que sur l'organisation de leur tournée.\\
 
 Cette mission de plusieurs mois a été découpée en plusieurs \textit{User Stories}, organisées autour de cinq grands axes :
 
@@ -787,19 +790,72 @@ En modification, le caractère « acte isolé » ne se règle d'ailleurs pas soi
 
 Ce cas ne fut qu'un exemple parmi beaucoup d'autres ; je ne les détaillerai pas tous tant ils étaient nombreux. C'est grâce à un véritable travail d'équipe que j'ai pu en venir à bout : les testeurs m'ont signalé les implications potentielles du déplacement, mon \textit{Product Owner} m'a précisé le comportement attendu de chaque page concernée, et mes collègues développeurs m'ont aidé à franchir les nombreux obstacles techniques. Au terme de ce travail, tous les problèmes étaient résolus et la fonctionnalité parfaitement opérationnelle.\\
 
-\textbf{Ce que j'en retiens.} C'est avec ce ticket en apparence « banal » que j'ai réellement compris qu'il ne faut jamais sous-estimer une tâche. Lors du \textit{grooming} (la réunion d'estimation des tickets), nous ne lui avions attribué que 2 points, convaincus que ce serait rapide ; dans les faits, il a demandé plus de quatre fois le temps prévu. Cette expérience m'a appris à mieux mesurer l'impact d'une modification sur une fonctionnalité critique, et à considérer un chiffrage non pas comme une certitude, mais comme une hypothèse qu'il faut savoir remettre en question.
+C'est avec ce ticket en apparence « banal » que j'ai réellement compris qu'il ne faut jamais sous-estimer une tâche. Lors du \textit{grooming} (la réunion d'estimation des tickets), nous ne lui avions attribué que 2 points, convaincus que ce serait rapide ; dans les faits, il a demandé plus de quatre fois le temps prévu. Cette expérience m'a appris à mieux mesurer l'impact d'une modification sur une fonctionnalité critique, et à considérer un chiffrage non pas comme une certitude, mais comme une hypothèse qu'il faut savoir remettre en question.
 
 \subsection{Scroll de la timeline}
 % TODO S2 — ÉNORME ticket (~1,5-2 pages + 1-2 figures).
 %   Si testé/débuggé sur iPhone → renvoi vers la section 3.4.5 (développement iOS).
 
+L'une des fonctionnalités principales d'Agathe You est le dossier de soins : c'est l'endroit où sont conservées, au fil du temps, toutes les données de santé d'un patient (constantes vitales journalières, photos, etc.). Dans la même logique de modernisation que la tournée, une version V2 de ce dossier a été conçue, plus claire et plus ergonomique.\\
+
+% TODO FIGURE : nouvelle version de la timeline (déposer l'image dans res/images puis décommenter)
+\imageCenter[0.5]{H}{timeline_v2.png}{Nouvelle version de la timeline du dossier de soins}
+
+Je travaillais sur l'espace \textit{timeline} (la frise chronologique des soins) à l'intérieur du dossier de soins d'un patient, et ma mission y consistait à mettre en place un \textit{scroll} (défilement) sur mesure. Lorsque l'utilisateur fait défiler le contenu vers le bas, la barre de recherche et la zone des filtres situées en haut doivent disparaître proprement, de façon à ne laisser que le calendrier visible et à libérer un maximum de place pour la \textit{timeline}. Dès que l'utilisateur remonte, tout doit réapparaître. En complément, la \textit{tabbar} (la barre de navigation du bas) doit s'effacer au moindre défilement et ne revenir qu'une fois l'utilisateur immobile.\\
+
+% TODO FIGURE : comportement du scroll (barre de recherche et filtres masqués) (déposer l'image dans res/images puis décommenter)
+\imageCenter[0.5]{H}{timeline_scroll.png}{Comportement du défilement : masquage de la barre de recherche et des filtres}
+
+Ce type de défilement avait déjà été mis en place par un collègue sur la tournée V2 (section~\ref{subsec:tournee-v2}). J'ai donc analysé son travail pour l'adapter au mien, mais une différence de taille subsistait : dans son cas, un seul élément disparaissait, et il avait conçu toute la page de zéro, ce qui lui permettait d'utiliser une méthode de \textit{scroll} dédiée. De mon côté, les éléments concernés étaient partagés par plusieurs pages du logiciel : je ne pouvais donc intervenir que sur la page conteneur. J'ai opté pour une approche fondée sur les \textit{ViewChild} d'Angular, qui permettent à un composant parent d'observer ses composants enfants et de réagir à leur comportement : en écoutant le défilement de l'enfant porteur du \textit{scroll}, je déclenchais le masquage de l'en-tête.\\
+
+Tout fonctionnait parfaitement\ldots{} jusqu'à ce que je teste sur iOS. Comme expliqué dans la section consacrée au développement iOS (section~\ref{subsec:ios}), nous disposons de deux moyens de test. Le premier consiste à lancer une \textit{pipeline} GitLab sur la branche de développement, qui déploie l'application sur un iPhone via un \textit{runner} iOS distant relié à TestFlight ; chaque modification prend alors environ 25 minutes, sans accès aux journaux d'erreurs (\textit{logs}) ni possibilité de débogage. Le second consiste à développer directement sur un Mac, sans délai et avec tous les outils de débogage, mais seules deux personnes en disposaient et elles étaient mobilisées sur d'autres travaux.\\
+
+J'ai donc longtemps utilisé les \textit{pipelines} GitLab en avançant sur d'autres missions pendant les temps d'attente, mais sans succès : un défaut léger mais tenace persistait, le défilement s'interrompant brutalement lors d'un \textit{scroll} rapide, sans que j'en comprenne l'origine. J'avais beau relire le code et mener des audits complets avec l'IA, rien n'y faisait.\\
+
+CBA met à disposition un Mac partagé, mobilisable par n'importe quel développeur. Je l'ai obtenu quelques jours, et ce fut une véritable épreuve : n'ayant jamais utilisé de Mac, j'ai dû tout découvrir, depuis l'installation de Xcode (et de la bonne version) jusqu'à la gestion des droits et des certificats, sans oublier l'emprunt ponctuel d'un iPhone à mes collègues. Une fois l'environnement enfin opérationnel et l'accès aux \textit{logs} obtenu, j'ai résolu l'ensemble des problèmes très rapidement.\\
+
+\textbf{Le problème en détail.} La \textit{tabbar} était animée par une \textit{directive} (un petit module Angular qui vient greffer un comportement sur un élément de la page) qui jouait sur la propriété CSS \textit{bottom}. Or \textit{bottom} est une propriété de mise en page (\textit{layout}) : l'animer force le navigateur à recalculer la position des éléments à chaque image (\textit{frame}) pendant toute la transition. Dans le reste de l'application, le conteneur de défilement est un \textit{<ion-content>}, le composant d'Ionic qui gère son propre \textit{scroll} en interne et absorbe sans peine cette charge. Mais dans la \textit{timeline}, le conteneur était un simple \textit{<div>} : c'est alors le défilement natif d'iOS (le « momentum » de la \textit{WebView}) qui prenait le relais, avec un budget de calcul très strict. Ce budget dépassé sur plusieurs \textit{frames}, iOS abandonnait purement et simplement l'inertie du défilement, d'où l'arrêt brutal. Android, plus permissif sur ce point, ne présentait pas l'anomalie.\\
+
+\textbf{La solution.} J'ai créé une directive personnalisée propre à ce cas, animant la \textit{tabbar} via \textit{transform: translateY()} plutôt que via \textit{bottom}. À l'inverse de \textit{bottom}, la propriété \textit{transform} est traitée directement par la carte graphique et ne déclenche aucun recalcul de mise en page : le fil principal restant libre, iOS conservait son inertie de défilement, et l'anomalie disparaissait.\\
+
+Cette mission m'a fait plonger en profondeur dans l'écosystème iOS et comprendre concrètement pourquoi il est réputé exigeant. Au-delà de la persévérance qu'elle a demandée, elle m'a appris une notion de performance web précieuse : toutes les propriétés CSS n'ont pas le même coût, et le choix entre une propriété de mise en page et une propriété graphique peut faire toute la différence sur un appareil contraint.
+
 \subsection{Mise à jour du template PDF}
 % TODO S2 — ticket modéré (~0,5-1 page + 1-2 figures).
+
+Agathe You permet de créer une prescription médicamenteuse. Grâce à l'intégration d'un service spécialisé, \textbf{Synapse}, l'IDEL accède à une base de médicaments de référence pour composer son ordonnance. Une fois les médicaments sélectionnés, un PDF est généré, reprenant le détail de la prescription ainsi que les coordonnées de l'IDEL et du patient.\\
+
+Comme évoqué précédemment dans ce rapport, une IDEL peut être qualifiée IPA (Infirmière en Pratique Avancée). À ce titre, la réglementation impose de faire figurer cette qualité sur la prescription. Ma mission était donc la suivante : lorsque l'IDEL est IPA, le libellé « Infirmier en pratique avancée » (accordé au masculin ou au féminin selon l'IDEL) doit apparaître sous son nom dans le PDF ainsi généré.\\
+
+% TODO FIGURE : exemple du PDF généré (déposer l'image dans res/images puis décommenter)
+\imageCenter[0.3]{H}{pdf_prescription.png}{Exemple de prescription générée}
+
+Ce ticket tombait à point nommé, car je commençais à m'intéresser sérieusement au fonctionnement des \textit{pipelines} GitLab de l'entreprise. J'ai donc demandé à un collègue de m'expliquer la mécanique de génération du PDF, qu'il m'a résumée par un croquis.\\
+
+% TODO FIGURE : croquis de la chaîne de génération du PDF (déposer l'image dans res/images puis décommenter)
+\imageCenter[0.3]{H}{pdf_pipeline.png}{Chaîne de génération du PDF de prescription}
+
+Lorsque l'IDEL valide les médicaments à prescrire, le \textit{front} envoie au \textit{back-end} d'Agathe You un fichier \textit{JSON} regroupant trois types d'informations : les médicaments, les informations de l'IDEL et celles du patient. Le \textit{back-end} se contente de rediriger cette requête vers un service dédié, le \textit{générateur de PDF}. Celui-ci prend le \textit{JSON}, l'insère dans un \textbf{template compilé} (un modèle définissant la mise en forme du document), génère le PDF, puis le renvoie au \textit{back-end}, qui le transmet enfin au \textit{front} pour l'afficher à l'IDEL. Ce template compilé n'est pas écrit à la main : il est produit par un autre projet, \textit{pdf-template}, qui décrit la manière dont les informations seront agencées dans le document final.\\
+
+Ma \textit{User Story} se déroulait donc en deux temps. D'une part, modifier le \textit{front} d'Agathe You pour ajouter au \textit{JSON} deux nouvelles données : \textit{isIpa} (afin de savoir s'il faut afficher la mention) et le genre de l'IDEL (afin de l'accorder correctement). D'autre part, modifier le projet \textit{pdf-template} pour y ajouter la mention sous condition de ces deux variables, tout en mettant à jour les modèles de données reçus.\\
+
+C'est au moment de la fusion que la qualité de la \textit{pipeline} de ce projet m'a marqué. Une fois mes modifications validées par les tests et la \textit{code review} (la relecture par un pair), le développeur en charge fusionne la branche du \textit{front}, puis celle du \textit{pdf-template}. Or, dès que ce dernier est fusionné et recompilé, une nouvelle demande de fusion est \textbf{automatiquement} créée dans le dépôt du générateur de PDF pour y intégrer le template à jour : la chaîne se met ainsi à jour d'elle-même, sans intervention manuelle.\\
+
+Ce ticket m'a permis de comprendre concrètement le fonctionnement des \textit{pipelines} d'intégration continue au sein de l'entreprise, et de découvrir une nouvelle facette d'Agathe You à travers la prescription médicamenteuse. J'y ai surtout mesuré la valeur d'une chaîne d'automatisation bien pensée, qui fiabilise les livraisons en supprimant les étapes manuelles sources d'erreurs.
+
 
 \subsection{Intégration de l'IA au projet mobile}
 % TODO S2 — mission du SAS actuel : création du CLAUDE.md et des skills dans le repo principal
 %   du logiciel mobile. Renvoi croisé vers la section 3.5 (plugin GenIA / skills).
 %   C'est TA contribution personnelle à la démarche IA de CBA → à valoriser.
+
+Lors d'une transition de \textit{sprint}, mon \textit{lead} développeur m'a confié une mission s'inscrivant pleinement dans la démarche d'intégration de l'IA décrite plus haut (section~\ref{subsec:ia}) : ajouter un fichier \textbf{CLAUDE.md} et des \textit{skills} (compétences) au dépôt du projet mobile d'Agathe You, afin d'outiller l'ensemble des développeurs.\\
+
+Le \textbf{CLAUDE.md} est un fichier de contexte : lorsqu'un développeur ouvre une nouvelle session de Claude Code sur le projet, ce fichier est automatiquement chargé et fournit instantanément à l'IA le fonctionnement et les spécificités du projet. Les \textit{skills}, eux, sont des compétences spécialisées sur des points clés du projet, que l'IA ne charge qu'au moment où elle en a réellement besoin.\\
+
+L'intérêt est double. D'une part, un gain de temps : l'IA cerne d'emblée le projet et ses conventions, ce qui accélère le développement de nouvelles fonctionnalités. D'autre part, une optimisation de la consommation : comme le contexte n'est chargé qu'à la demande, seules les informations utiles sont lues, ce qui limite le nombre de \textit{tokens} (les unités de texte facturées) consommés.\\
+
+Cette mission constitue ma contribution personnelle à la démarche d'intégration de l'IA chez CBA. Elle m'a permis de comprendre en profondeur le fonctionnement de Claude Code, à travers le CLAUDE.md et les \textit{skills}, et de mesurer la valeur d'une organisation claire et documentée : bien structurer le contexte fourni à l'IA, c'est déjà préparer un code futur plus fiable et plus rapide à produire.
 
 \section{Analyse et bilan de l'alternance}
 
@@ -821,8 +877,18 @@ J'apprécie vraiment l'organisation au sein de l'équipe Agathe You. Comme chaqu
 %   - ton rapport à l'IA dans le travail quotidien ;
 %   - regard critique sur ce semestre (rythme d'alternance, organisation, difficultés rencontrées).
 
+Ce second semestre a été marqué par de nombreux remaniements au sein de l'équipe et plusieurs changements de poste. Si ces mouvements ont parfois bousculé l'organisation, ils m'ont surtout poussé vers une plus grande \textbf{autonomie} : avec une supervision moins constante, j'ai dû prendre davantage d'initiatives et assumer mes choix techniques. Avec le recul, je mesure à quel point cette autonomie a accéléré ma progression, en me forçant à décider plutôt qu'à attendre une validation à chaque étape.\\
+
+Cette évolution s'est aussi traduite dans la \textbf{nature des missions} qui m'ont été confiées. Là où le premier semestre m'avait surtout amené à faire évoluer un code existant, ce semestre m'a confronté à des tickets nettement plus complexes : construire une page entière à partir de rien, corriger un bug critique en production, ou déplacer une option au cœur de la fonctionnalité la plus sensible d'Agathe You. Ces missions m'ont obligé à entrer en profondeur dans le métier du logiciel, et non plus seulement dans son code. Ce que j'en retire dépasse la simple technique : j'ai appris à mesurer l'impact d'une modification, à ne jamais sous-estimer une tâche en apparence banale, et à m'appuyer sur les bonnes personnes (testeurs, \textit{Product Owner}, développeurs) pour sécuriser mon travail.\\
+
+L'\textbf{intelligence artificielle} a par ailleurs pris une place grandissante dans mon quotidien. J'ai été accompagné progressivement vers un usage raisonné de ces outils : non pas pour produire du code à ma place, mais pour comprendre plus vite, auditer mon travail et explorer des pistes. J'ai surtout retenu la nécessité d'en garder la maîtrise et l'esprit critique, dans la continuité des bonnes pratiques évoquées plus haut (section~\ref{subsec:ia}) : l'IA accélère, mais c'est au développeur de comprendre et de valider ce qu'elle propose.\\
+
+Ce semestre a enfin comporté son lot de \textbf{difficultés}, que je tiens à regarder en face. Le rythme d'alternance, deux semaines en entreprise puis deux semaines en cours, est resté un véritable défi, d'autant que les enseignements de ce semestre étaient plus exigeants que les précédents : il a fallu mener de front une charge académique plus lourde et des missions plus ambitieuses. Reprendre un ticket laissé en pause deux semaines plus tôt demande à chaque fois un temps de remise en contexte. Loin de me décourager, ces contraintes m'ont forgé une capacité d'adaptation et une rigueur d'organisation qui me serviront durablement.
+
 \subsection{Lien Théorie - Pratique}
 % TODO S2 : compléter avec les apports théoriques mobilisés ce semestre (nouveaux cours, nouvelles techno).
+
+;; ici je complète avec deux chose, j'ai eu des cour sur la modélisation et des cour angular, je préciserais plus tard ;;
 
 L'apprentissage de la méthodologie SCRUM en cours m'a vraiment aidé. Grâce à cela, J'ai tout de suite trouvé mes marques en arrivant chez CBA et j'ai pu me concentrer sur l'apprentissage technologique. De plus, le fait d'avoir travaillé sur beaucoup de langages de programmation différents m'a permis de ne pas me perdre avec les nouveautés. J'arrive à saisir la logique des fonctions et à naviguer facilement à travers elles. Mes cours de Web m'ont beaucoup servi et, pour le Web « V1 », mes cours de Java ont été très appréciables.
 
