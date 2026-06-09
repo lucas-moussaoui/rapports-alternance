@@ -35,7 +35,7 @@
 % document date
 \date{
     Master 1 ILSEN, année universitaire 2025-2026\\
-    CBA Informatique Libérale, Montfavet (Avignon)\\
+    CBA Informatique Libérale, Montfavet\\
     Contrat du 18 Août 2025 au 25 Août 2027\\
     Tuteur entreprise : Tom ANDRIEU\\
     Tuteur CERI : Vincent LABATUT
@@ -221,6 +221,8 @@ On lui doit notamment :
     \item La fonctionnalité de saisie vocale intégrée à Agathe You, qui permet de décrire un rendez-vous à voix haute afin de remplir automatiquement les champs correspondants.
 \end{itemize}
 
+\newpage
+
 \section{Environnements de travail}
 
 \subsection{Mon équipe}
@@ -269,8 +271,6 @@ La plupart des équipes de développement à CBA utilisent la méthodologie agil
     Cette réunion clôture le sprint. Tous les acteurs (développeurs, QA, Lead Dev, PO) sont conviés par le Responsable de production développement pour un récapitulatif. On y présente les statistiques ainsi que les points forts et les points faibles du cycle. La réunion se termine généralement par un sondage de satisfaction professionnelle.
 \end{itemize}
 
-\newpage
-
 Suite aux nombreuses années d'expérience avec cette méthodologie, CBA a su l'adapter à ses besoins propres. Par exemple, l'ajout d'un « SAS » à la fin d'un sprint permet à l'équipe de Contrôle Qualité (QA) de terminer tous les tests. Cela offre également aux développeurs l'opportunité de finaliser des tâches retardées ou de se former à de nouvelles compétences. Une refonte plus large de cette organisation, baptisée « \textbf{Master Planning} », avait par ailleurs été annoncée ; sa mise en place a finalement été reportée, et la méthodologie SCRUM décrite ci-dessus reste donc pleinement en vigueur cette année.
 
 \subsubsection{User Story}
@@ -295,8 +295,6 @@ Chaque \textit{User Story} suit un cycle de vie précis, de sa conception jusqu'
     \item \textbf{Relecture du Code (Code Review)} \\
     Cette étape est cruciale : le code est relu par le Lead Dev ou un autre développeur expérimenté. Si des corrections sont demandées, elles doivent être traitées immédiatement pour garantir la qualité de la base de code.
 
-    \newpage
-
     \item \textbf{Tests finaux (Qualification)} \\
     À cette étape, l'équipe Qualité effectue des tests de qualification complets. Si un problème est détecté, une « anomalie » est créée. Il s'agit d'un ticket spécial décrivant le bug, directement assigné au développeur. Une fois validé, le travail est fusionné dans la branche de travail en cours du Sprint actif.
 \end{itemize}
@@ -319,8 +317,6 @@ Pour mener à bien nos missions, nous nous appuyons sur un ensemble d'outils
 
     \item \textbf{Grafana} : Cet outil est utilisé pour la surveillance des performances et la consultation des journaux d'erreurs (\textit{logs}) en production. Il nous permet d'être réactifs en cas d'anomalie sur le logiciel.
 \end{itemize}
-
-\newpage
 
 \subsubsection{Gestion de projet et organisation}
 
@@ -688,11 +684,9 @@ Ce ticket a été très intéressant car j'ai dû intervenir sur deux architectu
 
 Travailler sur cette US m'a montré la différence entre l'ancien code et la gestion moderne avec NgRx. Ce que ça m'apporte vraiment, c'est que je comprends mieux comment les données circulent dans l'appli. Au lieu d'avoir des infos un peu éparpillées partout, tout est centralisé au même endroit. Je vois donc exactement comment une donnée passe d'un écran à l'autre sans se perdre ou changer sans raison.
 
-\newpage
-
 \section{Travaux réalisés --- Semestre 2}
 
-Cette partie présente les fonctionnalités que j'ai développées au cours de ce second semestre. Plus présent dans l'entreprise qu'au premier, je me suis vu confier des missions sensiblement plus complexes, sur lesquelles j'ai gagné en autonomie.
+Cette partie présente les fonctionnalités que j'ai développées au cours de ce second semestre. J'étais plus présent dans l'entreprise qu'au premier, et on m'a confié des missions bien plus complexes, sur lesquelles j'ai gagné en autonomie.
 
 \subsection{Refonte de la tournée V2}
 \label{subsec:tournee-v2}
@@ -756,7 +750,7 @@ Ce ticket était d'autant plus important que l'ajout de données au dossier pati
 % TODO S2 — ÉNORME ticket (~1,5-2 pages + 1-2 figures).
 %   Renvoi croisé obligatoire vers le ticket S1 « Acte isolé par défaut » (section 5.7) → progression !
 
-Dans une optique de simplification de l'ergonomie et de la compréhension du parcours de création d'une ordonnance, la direction a décidé de revoir l'emplacement d'une option clé de ce formulaire. Pour rappel, lorsqu'une IDEL crée une ordonnance pour un patient, elle y renseigne le prescripteur, la date de prescription, les codes de soins, etc. Parmi les types d'ordonnances existe l'\textbf{acte isolé} : il permet de déclarer un soin ponctuel à un moment donné (un vaccin, un test PCR\ldots) sans l'inscrire dans un plan de soins de longue durée, ce qui en fait une forme d'ordonnance bien plus légère sur le plan administratif. J'avais déjà manipulé ce paramètre au semestre précédent, lors d'un ticket où il fallait l'activer par défaut pour les IPA (voir la section~\ref{subsec:acte-isole-defaut}) ; cette fois, la mission portait sur sa \textbf{place dans le parcours}.\\
+Dans une optique de simplification de l'ergonomie et de la compréhension du parcours de création d'une ordonnance, la direction a décidé de revoir l'emplacement d'une option clé de ce formulaire. Lorsqu'une IDEL crée une ordonnance pour un patient, elle y renseigne le prescripteur, la date de prescription, les codes de soins, etc. Parmi les types d'ordonnances existe l'\textbf{acte isolé} : il permet de déclarer un soin ponctuel à un moment donné (un vaccin, un test PCR\ldots) sans l'inscrire dans un plan de soins de longue durée, ce qui en fait une forme d'ordonnance bien plus légère sur le plan administratif. J'avais déjà manipulé ce paramètre au semestre précédent, mais sur la version Web du logiciel, lors d'un ticket où il fallait l'activer par défaut pour les IPA (voir la section~\ref{subsec:acte-isole-defaut}). Cette fois, le travail se faisait sur l'application mobile, et la mission portait sur sa \textbf{place dans le parcours}.\\
 
 Concrètement, un \textit{toggle} (un bouton à bascule) permet d'indiquer si l'ordonnance est un acte isolé. Il se trouvait jusqu'alors dans l'avant-dernière étape de la création, et l'on m'a demandé de le remonter dans les toutes premières étapes. Activer ou désactiver ce \textit{toggle} ne modifie en réalité que deux choses :
 
@@ -767,9 +761,9 @@ Concrètement, un \textit{toggle} (un bouton à bascule) permet d'indiquer si l'
 
 L'ensemble se situait dans l'avant-dernière étape du formulaire. Déplacer le \textit{toggle} au début du parcours impliquait donc de remonter avec lui le bloc de saisie de la date et de l'heure du soin, au même endroit, afin de conserver une lecture cohérente. Il fallait en parallèle mettre en place un mécanisme capable de répercuter l'état du \textit{toggle} (activé ou non) dès les premières étapes, pour masquer ou afficher le bloc d'attribution de la tournée, qui restait quant à lui à son emplacement d'origine.\\
 
-En apparence, la tâche semblait simple. Un paramètre changeait pourtant complètement la donne : la création d'ordonnance est la \textbf{fonctionnalité centrale d'Agathe You}. La moindre régression introduite sans m'en apercevoir, et passée inaperçue, pouvait avoir de lourdes conséquences une fois en production.\\
+En apparence, la tâche semblait simple. Un paramètre changeait pourtant complètement la donne : la création d'ordonnance est la \textbf{fonctionnalité centrale d'Agathe You}. La moindre régression passée inaperçue pouvait avoir de lourdes conséquences une fois en production.\\
 
-Cette \textit{User Story} était estimée à 2 points, soit environ une journée de développement. J'ai effectivement réalisé très vite le déplacement du \textit{toggle} et la logique d'affichage des différents blocs. C'est ensuite qu'est née une sensation particulière : la crainte d'avoir oublié un cas ou cassé quelque chose. J'ai donc testé méthodiquement de nombreux scénarios\ldots{} et mon changement s'est révélé avoir des répercussions bien plus nombreuses que prévu.\\
+Cette \textit{User Story} était estimée à 2 points, soit environ une journée de développement. J'ai effectivement réalisé très vite le déplacement du \textit{toggle} et la logique d'affichage des différents blocs. C'est ensuite que la crainte est arrivée : avoir oublié un cas, ou cassé quelque chose. J'ai donc testé méthodiquement de nombreux scénarios\ldots{} et mon changement s'est révélé avoir des répercussions bien plus nombreuses que prévu.\\
 
 Pour donner un exemple concret, je n'avais pas anticipé le cas de la \textbf{modification} d'une ordonnance. Le formulaire est en effet le même pour la création et la modification : c'est un paramètre qui indique dans quel état on se trouve. Or, en modification, l'application n'affiche que les deux ou trois étapes réellement nécessaires du parcours, et non sa totalité. Mon \textit{toggle}, que je venais justement de remonter dans les premières étapes, ne s'affichait alors plus du tout.\\
 
@@ -777,7 +771,7 @@ En modification, le caractère « acte isolé » ne se règle d'ailleurs pas soi
 
 Ce cas ne fut qu'un exemple parmi beaucoup d'autres ; je ne les détaillerai pas tous tant ils étaient nombreux. C'est grâce à un véritable travail d'équipe que j'ai pu en venir à bout : les testeurs m'ont signalé les implications potentielles du déplacement, mon \textit{Product Owner} m'a précisé le comportement attendu de chaque page concernée, et mes collègues développeurs m'ont aidé à franchir les nombreux obstacles techniques. Au terme de ce travail, tous les problèmes étaient résolus et la fonctionnalité parfaitement opérationnelle.\\
 
-C'est avec ce ticket en apparence « banal » que j'ai réellement compris qu'il ne faut jamais sous-estimer une tâche. Lors du \textit{grooming} (la réunion d'estimation des tickets), nous ne lui avions attribué que 2 points, convaincus que ce serait rapide ; dans les faits, il a demandé plus de quatre fois le temps prévu. Cette expérience m'a appris à mieux mesurer l'impact d'une modification sur une fonctionnalité critique, et à considérer un chiffrage non pas comme une certitude, mais comme une hypothèse qu'il faut savoir remettre en question.
+C'est avec ce ticket en apparence « banal » que j'ai réellement compris qu'il ne faut jamais sous-estimer une tâche. Lors du \textit{grooming} (la réunion d'estimation des tickets), nous ne lui avions attribué que 2 points, convaincus que ce serait rapide ; dans les faits, il a demandé plus de quatre fois le temps prévu. Cette expérience m'a appris à mieux mesurer l'impact d'une modification sur une fonctionnalité critique, et à me méfier des estimations : un chiffrage reste une hypothèse, jamais une certitude.
 
 \subsection{Scroll de la timeline}
 % TODO S2 — ÉNORME ticket (~1,5-2 pages + 1-2 figures).
@@ -805,7 +799,7 @@ CBA met à disposition un Mac partagé, mobilisable par n'importe quel développ
 
 \textbf{La solution.} J'ai créé une directive personnalisée propre à ce cas, animant la \textit{tabbar} via \textit{transform: translateY()} plutôt que via \textit{bottom}. À l'inverse de \textit{bottom}, la propriété \textit{transform} est traitée directement par la carte graphique et ne déclenche aucun recalcul de mise en page : le fil principal restant libre, iOS conservait son inertie de défilement, et l'anomalie disparaissait.\\
 
-Cette mission m'a fait plonger en profondeur dans l'écosystème iOS et comprendre concrètement pourquoi il est réputé exigeant. Au-delà de la persévérance qu'elle a demandée, elle m'a appris une notion de performance web précieuse : toutes les propriétés CSS n'ont pas le même coût, et le choix entre une propriété de mise en page et une propriété graphique peut faire toute la différence sur un appareil contraint.
+Cette mission m'a vraiment plongé dans l'écosystème iOS, et m'a fait comprendre pourquoi il est réputé exigeant. Elle m'a surtout appris une notion de performance web importante : toutes les propriétés CSS n'ont pas le même coût, et choisir une propriété graphique plutôt qu'une propriété de mise en page peut tout changer sur un téléphone.
 
 \subsection{Mise à jour du template PDF}
 % TODO S2 — ticket modéré (~0,5-1 page + 1-2 figures).
@@ -828,7 +822,7 @@ Ma \textit{User Story} se déroulait donc en deux temps. D'une part, modifier le
 
 C'est au moment de la fusion que la qualité de la \textit{pipeline} de ce projet m'a marqué. Une fois mes modifications validées par les tests et la \textit{code review} (la relecture par un pair), le développeur en charge fusionne la branche du \textit{front}, puis celle du \textit{pdf-template}. Or, dès que ce dernier est fusionné et recompilé, une nouvelle demande de fusion est \textbf{automatiquement} créée dans le dépôt du générateur de PDF pour y intégrer le template à jour : la chaîne se met ainsi à jour d'elle-même, sans intervention manuelle.\\
 
-Ce ticket m'a permis de comprendre concrètement le fonctionnement des \textit{pipelines} d'intégration continue au sein de l'entreprise, et de découvrir une nouvelle facette d'Agathe You à travers la prescription médicamenteuse. J'y ai surtout mesuré la valeur d'une chaîne d'automatisation bien pensée, qui fiabilise les livraisons en supprimant les étapes manuelles sources d'erreurs.
+Ce ticket m'a permis de comprendre le fonctionnement des \textit{pipelines} d'intégration continue de l'entreprise, et de découvrir une nouvelle facette d'Agathe You avec la prescription médicamenteuse. J'ai surtout réalisé l'intérêt d'une bonne automatisation : en supprimant les étapes manuelles, elle évite beaucoup d'erreurs.
 
 
 \subsection{Intégration de l'IA au projet mobile}
@@ -842,7 +836,7 @@ Le \textbf{CLAUDE.md} est un fichier de contexte : lorsqu'un développeur ouvre 
 
 L'intérêt est double. D'une part, un gain de temps : l'IA cerne d'emblée le projet et ses conventions, ce qui accélère le développement de nouvelles fonctionnalités. D'autre part, une optimisation de la consommation : comme le contexte n'est chargé qu'à la demande, seules les informations utiles sont lues, ce qui limite le nombre de \textit{tokens} (les unités de texte facturées) consommés.\\
 
-Cette mission constitue ma contribution personnelle à la démarche d'intégration de l'IA chez CBA. Elle m'a permis de comprendre en profondeur le fonctionnement de Claude Code, à travers le CLAUDE.md et les \textit{skills}, et de mesurer la valeur d'une organisation claire et documentée : bien structurer le contexte fourni à l'IA, c'est déjà préparer un code futur plus fiable et plus rapide à produire.
+Cette mission est ma contribution personnelle à la démarche d'intégration de l'IA chez CBA. Elle m'a permis de bien comprendre le fonctionnement de Claude Code, avec le CLAUDE.md et les \textit{skills}. J'ai aussi réalisé qu'une organisation claire et bien documentée aide directement l'IA à produire un code plus fiable, et plus rapidement.
 
 \section{Analyse et bilan de l'alternance}
 
@@ -851,8 +845,6 @@ Cette mission constitue ma contribution personnelle à la démarche d'intégrati
 Durant ce semestre, j'ai dû alterner entre deux manières de travailler vraiment différentes, car le Web « V1 » et le Web « V2 » divergent énormément. Lorsque je code sur la version Web « V1 » en \textbf{Struts}, je ressens que j'apprends beaucoup de choses sur la capacité à comprendre le code d'autrui. Cela me permet de développer une logique que j'apprécie, même si j'ai parfois la sensation d'apprendre quelque chose qui est voué à disparaître puisque le projet de CBA est de tout transférer en Web « V2 ». Malgré cela, il est vraiment plaisant de travailler sur cette version.
 
 La \textbf{V2, sous Angular}, est quant à elle extrêmement agréable. Je découvre à quel point ce framework est complet et bien conçu. C'est très satisfaisant et j'ai l'impression d'apprendre énormément de nouvelles choses. Même si je n'ai pas encore eu l'occasion de réaliser des missions d'envergure dessus, je suis content d'en avoir déjà bien compris les bases.
-
-\newpage
 
 Au niveau de l'organisation, mon \textbf{rythme d'alternance} de deux semaines en entreprise et deux semaines en cours a été un vrai défi. Avec des Sprints de quatre semaines, il a été compliqué au début de gérer à la fois les cours et le travail. Le fait de reprendre des missions mises en pause au bout de deux semaines est parfois difficile, mais cela m'a forcé à mieux m'adapter et à essayer de terminer le maximum de choses avant chaque départ en formation.
 
@@ -865,19 +857,19 @@ J'apprécie vraiment l'organisation au sein de l'équipe Agathe You. Comme chaqu
 %   - ton rapport à l'IA dans le travail quotidien ;
 %   - regard critique sur ce semestre (rythme d'alternance, organisation, difficultés rencontrées).
 
-Ce second semestre a été marqué par de nombreux remaniements au sein de l'équipe et plusieurs changements de poste. Si ces mouvements ont parfois bousculé l'organisation, ils m'ont surtout poussé vers une plus grande \textbf{autonomie} : avec une supervision moins constante, j'ai dû prendre davantage d'initiatives et assumer mes choix techniques. Avec le recul, je mesure à quel point cette autonomie a accéléré ma progression, en me forçant à décider plutôt qu'à attendre une validation à chaque étape.\\
+Ce second semestre a été marqué par de nombreux remaniements au sein de l'équipe et plusieurs changements de poste. Ces mouvements ont parfois bousculé l'organisation, mais ils m'ont surtout poussé vers plus d'\textbf{autonomie} : comme j'étais moins encadré, j'ai dû prendre plus d'initiatives et assumer mes choix techniques. Avec le recul, je trouve que cette autonomie a beaucoup accéléré ma progression, car elle m'a forcé à décider au lieu d'attendre une validation à chaque étape.\\
 
-Cette évolution s'est aussi traduite dans la \textbf{nature des missions} qui m'ont été confiées. Là où le premier semestre m'avait surtout amené à faire évoluer un code existant, ce semestre m'a confronté à des tickets nettement plus complexes : construire une page entière à partir de rien, corriger un bug critique en production, ou déplacer une option au cœur de la fonctionnalité la plus sensible d'Agathe You. Ces missions m'ont obligé à entrer en profondeur dans le métier du logiciel, et non plus seulement dans son code. Ce que j'en retire dépasse la simple technique : j'ai appris à mesurer l'impact d'une modification, à ne jamais sous-estimer une tâche en apparence banale, et à m'appuyer sur les bonnes personnes (testeurs, \textit{Product Owner}, développeurs) pour sécuriser mon travail.\\
+Cette évolution s'est aussi vue dans la \textbf{nature des missions} qu'on m'a confiées. Là où le premier semestre m'avait surtout amené à faire évoluer du code existant, ce semestre m'a confronté à des tickets bien plus complexes : construire une page entière à partir de rien, corriger un bug critique en production, ou déplacer une option au cœur de la fonctionnalité la plus sensible d'Agathe You. Ces missions m'ont obligé à mieux comprendre le métier derrière le logiciel, et pas seulement le code. J'en retire bien plus que de la technique : j'ai appris à mesurer l'impact d'une modification, à ne jamais sous-estimer une tâche qui paraît simple, et à m'appuyer sur les bonnes personnes (testeurs, \textit{Product Owner}, développeurs) pour sécuriser mon travail.\\
 
-L'\textbf{intelligence artificielle} a par ailleurs pris une place grandissante dans mon quotidien. J'ai été accompagné progressivement vers un usage raisonné de ces outils : non pas pour produire du code à ma place, mais pour comprendre plus vite, auditer mon travail et explorer des pistes. J'ai surtout retenu la nécessité d'en garder la maîtrise et l'esprit critique, dans la continuité des bonnes pratiques évoquées plus haut (section~\ref{subsec:ia}) : l'IA accélère, mais c'est au développeur de comprendre et de valider ce qu'elle propose.\\
+L'\textbf{intelligence artificielle} a aussi pris une place de plus en plus grande dans mon quotidien. On m'a appris petit à petit à bien l'utiliser : pas pour écrire le code à ma place, mais pour comprendre plus vite, vérifier mon travail et explorer des pistes. J'ai surtout retenu qu'il faut en garder la maîtrise et l'esprit critique, dans la continuité des bonnes pratiques vues plus haut (section~\ref{subsec:ia}) : l'IA accélère le travail, mais c'est au développeur de comprendre et de valider ce qu'elle propose.\\
 
-Ce semestre a enfin comporté son lot de \textbf{difficultés}, que je tiens à regarder en face. Si le rythme d'alternance restait exigeant, la vraie nouveauté tenait à l'intensité : les enseignements de ce semestre étaient plus relevés que les précédents, et il a fallu les mener de front avec des missions elles aussi plus ambitieuses. Cette double exigence, académique et professionnelle, m'a contraint à une organisation bien plus rigoureuse. Loin de me décourager, elle m'a forgé une capacité d'adaptation qui me servira durablement.
+Ce semestre a enfin eu son lot de \textbf{difficultés}, que je veux regarder en face. Le rythme d'alternance restait exigeant, mais la vraie difficulté venait surtout de l'intensité : les cours de ce semestre étaient plus durs que les précédents, et il a fallu les gérer en même temps que des missions plus ambitieuses. Cette double charge, à la fac et en entreprise, m'a obligé à m'organiser beaucoup plus rigoureusement. Ça ne m'a pas découragé, au contraire : ça m'a appris à mieux m'adapter, et ça me servira longtemps.
 
 \subsection{Lien Théorie - Pratique}
 
 L'apprentissage de la méthodologie SCRUM en cours m'a vraiment aidé. Grâce à cela, j'ai tout de suite trouvé mes marques en arrivant chez CBA et j'ai pu me concentrer sur l'apprentissage technologique. De plus, le fait d'avoir travaillé sur beaucoup de langages de programmation différents m'a permis de ne pas me perdre avec les nouveautés. J'arrive à saisir la logique des fonctions et à naviguer facilement à travers elles. Mes cours de Web m'ont beaucoup servi et, pour le Web « V1 », mes cours de Java ont été très appréciables.\\
 
-Ce semestre a renforcé ce lien dans les deux sens. D'un côté, un cours m'a amené à développer un réseau social en \textbf{Angular} et \textbf{Node.js} : les compétences acquises au quotidien chez CBA m'ont permis d'aborder ce projet, comme l'examen final, avec une réelle aisance. La pratique en entreprise a ainsi directement nourri ma réussite académique. De l'autre, mes cours de \textbf{modélisation} et de \textbf{conception} (notamment les diagrammes de classes et les méthodes de structuration d'un problème) m'ont donné des réflexes que j'ai directement réinvestis chez CBA : la phase de conception menée en amont de la refonte de la tournée (section~\ref{subsec:tournee-v2}) en est l'illustration la plus concrète. Théorie et pratique se sont ainsi mutuellement renforcées, chacune éclairant l'autre.
+Ce semestre a renforcé ce lien dans les deux sens. D'un côté, j'ai eu un cours où je devais développer un réseau social en \textbf{Angular} et \textbf{Node.js} : ce que j'avais appris au quotidien chez CBA m'a permis d'être vraiment à l'aise sur ce projet, et aussi à l'examen final. La pratique en entreprise m'a donc directement aidé pour les cours. De l'autre, j'ai eu plusieurs cours de \textbf{modélisation} et de \textbf{conception} (diagrammes de classes, façons de structurer un problème) que j'ai réutilisés chez CBA : la phase de conception que j'ai menée avant la refonte de la tournée (section~\ref{subsec:tournee-v2}) en est le meilleur exemple. Au final, la théorie et la pratique se sont nourries l'une l'autre.
 
 \subsection{Bilan personnel et professionnel}
 
@@ -895,9 +887,9 @@ Enfin, je me sent vraiment à ma place chez Agathe You car l'équipe est très s
 
 \subsection{Synthèse des points clés}
 
-Cette année d'alternance chez CBA a été une expérience riche et déterminante pour mon parcours. Le premier semestre a été celui de la découverte : j'y ai mené des missions variées, de la refonte visuelle des nouvelles formules d'abonnement à des problématiques plus techniques comme le changement du profil d'un remplaçant ou l'intégration de sondages pour les annulations de rendez-vous. Le second m'a fait franchir un cap, avec des tickets sensiblement plus complexes --- construire une page entière à partir de rien, corriger un bug critique en production ou intervenir au cœur de la création d'ordonnance --- et l'ouverture vers un nouvel environnement, le développement iOS.
+Cette année d'alternance chez CBA a été une expérience riche et déterminante pour mon parcours. Le premier semestre a surtout été celui de la découverte. J'y ai réalisé des missions variées, de la refonte visuelle des nouvelles formules d'abonnement à des sujets plus techniques comme le changement de profil d'un remplaçant ou l'ajout de sondages pour les annulations de rendez-vous. Le second m'a confié des tickets bien plus complexes, comme construire une page entière à partir de rien, corriger un bug critique en production ou intervenir au cœur de la création d'ordonnance. J'ai aussi découvert un nouvel environnement, le développement iOS.
 
-Ces missions m'ont permis de monter en compétence sur une \textit{stack} technique diversifiée : \textbf{Angular}, \textbf{Struts}, \textbf{Java} et \textbf{NgRx}, sans oublier l'écosystème mobile \textbf{Ionic} et \textbf{Capacitor}. Le fil conducteur de cette seconde partie d'année aura été l'\textbf{intelligence artificielle}, que j'ai appris à utiliser de façon raisonnée au quotidien et à laquelle j'ai même contribué à l'échelle de mon projet. Au-delà du code, j'ai surtout mesuré l'importance de la rigueur organisationnelle dans un projet d'ingénierie logicielle et l'impact direct de mon travail sur le quotidien des professionnels de santé.
+Ces missions m'ont permis de monter en compétence sur une \textit{stack} technique diversifiée : \textbf{Angular}, \textbf{Struts}, \textbf{Java} et \textbf{NgRx}, sans oublier l'écosystème mobile \textbf{Ionic} et \textbf{Capacitor}. Le fil rouge de ce second semestre a surtout été l'\textbf{intelligence artificielle}, que j'ai appris à utiliser au quotidien et à laquelle j'ai même contribué sur mon projet. Au-delà du code, j'ai découvert l'importance de la rigueur dans un projet d'ingénierie logicielle, et l'impact direct de mon travail sur le quotidien des professionnels de santé.
 
 \subsection{Conclusion du Semestre 2}
 Ce second semestre, je l'ai vraiment adoré. Je me suis senti plus proche de mon équipe et encore plus à l'aise au quotidien. J'aime beaucoup le fait qu'on me donne plus d'autonomie et que je fasse pleinement partie du sprint en cours, au même titre que les autres développeurs.
